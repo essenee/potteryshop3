@@ -1,0 +1,496 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+{% block content %}
+
+    <style type="text/css">
+        .recentcomments a {
+            display: inline !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+    </style>
+
+            <!-- Carousel -->
+            <div class="nm-page-full">
+                <div class="entry-content">
+                    <div style="max-width:1600px;" class="nm-row nm-row-boxed nm-row-max-width vc_row wpb_row  no-side-padding">
+                        <div class="nm_column wpb_column vc_column_container col-sm-12 no-side-padding">
+                            <div class="vc_column-inner">
+                                <div class="wpb_wrapper">
+                                    <div class="nm-banner-slider slider-hero plugin-slick pagination-color-gray slick-slider
+                                    slick-dots-inside has-pagination pagination-mobile-outside pagination-left"
+                                         data-arrows="true" data-dots="true" data-autoplay="true" data-autoplay-speed="12000">
+                                        {% for c_image in page.carousel_images.all  %}
+                                        {% image c_image.carousel_image original as c_full_image %}
+                                        <div class="nm-banner content-boxed full-width-parent image-type-fluid has-alt-image text-color-light subtitle-below alt-mobile-layout" style="background-color: #3d3d3b;">
+                                            <img src="{{ c_full_image.url }}" width="1600" height="678" alt="slider-pendant-lighting">
+                                            <img src="{{ c_full_image.url }}" class="nm-banner-alt-image img" width="750" height="500" alt="slider-pendant-lighting-alt">
+                                            <div class="nm-banner-content">
+                                                <div class="nm-banner-content-inner h_left v_center align_left">
+                                                    <div class="nm-banner-text medium" style="max-width:41%;">
+                                                        <div class="nm-banner-text-inner nm-animated" data-animate="fadeIn">
+                                                            <h1 class="nm-banner-title">{{ c_image.hero_text }} </h1>
+                                                            <a href="{{ c_image.hero_cta_link.url }}" class="nm-banner-link nm-banner-shop-link type-txt">{{ c_image.hero_cta }}</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Shop - Categories - Search -->
+            <div id="nm-shop" class="nm-shop header-enabled ajax-enabled nm-shop-sidebar-header images-lazyload">
+                <div class="nm-shop-header has-categories has-filters no-sidebar has-search">
+                    <div class="nm-shop-menu list_sep thumbnails-top">
+                        <div class="nm-row">
+                            <div class="col-xs-12">
+                                <div id="nm-shop-filter-menu-wrap">
+                                    <ul id="nm-shop-filter-menu" class="nm-shop-filter-menu">
+                                        <li class="nm-shop-categories-btn-wrap" data-panel="cat">
+                                            <a href="#categories" class="invert-color">Categories</a>
+                                        </li>
+                                        <li class="nm-shop-filter-btn-wrap" data-panel="filter">
+                                            <a href="#filter" class="invert-color">Filter</a>
+                                        </li>
+                                        <li class="nm-shop-search-btn-wrap" data-panel="search">
+                                            <span>&frasl;</span>
+                                            <a href="/search" id="nm-shop-search-btn" class="invert-color">
+                                                <span>Search</span>
+                                                <i class="nm-font nm-font-search flip"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div id="nm-shop-categories-wrap">
+                                    <ul id="nm-shop-categories" class="nm-shop-categories">
+                                        <li class="current-cat">
+                                            <a href="">All</a>
+                                        </li>
+                                        <li class="cat-item-23">
+                                            <span class="nm-shop-categories-divider">&frasl;</span>
+                                            <a href="">Decoration</a>
+                                        </li>
+                                        <li class="cat-item-22">
+                                            <span class="nm-shop-categories-divider">&frasl;</span>
+                                            <a href="">Essentials</a>
+                                        </li>
+                                        <li class="cat-item-21">
+                                            <span class="nm-shop-categories-divider">&frasl;</span>
+                                            <a href="">Interior</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="nm-shop-sidebar" class="nm-shop-sidebar nm-shop-sidebar-header" data-sidebar-layout="header">
+                        <div class="nm-shop-sidebar-inner">
+                            <div class="nm-row">
+                                <div class="col-xs-12">
+                                    <ul id="nm-shop-widgets-ul" class="small-block-grid-4">
+                                        <li id="nm_woocommerce_widget_product_sorting-2" class="widget nm_widget nm_widget_product_sorting woocommerce">
+                                            <div class="nm-shop-widget-col">
+                                                <h3 class="nm-widget-title">Sort By</h3>
+                                            </div>
+                                            <div class="nm-shop-widget-col">
+                                                <ul id="nm-product-sorting" class="nm-product-sorting">
+                                                    <li>
+                                                        <a href="https://savoy.nordicmade.com?orderby=menu_order">Default</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://savoy.nordicmade.com?orderby=popularity">Popularity</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://savoy.nordicmade.com?orderby=rating">Average rating</a>
+                                                    </li>
+                                                    <li class="active">Newness</li>
+                                                    <li>
+                                                        <a href="https://savoy.nordicmade.com?orderby=price">Price: Low to High</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://savoy.nordicmade.com?orderby=price-desc">Price: High to Low</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li id="nm_woocommerce_price_filter-2" class="widget nm_widget nm_widget_price_filter woocommerce">
+                                            <div class="nm-shop-widget-col">
+                                                <h3 class="nm-widget-title">Price</h3>
+                                            </div>
+                                            <div class="nm-shop-widget-col">
+                                                <ul class="nm-price-filter">
+                                                    <li class="current">All</li>
+                                                    <li>
+                                                        <a href="https://savoy.nordicmade.com?min_price=0&#038;max_price=50">
+                                                            <span class="woocommerce-Price-amount amount">
+                                                                <bdi>
+                                                                    <span class="woocommerce-Price-currencySymbol">&#36;</span>
+                                                                    0
+                                                                </bdi>
+                                                            </span>
+                                                            -
+                                                            <span class="woocommerce-Price-amount amount">
+                                                                <bdi>
+                                                                    <span class="woocommerce-Price-currencySymbol">&#36;</span>
+                                                                    50
+                                                                </bdi>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://savoy.nordicmade.com?min_price=50&#038;max_price=100">
+                                                            <span class="woocommerce-Price-amount amount">
+                                                                <bdi>
+                                                                    <span class="woocommerce-Price-currencySymbol">&#36;</span>
+                                                                    50
+                                                                </bdi>
+                                                            </span>
+                                                            -
+                                                            <span class="woocommerce-Price-amount amount">
+                                                                <bdi>
+                                                                    <span class="woocommerce-Price-currencySymbol">&#36;</span>
+                                                                    100
+                                                                </bdi>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://savoy.nordicmade.com?min_price=100&#038;max_price=150">
+                                                            <span class="woocommerce-Price-amount amount">
+                                                                <bdi>
+                                                                    <span class="woocommerce-Price-currencySymbol">&#36;</span>
+                                                                    100
+                                                                </bdi>
+                                                            </span>
+                                                            -
+                                                            <span class="woocommerce-Price-amount amount">
+                                                                <bdi>
+                                                                    <span class="woocommerce-Price-currencySymbol">&#36;</span>
+                                                                    150
+                                                                </bdi>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://savoy.nordicmade.com?min_price=150&#038;max_price=200">
+                                                            <span class="woocommerce-Price-amount amount">
+                                                                <bdi>
+                                                                    <span class="woocommerce-Price-currencySymbol">&#36;</span>
+                                                                    150
+                                                                </bdi>
+                                                            </span>
+                                                            -
+                                                            <span class="woocommerce-Price-amount amount">
+                                                                <bdi>
+                                                                    <span class="woocommerce-Price-currencySymbol">&#36;</span>
+                                                                    200
+                                                                </bdi>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://savoy.nordicmade.com?min_price=200&#038;max_price=259">
+                                                            <span class="woocommerce-Price-amount amount">
+                                                                <bdi>
+                                                                    <span class="woocommerce-Price-currencySymbol">&#36;</span>
+                                                                    200
+                                                                </bdi>
+                                                            </span>
+                                                            +
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li id="woocommerce_layered_nav-2" class="widget woocommerce widget_layered_nav woocommerce-widget-layered-nav">
+                                            <div class="nm-shop-widget-col">
+                                                <h3 class="nm-widget-title">Color</h3>
+                                            </div>
+                                            <div class="nm-shop-widget-col">
+                                                <ul class="woocommerce-widget-layered-nav-list">
+                                                    <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
+                                                        <a rel="nofollow" href="https://savoy.nordicmade.com?filter_color=blue&query_type_color=or">
+                                                            <i style="background:#1e73be;" class="nm-pa-color nm-pa-color-blue"></i>
+                                                            Blue
+                                                        </a>
+                                                    </li>
+                                                    <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
+                                                        <a rel="nofollow" href="https://savoy.nordicmade.com?filter_color=brown&query_type_color=or">
+                                                            <i style="background:#736751;" class="nm-pa-color nm-pa-color-brown"></i>
+                                                            Brown
+                                                        </a>
+                                                    </li>
+                                                    <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
+                                                        <a rel="nofollow" href="https://savoy.nordicmade.com?filter_color=gray&query_type_color=or">
+                                                            <i style="background:#c0c0c0;" class="nm-pa-color nm-pa-color-gray"></i>
+                                                            Gray
+                                                        </a>
+                                                    </li>
+                                                    <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
+                                                        <a rel="nofollow" href="https://savoy.nordicmade.com?filter_color=green&query_type_color=or">
+                                                            <i style="background:#05ac92;" class="nm-pa-color nm-pa-color-green"></i>
+                                                            Green
+                                                        </a>
+                                                    </li>
+                                                    <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
+                                                        <a rel="nofollow" href="https://savoy.nordicmade.com?filter_color=orange&query_type_color=or">
+                                                            <i style="background:#dc9814;" class="nm-pa-color nm-pa-color-orange"></i>
+                                                            Orange
+                                                        </a>
+                                                    </li>
+                                                    <li class="woocommerce-widget-layered-nav-list__item wc-layered-nav-term ">
+                                                        <a rel="nofollow" href="https://savoy.nordicmade.com?filter_color=white&query_type_color=or">
+                                                            <i style="background:#ffffff;" class="nm-pa-color nm-pa-color-white"></i>
+                                                            White
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li id="woocommerce_product_tag_cloud-2" class="widget woocommerce widget_product_tag_cloud">
+                                            <div class="nm-shop-widget-col">
+                                                <h3 class="nm-widget-title">Tags</h3>
+                                            </div>
+                                            <div class="nm-shop-widget-col">
+                                                <div class="tagcloud">
+                                                    <a href="" class="tag-cloud-link tag-link-32 tag-link-position-1" style="font-size: 15.567567567568pt;" aria-label="Bathroom (7 products)">Bathroom</a>
+                                                    <a href="" class="tag-cloud-link tag-link-7 tag-link-position-2" style="font-size: 14.936936936937pt;" aria-label="Classic (6 products)">Classic</a>
+                                                    <a href="" class="tag-cloud-link tag-link-27 tag-link-position-3" style="font-size: 22pt;" aria-label="Contemporary (25 products)">Contemporary</a>
+                                                    <a href="" class="tag-cloud-link tag-link-28 tag-link-position-4" style="font-size: 17.333333333333pt;" aria-label="Decor (10 products)">Decor</a>
+                                                    <a href="" class="tag-cloud-link tag-link-30 tag-link-position-5" style="font-size: 19.099099099099pt;" aria-label="Essentials (14 products)">Essentials</a>
+                                                    <a href="" class="tag-cloud-link tag-link-26 tag-link-position-11" style="font-size: 14.936936936937pt;" aria-label="Minimal (6 products)">Minimal</a>
+                                                    <a href="" class="tag-cloud-link tag-link-35 tag-link-position-12" style="font-size: 8pt;" aria-label="Practical (1 product)">Practical</a>
+                                                    <a href="" class="tag-cloud-link tag-link-34 tag-link-position-13" style="font-size: 8pt;" aria-label="Tableware (1 product)">Tableware</a>
+
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="nm-shop-sidebar-layout-indicator"></div>
+                        <!-- Don't remove (used for testing sidebar/filters layout in JavaScript) -->
+                    </div>
+                    <div id="nm-shop-search">
+                        <div class="nm-row">
+                            <div class="col-xs-12">
+                                <div class="nm-shop-search-inner">
+                                    <div class="nm-shop-search-input-wrap">
+                                        <a href="#" id="nm-shop-search-close">
+                                            <i class="nm-font nm-font-close2"></i>
+                                        </a>
+                                        <form id="nm-shop-search-form" role="search" method="get" action="">
+                                            <input type="text" id="nm-shop-search-input" autocomplete="off" value="" name="s" placeholder="Search products"/>
+                                            <input type="hidden" name="post_type" value="product"/>
+                                        </form>
+                                    </div>
+                                    <div id="nm-shop-search-notice">
+                                        <span>
+                                            press <u>Enter</u>
+                                            to search
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="nm-shop-notices-wrap"></div>
+
+
+                <div id="nm-shop-products" class="nm-shop-products">
+                    <div class="nm-row">
+                        <div class="nm-shop-products-col col-xs-12">
+                            <div id="nm-shop-products-overlay" class="nm-loader"></div>
+                            <div id="nm-shop-browse-wrap" class="nm-shop-description-clean">
+                                <div class="woocommerce-notices-wrapper"></div>
+                                <ul class="nm-products products xsmall-block-grid-2 small-block-grid-2 medium-block-grid-3 large-block-grid-4 grid-default layout-default attributes-position-thumbnail has-action-links">
+                                    {% for product in products %}
+                                    <li class="nm-has-attributes product type-product post-253 status-publish first instock product_cat-interior product_tag-classic product_tag-interior product_tag-leather has-post-thumbnail sale featured shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="253">
+                                        <div class="nm-shop-loop-product-wrap">
+                                            <div class="nm-shop-loop-thumbnail">
+                                                <a href="{{ product.get_url }}" class="nm-shop-loop-thumbnail-link woocommerce-LoopProduct-link">
+                                                    <span class="onsale">
+                                                        <span class="nm-onsale-before">-</span>
+                                                        11<span class="nm-onsale-after">%</span>
+                                                    </span>
+                                                  {% image product.image fill-400x500 as tmp_image %}
+                                                    <img src="{{ tmp_image.url }}" onload="this.style.opacity=1" alt="" class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail wp-post-image lazyload">
+                                                </a>
+                                            </div>
+
+                                            <div class="nm-shop-loop-details">
+                                                <a href="#" id="nm-wishlist-item-{{ product.pk }}-button" class="nm-wishlist-button nm-wishlist-item-{{ product.pk }}-button" data-product-id="{{ product.pk }}" title="Add to Wishlist">
+                                                    <i class="nm-font nm-font-heart-o"></i>
+                                                </a>
+                                                <div class="nm-shop-loop-title-price">
+                                                    <h3 class="woocommerce-loop-product__title">
+                                                        <a href="{{ product.get_url }}" class="nm-shop-loop-title-link woocommerce-LoopProduct-link">{{ product.title }}</a>
+                                                    </h3>
+                                                    <span class="price">
+                                                        <del aria-hidden="true">
+                                                            <span class="woocommerce-Price-amount amount">
+                                                                <bdi>
+                                                                    <span class="woocommerce-Price-currencySymbol">&#36;</span>
+                                                                    {{ product.price }}
+                                                                </bdi>
+                                                            </span>
+                                                        </del>
+                                                        <ins>
+                                                            <span class="woocommerce-Price-amount amount">
+                                                                <bdi>
+                                                                    <span class="woocommerce-Price-currencySymbol">&#36;</span>
+                                                                    {{ product.price }}
+                                                                </bdi>
+                                                            </span>
+                                                        </ins>
+                                                    </span>
+                                                </div>
+                                                <div class="nm-shop-loop-actions">
+                                                    <a href="{{ product.get_url }}" class="">Show more</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                  {% endfor %}
+
+                                <nav class="woocommerce-pagination nm-pagination nm-infload">
+                                    <ul class='page-numbers'>
+                                        <li>
+                                            <span aria-current="page" class="page-numbers current">1</span>
+                                        </li>
+                                        <li>
+                                            <a class="page-numbers" href="">2</a>
+                                        </li>
+                                        <li>
+                                            <a class="page-numbers" href=">3</a>
+                                        </li>
+                                        <li>
+                                            <a class="next page-numbers" href="">
+                                                <i class="nm-font nm-font-angle-thin-right"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <div class="nm-infload-link">
+                                    <a href="">&nbsp;</a>
+                                </div>
+                                <div class="nm-infload-controls button-mode">
+                                    <a href="#" class="nm-infload-btn">Load More</a>
+                                    <a href="#" class="nm-infload-to-top">All products loaded.</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- .nm-page-wrap-inner -->
+    </div>
+    <!-- .nm-page-wrap -->
+
+<!--        Login popup -->
+        <div id="nm-login-popup-wrap" class="nm-login-popup-wrap mfp-hide">
+        <div class="woocommerce-notices-wrapper"></div>
+        <div id="customer_login" class="nm-myaccount-login">
+            <div class="nm-myaccount-login-inner">
+                <div id="nm-login-wrap" class="inline slide-up fade-in">
+                    <h2>Sign In</h2>
+                    <form action="{% url 'account_login' %}" method="post" class="login">
+                        <input type="hidden" class="nm-login-popup-redirect-input" name="redirect" value="">
+                        <p class="form-row form-row-wide">
+                            <label for="username">
+                                Username or email address <span class="required">*</span>
+                            </label>
+                            <input type="text" class="woocommerce-Input woocommerce-Input--text input-text" name="username" id="username" value="">
+                        </p>
+                        <p class="form-row form-row-wide">
+                            <label for="password">
+                                Password <span class="required">*</span>
+                            </label>
+                            <input class="input-text" type="password" name="password" id="password"/>
+                        </p>
+                        <p class="form-row form-group">
+                            <label class="woocommerce-form__label woocommerce-form__label-for-checkbox woocommerce-form-login__rememberme inline">
+                                <input class="woocommerce-form__input woocommerce-form__input-checkbox" name="rememberme" type="checkbox" id="rememberme" value="forever"/>
+                                <span>Remember me</span>
+                            </label>
+                            <span class="woocommerce-LostPassword lost_password">
+                                <a href="">Lost your password?</a>
+                            </span>
+                        </p>
+                        <p class="form-actions">
+                            <input type="hidden" id="woocommerce-login-nonce" name="woocommerce-login-nonce" value="08d1b3ef19"/>
+                            <input type="hidden" name="_wp_http_referer" value="/"/>
+                            <button type="submit" class="woocommerce-button button woocommerce-form-login__submit wp-element-button" name="login" value="Sign In">Sign In</button>
+                        <div class="nm-login-form-divider">
+                            <span>Or</span>
+                        </div>
+                        <a href="#" id="nm-show-register-button" class="button border">Create an account</a>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+
+<!--    Register popup-->
+        <div id="nm-register-wrap">
+            <h2>Register</h2>
+            <form action="{% url 'account_signup' %}" method="post" class="register">
+                <input type="hidden" class="nm-login-popup-redirect-input" name="redirect" value="">
+                <p class="form-row form-row-wide">
+                    <label for="reg_email">
+                        Email address <span class="required">*</span>
+                    </label>
+                    <input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" value=""/>
+                </p>
+                <p class="form-row form-row-wide">
+                    <label for="reg_password">
+                        Password <span class="required">*</span>
+                    </label>
+                    <input type="password" class="input-text" name="password" id="reg_password"/>
+                </p>
+                <div class="woocommerce-privacy-policy-text"></div>
+                <p class="form-actions">
+                    <input type="hidden" id="woocommerce-register-nonce" name="woocommerce-register-nonce" value="f5e3e426b1"/>
+                    <input type="hidden" name="_wp_http_referer" value="/"/>
+                    <button type="submit" class="woocommerce-Button woocommerce-button button wp-element-button woocommerce-form-register__submit" name="register" value="Register">Register</button>
+                <div class="nm-login-form-divider">
+                    <span>Or</span>
+                </div>
+                <a href="#" id="nm-show-login-button" class="button border">Sign In</a>
+                </p>
+            </form>
+        </div>
+
+
+<div id="nm-page-overlay">
+</div>
+<div id="nm-quickview" class="clearfix">
+</div>
+<div id="nm-page-includes" class="quickview products banner-slider banner shop_categories shop_filters login-popup " style="display:none;">&nbsp;
+</div>
+
+
+</div>
+
+
+<!-- .nm-page-overflow -->
+
+
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,10 @@
+{% load wagtailimages_tags %}
+
+{% for img in images %}
+{% image img width-1600 as tmp_photo %}
+
+        <a data-lg-size="1600-{{ tmp_photo.height }}" class="gallery-image" data-src="{{ tmp_photo.url }}" data-sub-html="<h4 style='color:lightgray'> <a href='/iron-red-bottle/'>Iron red bottle form</a></h3>">
+        <img alt="layers of blue." class="img-responsive" src="{{ tmp_photo.url }}">
+        </a>
+
+{% endfor %}

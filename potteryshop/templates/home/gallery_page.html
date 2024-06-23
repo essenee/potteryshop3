@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load wagtailimages_tags gallery_tags %}
+
+{% block content %}
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.0.0-beta.3/css/lightgallery.css" />
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.0.0-beta.3/css/lg-zoom.css" />
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.css" />
+<!--<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.css" />-->
+<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.0.0-beta.3/css/lg-thumbnail.css" />
+
+<div class="nm-blog-wrap">
+  <div class="nm-blog-categories">
+    <div class="nm-row">
+      <p>
+      <H3 style="text-align:center">Gallery</H3>
+      </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-sm" style="width: 100%">
+    <div class="row justify-content-center">
+      <div class="col col-md-10 gallery-col">
+        <div class="gallery-container" id="animated-thumbnails-gallery">
+
+<!--          For gallery collections version put in curly brace-percent:-->
+<!--              gallery page.collection -->
+
+          {{ page.subtitle }}
+
+          {% for block in page.body %}
+          {% image block.value.image width-1600 as tmp_photo %}
+
+                <a data-lg-size="1600-{{ tmp_photo.height }}" class="gallery-image" data-src="{{ tmp_photo.url }}" data-sub-html="{{ block.value.caption }}">
+                <img alt="layers of blue." class="img-responsive" src="{{ tmp_photo.url }}">
+                </a>
+          {% endfor %}
+
+      </div>
+    </div>
+  </div>
+  </div>
+
+    <!-- <script src="js/lightgallery.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.0.0-beta.3/lightgallery.umd.js"></script>
+
+    <!-- jQuery version must be >= 1.8.0; -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.js"></script>
+
+    <!-- lightgallery plugins -->
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.0.0-beta.3/plugins/thumbnail/lg-thumbnail.umd.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.0.0-beta.3/plugins/zoom/lg-zoom.umd.js"></script>
+
+    <script>
+      jQuery("#animated-thumbnails-gallery")
+        .justifiedGallery({
+          captions: false,
+          lastRow: 'justify',
+          rowHeight: 280,
+          margins: 5
+        })
+        .on("jg.complete", function () {
+          window.lightGallery(
+            document.getElementById("animated-thumbnails-gallery"),
+            {
+              autoplayFirstVideo: false,
+              pager: false,
+              galleryId: "nature",
+              plugins: [lgZoom, lgThumbnail],
+              mobileSettings: {
+                controls: false,
+                showCloseIcon: false,
+                download: false,
+                rotate: false,
+                thumbHeight: '160px',
+                thumbWidth : 	200
+              }
+            }
+          );
+        });
+    </script>
+
+{% endblock content %}

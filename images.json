@@ -1,0 +1,191 @@
+[
+  {
+  "model": "wagtailimages.image",
+  "pk": 1,
+  "fields": {
+    "collection": 2,
+    "title": "IRB1",
+    "file": "original_images/IRB1_JMFXWwc.jpg",
+    "width": 4516,
+    "height": 3890,
+    "created_at": "2024-06-22T21:20:36.678Z",
+    "uploaded_by_user": [
+      "esse"
+    ],
+    "focal_point_x": null,
+    "focal_point_y": null,
+    "focal_point_width": null,
+    "focal_point_height": null,
+    "file_size": 279870,
+    "file_hash": "58a54d5be38b94a28a2f7da5fb87f21cb0300137"
+  }
+},
+{
+  "model": "wagtailimages.image",
+  "pk": 2,
+  "fields": {
+    "collection": 1,
+    "title": "Black_Bottle_1600x678",
+    "file": "original_images/Black_Bottle_1600x678_AqQaTgY.jpeg",
+    "width": 1600,
+    "height": 678,
+    "created_at": "2024-06-22T21:20:57.278Z",
+    "uploaded_by_user": [
+      "esse"
+    ],
+    "focal_point_x": null,
+    "focal_point_y": null,
+    "focal_point_width": null,
+    "focal_point_height": null,
+    "file_size": 590672,
+    "file_hash": "7c6757f70b6fbdf7902c8cb6dd15f42041eacdc9"
+  }
+},
+{
+  "model": "wagtailimages.image",
+  "pk": 3,
+  "fields": {
+    "collection": 1,
+    "title": "Ash_wide_1600x678",
+    "file": "original_images/Ash_wide_1600x678_heuqBcs.JPG",
+    "width": 1600,
+    "height": 678,
+    "created_at": "2024-06-22T21:21:18.674Z",
+    "uploaded_by_user": [
+      "esse"
+    ],
+    "focal_point_x": null,
+    "focal_point_y": null,
+    "focal_point_width": null,
+    "focal_point_height": null,
+    "file_size": 580157,
+    "file_hash": "d9f6acca4d6b30dbc5542c62afd654ed8c835051"
+  }
+},
+{
+  "model": "wagtailimages.image",
+  "pk": 4,
+  "fields": {
+    "collection": 2,
+    "title": "Bottle_rect",
+    "file": "original_images/Bottle_rect.jpg",
+    "width": 3738,
+    "height": 3019,
+    "created_at": "2024-06-22T21:23:12.076Z",
+    "uploaded_by_user": [
+      "esse"
+    ],
+    "focal_point_x": null,
+    "focal_point_y": null,
+    "focal_point_width": null,
+    "focal_point_height": null,
+    "file_size": 4370183,
+    "file_hash": "4c648502dd95ab5022f163542206d168cdbe3b4d"
+  }
+},
+{
+  "model": "wagtailimages.image",
+  "pk": 5,
+  "fields": {
+    "collection": 2,
+    "title": "Shino_cup1",
+    "file": "original_images/Shino_cup1_yenXh2h.jpg",
+    "width": 2230,
+    "height": 2713,
+    "created_at": "2024-06-22T21:23:12.282Z",
+    "uploaded_by_user": [
+      "esse"
+    ],
+    "focal_point_x": null,
+    "focal_point_y": null,
+    "focal_point_width": null,
+    "focal_point_height": null,
+    "file_size": 341699,
+    "file_hash": "aa5e950d5832d02b38fd3f812b8cc5e695d6078d"
+  }
+},
+{
+  "model": "wagtailimages.image",
+  "pk": 6,
+  "fields": {
+    "collection": 2,
+    "title": "CRB1",
+    "file": "original_images/CRB1_doiSLg6.jpg",
+    "width": 3024,
+    "height": 4032,
+    "created_at": "2024-06-22T21:23:12.677Z",
+    "uploaded_by_user": [
+      "esse"
+    ],
+    "focal_point_x": null,
+    "focal_point_y": null,
+    "focal_point_width": null,
+    "focal_point_height": null,
+    "file_size": 878217,
+    "file_hash": "ee5a683ae43a6531fc1f13db9b03dfddbe51d760"
+  }
+},
+{
+  "model": "wagtailimages.image",
+  "pk": 7,
+  "fields": {
+    "collection": 2,
+    "title": "IRC1",
+    "file": "original_images/IRC1_jAMEI5k.jpg",
+    "width": 2390,
+    "height": 2854,
+    "created_at": "2024-06-22T21:23:12.978Z",
+    "uploaded_by_user": [
+      "esse"
+    ],
+    "focal_point_x": null,
+    "focal_point_y": null,
+    "focal_point_width": null,
+    "focal_point_height": null,
+    "file_size": 1017296,
+    "file_hash": "a426cf8606b76b6714a5663803a3978b1efd679b"
+  }
+},
+{
+  "model": "wagtailimages.image",
+  "pk": 8,
+  "fields": {
+    "collection": 2,
+    "title": "Sculpture_Clay_Bottle",
+    "file": "original_images/Sculpture_Clay_Bottle_K48ajb5.jpg",
+    "width": 1290,
+    "height": 1413,
+    "created_at": "2024-06-22T21:23:13.065Z",
+    "uploaded_by_user": [
+      "esse"
+    ],
+    "focal_point_x": null,
+    "focal_point_y": null,
+    "focal_point_width": null,
+    "focal_point_height": null,
+    "file_size": 216335,
+    "file_hash": "c836bd7c70bde065fcbae4e7b1ee67d194720879"
+  }
+},
+{
+  "model": "wagtailimages.image",
+  "pk": 9,
+  "fields": {
+    "collection": 2,
+    "title": "IOJ1",
+    "file": "original_images/IOJ1_YhAXOFT.jpg",
+    "width": 3501,
+    "height": 3945,
+    "created_at": "2024-06-22T21:23:14.067Z",
+    "uploaded_by_user": [
+      "esse"
+    ],
+    "focal_point_x": null,
+    "focal_point_y": null,
+    "focal_point_width": null,
+    "focal_point_height": null,
+    "file_size": 7216705,
+    "file_hash": "9dab642c028d6e475846dda37944ea7bbe8c1dfe"
+  }
+}
+]

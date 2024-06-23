@@ -1,0 +1,117 @@
+{% load static wagtailcore_tags wagtailimages_tags wagtailuserbar %}
+{% load static wagtailsettings_tags %}
+{% get_settings %}
+
+<!DOCTYPE html>
+
+<html lang="en-US" class="footer-sticky-1">
+
+<head>
+    <meta charset="utf-8" />
+    <title>
+        {% block title %}
+        {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}
+        {% endblock %}
+        {% block title_suffix %}
+        {% wagtail_site as current_site %}
+        {% if current_site and current_site.site_name %}- {{ current_site.site_name }}{% endif %}
+        {% endblock %}
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    {% block extra_css %}
+    {# Override this in templates to add extra css #}
+    {% endblock %}
+
+    {# Global stylesheets #}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" media="all" data-minify="1">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}" media="all" data-minify="1">
+    <link rel="stylesheet" href="{% static 'css/snipcartwagtaildemo.css' %}">
+    <link rel="stylesheet" href="{% static 'css/photoswipe.css' %}">
+
+    <link rel="stylesheet" href="{% static 'font/MaisonNeueWEB-Book.woff' %}">
+    <link rel="icon" href="{% static 'img/favicon.png' %}">
+
+
+
+
+    {# Snipcart #}
+
+    {% if settings.home.SnipcartSettings.api_key %}
+    <script async src="https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.js"></script>
+    <div hidden id="snipcart" data-api-key="{{ settings.home.SnipcartSettings.api_key }}"></div>
+    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.css" />
+    {% endif %}
+
+    <style type="text/css">
+    .snipcart-item-line__media--small{
+        min-width:auto;
+        height:64px;
+     }
+
+    .snipcart-modal__container {
+        position: fixed; /* Stay in place front is invalid - may break your css so removed */
+        left: 0;
+        right:0; /* Full width (left and right 0) */
+        top: 0;
+        bottom: 0; /* Full height top and bottom 0 */
+        overflow-y: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: var(--bgColor-modal,#f1f2f4);
+        z-index: 9999; /* Sit on top - higher than any other z-index in your site*/
+    }
+
+    </style>
+</head>
+
+<body class="{% block body_class %}{% endblock %}" >
+    {% wagtailuserbar %}
+
+<div class="nm-page-overflow">
+    <div class="nm-page-wrap">
+        <div class="nm-page-wrap-inner">
+            {% block header %}
+                {% include "header.html" %}
+            {% endblock header %}
+
+            {% block content %}
+            {% endblock %}
+
+            {% block footer %}
+                {% include "footer.html" %}
+            {% endblock footer %}
+
+            {% block mobile_menu %}
+                {% include "mobile_menu.html" %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+<!--    Add js to add class "show" on hamburger click-->
+<div id="nm-page-overlay" class="nm-mobile-menu-overlay"></div>
+
+    {# Global javascript #}
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery-migrate.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/slick.js' %}"></script>
+<!--    <script type='text/javascript' src="{% static 'js/hooks.min.js' %}" id='wp-hooks-js'></script>-->
+<!--    <script type='text/javascript' src="{% static 'js/wp-cache.js' %}" ></script>-->
+    <script type="text/javascript" src="{% static 'js/snipcartwagtaildemo.js' %}"></script>
+    <script type="module" src="{% static 'js/index.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/slider.js' %}"></script>
+
+    {% block extra_js %}
+    {# Override this in templates to add extra javascript #}
+    {% endblock %}
+
+
+</body>
+</html>
+
+<!--<script>-->
+<!--    function toggleMobileMenu(menu) {-->
+<!--        menu.classList.toggle('mobile-menu-open');-->
+<!--    }-->
+<!--</script>-->

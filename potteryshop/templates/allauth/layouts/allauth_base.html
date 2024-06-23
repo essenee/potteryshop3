@@ -1,0 +1,264 @@
+{% load static wagtailcore_tags wagtailuserbar %}
+{% load static wagtailimages_tags %}
+{% load static wagtailcore_tags %}
+<!DOCTYPE html>
+
+<html lang="en-US" class="footer-sticky-1">
+
+<head>
+    <meta charset="utf-8" />
+    <title>
+        {% block title %}
+        {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ page.title }}{% endif %}
+        {% endblock %}
+        {% block title_suffix %}
+        {% wagtail_site as current_site %}
+        {% if current_site and current_site.site_name %}- {{ current_site.site_name }}{% endif %}
+        {% endblock %}
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    {% load static %}
+    {% load static wagtailsettings_tags %}
+    {% get_settings %}
+
+    {# Global stylesheets #}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" media="all" data-minify="1">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}" media="all" data-minify="1">
+    <link rel="stylesheet" href="{% static 'css/snipcartwagtaildemo.css' %}">
+
+    <link rel="stylesheet" href="{% static 'font/MaisonNeueWEB-Book.woff' %}">
+    <link rel="icon" href="{% static 'img/favicon.png' %}">
+
+    {# Snipcart #}
+
+    {% if settings.home.SnipcartSettings.api_key %}
+    <script async src="https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.js"></script>
+    <div hidden id="snipcart" data-api-key="{{ settings.home.SnipcartSettings.api_key }}"></div>
+    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.css" />
+    {% endif %}
+
+        <style type="text/css">
+        .snipcart-item-line__media--small{
+            min-width:auto;
+            height:64px;
+         }
+
+        .snipcart-modal__container {
+            position: fixed; /* Stay in place front is invalid - may break your css so removed */
+            left: 0;
+            right:0; /* Full width (left and right 0) */
+            top: 0;
+            bottom: 0; /* Full height top and bottom 0 */
+            overflow-y: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: var(--bgColor-modal,#f1f2f4);
+            z-index: 9999; /* Sit on top - higher than any other z-index in your site*/
+        }
+
+        </style>
+</head>
+
+<body class="{% block body_class %}{% endblock %}">
+    {% wagtailuserbar %}
+
+        <div id="nm-header-placeholder" class="nm-header-placeholder">
+        </div>
+            <header id="nm-header" class="nm-header centered resize-on-scroll clear">
+                <div class="nm-header-inner">
+                    <div class="nm-row">
+                        <div class="nm-header-logo">
+                            <a href="/">
+                                <img src="{% static 'img/logo.png' %}" class="nm-logo" alt="Pottery Shop">
+                            </a>
+                        </div>
+                        <div class="nm-main-menu-wrap col-xs-6">
+                            <nav class="nm-main-menu">
+                                <ul id="nm-main-menu-ul" class="nm-menu">
+                                    <li class="nm-menu-offscreen menu-item-default">
+                                        <span class="nm-menu-cart-count count nm-count-zero">0</span>
+                                        <a href="#" id="nm-mobile-menu-button" class="clicked">
+                                            <div class="nm-menu-icon">
+                                                <span class="line-1"></span>
+                                                <span class="line-2"></span>
+                                                <span class="line-3"></span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li id="menu-item-20" class="megamenu col-2 shop-link menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-has-children current-menu-item current_page_item menu-item-20">
+                                        <a href="/" aria-current="page">Shop</a>
+                                        <div class='sub-menu'>
+                                            <div class='nm-sub-menu-bridge'></div>
+                                            <ul class='nm-sub-menu-ul'>
+                                                <li id="menu-item-3140" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-has-children menu-item-3140">
+                                                    <a href="">Firing Types</a>
+                                                    <div class='sub-menu'>
+                                                        <ul class='nm-sub-menu-ul'>
+                                                            <li id="menu-item-346" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-346">
+                                                                <a href="">Stoneware</a>
+                                                            </li>
+                                                            <li id="menu-item-3267" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-3267">
+                                                                <a href="">Earthenware</a>
+                                                            </li>
+                                                            <li id="menu-item-3136" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3136">
+                                                                <a href="">Raku</a>
+
+                                                            <li id="menu-item-3137" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3137">
+                                                                <a href="">Wood&#8211;Fired</a>
+                                                            </li>
+                                                            <li id="menu-item-2211" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2211">
+                                                                <a href="">Pit&#8211;Fired</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                                <li id="menu-item-2201" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-has-children menu-item-2201">
+                                                    <a href="">Vessel Types</a>
+                                                    <div class='sub-menu'>
+                                                        <ul class='nm-sub-menu-ul'>
+                                                            <li id="menu-item-2200" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-2200">
+                                                                <a href="">Vases</a>
+                                                            </li>
+                                                            <li id="menu-item-2933" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2933">
+                                                                <a href="">Bottle Forms</a>
+                                                            </li>
+                                                            <li id="menu-item-2199" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-2199">
+                                                                <a href="">Cups</a>
+                                                            </li>
+                                                            <li id="menu-item-2197" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-2197">
+                                                                <a href="">Plates</a>
+                                                            </li>
+                                                            <li id="menu-item-2194" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-2194">
+                                                                <a href="">Jars</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li id="menu-item-3169" class="megamenu full col-5 mobile-thumbnail-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3169">
+                                        <a href="/">
+                                            Categories <span class="label"></span>
+                                        </a>
+                                        <div class='sub-menu'>
+                                            <div class='nm-sub-menu-bridge'></div>
+                                            <ul class='nm-sub-menu-ul'>
+                                                <li id="menu-item-3170" class="shop-ajax-link shop-redirect-link menu-item menu-item-type-taxonomy menu-item-object-product_cat nm-menu-item-has-image menu-item-3170">
+
+                                                    <a href="">
+                                                        {% image products.0.image fill-200x300 as tmp_image %}
+                                                        <img src="{{ tmp_image.url }}" loading="eager" alt="" width="160" height="160" class="nm-menu-item-image"/>
+                                                        <span class="nm-menu-item-image-title">Stoneware</span>
+                                                    </a>
+                                                </li>
+                                                <li id="menu-item-3171" class="shop-ajax-link shop-redirect-link menu-item menu-item-type-taxonomy menu-item-object-product_cat nm-menu-item-has-image menu-item-3171">
+                                                    <a href="">
+                                                        {% image products.1.image fill-200x300 as tmp_image %}
+                                                        <img src="{{ tmp_image.url }}" loading="eager" alt="" width="160" height="160" class="nm-menu-item-image"/>
+                                                        <span class="nm-menu-item-image-title">Cups</span>
+                                                    </a>
+                                                </li>
+                                                <li id="menu-item-3172" class="shop-ajax-link shop-redirect-link menu-item menu-item-type-taxonomy menu-item-object-product_cat nm-menu-item-has-image menu-item-3172">
+                                                        <a href="">
+                                                        {% image products.2.image fill-200x300 as tmp_image %}
+                                                        <img src="{{ tmp_image.url }}" loading="eager" alt="" width="160" height="160" class="nm-menu-item-image"/>
+                                                        <span class="nm-menu-item-image-title">Lidded Jars</span>
+                                                    </a>
+                                                </li>
+                                                <li id="menu-item-3173" class="shop-ajax-link shop-redirect-link menu-item menu-item-type-taxonomy menu-item-object-product_cat nm-menu-item-has-image menu-item-3173">
+                                                    <a href="">
+                                                        {% image products.4.image fill-200x300 as tmp_image %}
+                                                        <img src="{{ tmp_image.url }}" loading="eager" alt="" width="160" height="160" class="nm-menu-item-image"/>
+                                                        <span class="nm-menu-item-image-title">Bottle Forms</span>
+                                                    </a>
+                                                </li>
+                                                <li id="menu-item-3174" class="shop-ajax-link menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item current_page_item nm-menu-item-has-image menu-item-3174">
+                                                    <a href="" aria-current="page">
+                                                        <img src="" loading="eager" alt="" width="160" height="160" class="nm-menu-item-image"/>
+                                                        <span class="nm-menu-item-image-title">Shop All</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li id="menu-item-2202" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2202">
+                                        <a href="/">Gallery</a>
+                                        <div class='sub-menu'>
+                                            <div class='nm-sub-menu-bridge'></div>
+                                            <ul class='nm-sub-menu-ul'>
+                                                <li id="menu-item-361" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-361">
+                                                    <a href="">About Us</a>
+                                                </li>
+                                                <li id="menu-item-18" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18">
+                                                    <a href="">Blog</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                            </nav>
+                        </div>
+
+                        <div class="nm-right-menu-wrap col-xs-6">
+                            <nav class="nm-right-menu">
+                                <ul id="nm-right-menu-ul" class="nm-menu">
+                                    <li class="nm-menu-wishlist menu-item-default has-icon" aria-label="Wishlist">
+                                        <a href="">
+                                            <i class="nm-font nm-font-heart-outline"></i>
+                                        </a>
+                                    </li>
+        <!--            Login Desktop-->
+                            <li class="nm-menu-account menu-item-default no-icon" aria-label="My account">
+                                {% if request.user.is_authenticated %}
+                                <a href="{% url 'account_logout' %}" id="nm-menu-account-btn">
+<!--                                    logout-->
+                                    <i class="nm-myaccount-icon nm-font nm-font-head"></i>
+
+                                </a>
+                                {% else %}
+                                <a href="{% url 'account_login' %}" id="nm-menu-account-btn">
+                                    <i class="nm-myaccount-icon nm-font nm-font-head"></i>
+                                </a>
+                                {% endif %}
+                            </li>
+
+                            <li class="nm-menu-cart menu-item-default no-icon">
+                                <a href="" class="snipcart-checkout">
+
+                                <!--                                                <a href="#" id="nm-menu-cart-btn">-->
+                                    <span class="nm-menu-cart-title">
+                                        <i class="nm-menu-cart-icon nm-font nm-font-cart"></i>
+                                    </span>
+                                    <span class="snipcart-items-count nm-menu-cart-count count nm-count-zero">0</span>
+                                </a>
+                            </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </header>
+{% block body %}
+    {% block content %}
+    {% endblock %}
+{% endblock %}
+
+
+    {# Global javascript #}
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery-migrate.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/snipcartwagtaildemo.js' %}"></script>
+    <script type="module" src="{% static 'js/index.js' %}"></script>
+
+
+
+    {% block extra_js %}
+    {# Override this in templates to add extra javascript #}
+    {% endblock %}
+
+</body>
+</html>

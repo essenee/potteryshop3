@@ -1,0 +1,25 @@
+{% extends "allauth/layouts/allauth_base.html" %}
+{% block body %}
+<div class="nm-page-default nm-row">
+  <div class="nm-page-default-col col-xs-12">
+    <div id="post-10" class="post-10 page type-page status-publish hentry">
+      <div class="woocommerce">
+        <div class="woocommerce-notices-wrapper">
+            {% if messages %}
+                {% for message in messages %}<div class="alert alert-info">{{ message }}</div>{% endfor %}
+            {% endif %}
+        </div>
+            <div id="customer_login" class="nm-myaccount-login">
+              <div class="nm-myaccount-login-inner">
+                <div id="nm-login-wrap" class="inline slide-up fade-in">
+                    {% block content %}{% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+
+{% endblock %}

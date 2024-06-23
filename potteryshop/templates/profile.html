@@ -1,0 +1,10 @@
+{% extends "allauth/layouts/manage.html" %}
+{% load allauth %}
+{% block content %}
+    {% element h2 %}
+    {% endelement %}
+    <h5>Welcome to your account pages</h5>
+    <p>
+        From your account dashboard you can view your <a href="">recent orders</a>, manage your <a href="">shipping and billing addresses</a>, and <a href="{% url 'account_change_password' %}">edit your password and account details</a>.
+    </p>
+{% endblock content %}
