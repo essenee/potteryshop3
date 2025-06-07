@@ -1,4 +1,385 @@
 [
+  {
+  "model": "wagtailimages.image",
+  "pk": 1,
+  "fields": {
+    "collection": 2,
+    "title": "IRB1",
+    "file": "original_images/IRB1_JMFXWwc.jpg",
+    "width": 4516,
+    "height": 3890,
+    "created_at": "2024-06-22T21:20:36.678Z",
+    "uploaded_by_user": [
+      "esse"
+    ],
+    "focal_point_x": null,
+    "focal_point_y": null,
+    "focal_point_width": null,
+    "focal_point_height": null,
+    "file_size": 279870,
+    "file_hash": "58a54d5be38b94a28a2f7da5fb87f21cb0300137"
+  }
+},
+{
+  "model": "wagtailimages.image",
+  "pk": 2,
+  "fields": {
+    "collection": 1,
+    "title": "Black_Bottle_1600x678",
+    "file": "original_images/Black_Bottle_1600x678_AqQaTgY.jpeg",
+    "width": 1600,
+    "height": 678,
+    "created_at": "2024-06-22T21:20:57.278Z",
+    "uploaded_by_user": [
+      "esse"
+    ],
+    "focal_point_x": null,
+    "focal_point_y": null,
+    "focal_point_width": null,
+    "focal_point_height": null,
+    "file_size": 590672,
+    "file_hash": "7c6757f70b6fbdf7902c8cb6dd15f42041eacdc9"
+  }
+},
+{
+  "model": "wagtailimages.image",
+  "pk": 3,
+  "fields": {
+    "collection": 1,
+    "title": "Ash_wide_1600x678",
+    "file": "original_images/Ash_wide_1600x678_heuqBcs.JPG",
+    "width": 1600,
+    "height": 678,
+    "created_at": "2024-06-22T21:21:18.674Z",
+    "uploaded_by_user": [
+      "esse"
+    ],
+    "focal_point_x": null,
+    "focal_point_y": null,
+    "focal_point_width": null,
+    "focal_point_height": null,
+    "file_size": 580157,
+    "file_hash": "d9f6acca4d6b30dbc5542c62afd654ed8c835051"
+  }
+},
+{
+  "model": "wagtailimages.image",
+  "pk": 4,
+  "fields": {
+    "collection": 2,
+    "title": "Bottle_rect",
+    "file": "original_images/Bottle_rect.jpg",
+    "width": 3738,
+    "height": 3019,
+    "created_at": "2024-06-22T21:23:12.076Z",
+    "uploaded_by_user": [
+      "esse"
+    ],
+    "focal_point_x": null,
+    "focal_point_y": null,
+    "focal_point_width": null,
+    "focal_point_height": null,
+    "file_size": 4370183,
+    "file_hash": "4c648502dd95ab5022f163542206d168cdbe3b4d"
+  }
+},
+{
+  "model": "wagtailimages.image",
+  "pk": 5,
+  "fields": {
+    "collection": 2,
+    "title": "Shino_cup1",
+    "file": "original_images/Shino_cup1_yenXh2h.jpg",
+    "width": 2230,
+    "height": 2713,
+    "created_at": "2024-06-22T21:23:12.282Z",
+    "uploaded_by_user": [
+      "esse"
+    ],
+    "focal_point_x": null,
+    "focal_point_y": null,
+    "focal_point_width": null,
+    "focal_point_height": null,
+    "file_size": 341699,
+    "file_hash": "aa5e950d5832d02b38fd3f812b8cc5e695d6078d"
+  }
+},
+{
+  "model": "wagtailimages.image",
+  "pk": 6,
+  "fields": {
+    "collection": 2,
+    "title": "CRB1",
+    "file": "original_images/CRB1_doiSLg6.jpg",
+    "width": 3024,
+    "height": 4032,
+    "created_at": "2024-06-22T21:23:12.677Z",
+    "uploaded_by_user": [
+      "esse"
+    ],
+    "focal_point_x": null,
+    "focal_point_y": null,
+    "focal_point_width": null,
+    "focal_point_height": null,
+    "file_size": 878217,
+    "file_hash": "ee5a683ae43a6531fc1f13db9b03dfddbe51d760"
+  }
+},
+{
+  "model": "wagtailimages.image",
+  "pk": 7,
+  "fields": {
+    "collection": 2,
+    "title": "IRC1",
+    "file": "original_images/IRC1_jAMEI5k.jpg",
+    "width": 2390,
+    "height": 2854,
+    "created_at": "2024-06-22T21:23:12.978Z",
+    "uploaded_by_user": [
+      "esse"
+    ],
+    "focal_point_x": null,
+    "focal_point_y": null,
+    "focal_point_width": null,
+    "focal_point_height": null,
+    "file_size": 1017296,
+    "file_hash": "a426cf8606b76b6714a5663803a3978b1efd679b"
+  }
+},
+{
+  "model": "wagtailimages.image",
+  "pk": 8,
+  "fields": {
+    "collection": 2,
+    "title": "Sculpture_Clay_Bottle",
+    "file": "original_images/Sculpture_Clay_Bottle_K48ajb5.jpg",
+    "width": 1290,
+    "height": 1413,
+    "created_at": "2024-06-22T21:23:13.065Z",
+    "uploaded_by_user": [
+      "esse"
+    ],
+    "focal_point_x": null,
+    "focal_point_y": null,
+    "focal_point_width": null,
+    "focal_point_height": null,
+    "file_size": 216335,
+    "file_hash": "c836bd7c70bde065fcbae4e7b1ee67d194720879"
+  }
+},
+{
+  "model": "wagtailimages.image",
+  "pk": 9,
+  "fields": {
+    "collection": 2,
+    "title": "IOJ1",
+    "file": "original_images/IOJ1_YhAXOFT.jpg",
+    "width": 3501,
+    "height": 3945,
+    "created_at": "2024-06-22T21:23:14.067Z",
+    "uploaded_by_user": [
+      "esse"
+    ],
+    "focal_point_x": null,
+    "focal_point_y": null,
+    "focal_point_width": null,
+    "focal_point_height": null,
+    "file_size": 7216705,
+    "file_hash": "9dab642c028d6e475846dda37944ea7bbe8c1dfe"
+  }
+},
+{
+  "model": "wagtailimages.image",
+  "pk": 10,
+  "fields": {
+    "collection": 2,
+    "title": "IMG_3511 _EvenCrop",
+    "file": "original_images/IMG_3511__EvenCrop.JPG",
+    "width": 2960,
+    "height": 3808,
+    "created_at": "2024-06-23T16:32:23.696Z",
+    "uploaded_by_user": [
+      "esse"
+    ],
+    "focal_point_x": null,
+    "focal_point_y": null,
+    "focal_point_width": null,
+    "focal_point_height": null,
+    "file_size": 1260328,
+    "file_hash": "37aa8f6678f69fa9976d3be9b5f71daa56c610b5"
+  }
+},
+{
+  "model": "wagtailimages.image",
+  "pk": 11,
+  "fields": {
+    "collection": 2,
+    "title": "IMG_3313",
+    "file": "original_images/IMG_3313_vKOUemD.JPG",
+    "width": 4032,
+    "height": 3024,
+    "created_at": "2024-06-23T20:48:00.453Z",
+    "uploaded_by_user": [
+      "esse"
+    ],
+    "focal_point_x": null,
+    "focal_point_y": null,
+    "focal_point_width": null,
+    "focal_point_height": null,
+    "file_size": 1670751,
+    "file_hash": "2bd38be65a82abffa2197c8695a161bf6ced567d"
+  }
+},
+{
+  "model": "wagtailimages.image",
+  "pk": 12,
+  "fields": {
+    "collection": 1,
+    "title": "il_1588xN.745612109_hyo9",
+    "file": "original_images/il_1588xN.745612109_hyo9.webp",
+    "width": 1588,
+    "height": 1340,
+    "created_at": "2024-06-23T20:53:54.625Z",
+    "uploaded_by_user": [
+      "esse"
+    ],
+    "focal_point_x": null,
+    "focal_point_y": null,
+    "focal_point_width": null,
+    "focal_point_height": null,
+    "file_size": 141446,
+    "file_hash": "6fd984f2988f75d6e299d7df4952168b0509cbf6"
+  }
+},
+{
+  "model": "wagtailimages.image",
+  "pk": 13,
+  "fields": {
+    "collection": 2,
+    "title": "IMG_3399",
+    "file": "original_images/IMG_3399_ZwTLnJG.JPG",
+    "width": 3024,
+    "height": 3024,
+    "created_at": "2024-06-23T22:57:10.129Z",
+    "uploaded_by_user": [
+      "esse"
+    ],
+    "focal_point_x": null,
+    "focal_point_y": null,
+    "focal_point_width": null,
+    "focal_point_height": null,
+    "file_size": 1772763,
+    "file_hash": "9dcc4c009eba6870cb04dfb3140934322c38c38d"
+  }
+},
+{
+  "model": "wagtailimages.image",
+  "pk": 14,
+  "fields": {
+    "collection": 2,
+    "title": "P1010047",
+    "file": "original_images/P1010047.JPG",
+    "width": 4608,
+    "height": 3456,
+    "created_at": "2024-06-23T23:06:27.154Z",
+    "uploaded_by_user": [
+      "esse"
+    ],
+    "focal_point_x": null,
+    "focal_point_y": null,
+    "focal_point_width": null,
+    "focal_point_height": null,
+    "file_size": 3212730,
+    "file_hash": "e0bd4c16c358731e1f35127dc06efa754251d3b4"
+  }
+},
+
+  {
+  "model": "home.snipcartsettings",
+  "pk": 1,
+  "fields": {
+    "site": [
+      "localhost",
+      80
+    ],
+    "api_key": ""
+  }
+},
+
+{
+  "model": "home.gallerypage",
+  "pk": 5,
+  "fields": {
+    "body": "[{\"type\": \"image_block\", \"value\": {\"image\": 1, \"caption\": \"<a href=\\\"/iron-red-bottle/\\\"><h4 class=\\\"caption\\\">Iron Red Bottle</h4></a>\", \"attribution\": \"\"}, \"id\": \"815be7f5-b4fa-4742-a268-f98f264f17c4\"}, {\"type\": \"image_block\", \"value\": {\"image\": 4, \"caption\": \"<h4 class=\\\"caption\\\">Djini bottle - NFS<h4>\", \"attribution\": \"\"}, \"id\": \"f7706d89-4554-437e-8114-9298261af2c4\"}, {\"type\": \"image_block\", \"value\": {\"image\": 11, \"caption\": \"<a href=\\\"/iron-red-bottle/\\\"><h4 class=\\\"caption\\\">White Dr Seuss Bottle</h4></a>\", \"attribution\": \"\"}, \"id\": \"ffb383b1-44ef-4b1f-b72b-805e68b84bc4\"}, {\"type\": \"image_block\", \"value\": {\"image\": 9, \"caption\": \"<a href=\\\"/iron-oxide-jar/\\\"><h4 class=\\\"caption\\\">Iron Oxide and Celadon Incised Jar</h4></a>\", \"attribution\": \"\"}, \"id\": \"12a9c0e4-b469-4ac9-9989-545b17a3d615\"}, {\"type\": \"image_block\", \"value\": {\"image\": 6, \"caption\": \"<a href=\\\"/copper-red-bottle/\\\"><h4 class=\\\"caption\\\">Copper Red Bottle</h4></a>\", \"attribution\": \"\"}, \"id\": \"cd2d5c35-7fc1-45e2-9fcf-4bda6cff3bf0\"}, {\"type\": \"image_block\", \"value\": {\"image\": 5, \"caption\": \"<a href=\\\"/shino-hourglass-cup/\\\"><h4 class=\\\"caption\\\">Shino Hourglass Cup</h4></a>\", \"attribution\": \"\"}, \"id\": \"253407c6-28a0-4c86-8b48-a195ba4e7942\"}, {\"type\": \"image_block\", \"value\": {\"image\": 13, \"caption\": \"<a href=\\\"/shino-hourglass-cup/\\\"><h4 class=\\\"caption\\\">Shino gas can teapot</h4></a>\", \"attribution\": \"\"}, \"id\": \"2a120322-10ba-4778-b1f7-078e57477c1f\"}, {\"type\": \"image_block\", \"value\": {\"image\": 10, \"caption\": \"<h4 class=\\\"caption\\\">Wood Fire Vase - NFS<h4>\", \"attribution\": \"\"}, \"id\": \"167f584e-2250-4e38-afd6-16a7f16831fa\"}, {\"type\": \"image_block\", \"value\": {\"image\": 14, \"caption\": \"<h4 class=\\\"caption\\\">Raku Jar - Sold<h4>\", \"attribution\": \"\"}, \"id\": \"27f8be06-c297-4831-8a23-ee0fe5d40b0a\"}, {\"type\": \"image_block\", \"value\": {\"image\": 7, \"caption\": \"<a href=\\\"/iron-red-cup/\\\"><h4 class=\\\"caption\\\">Iron Red Cup</h4></a>\", \"attribution\": \"\"}, \"id\": \"def64ada-838c-43e9-88c0-5dc802b06334\"}]",
+    "subtitle": "Gallery Page"
+  }
+},
+
+{
+  "model": "home.product",
+  "pk": 4,
+  "fields": {
+    "sku": "1234",
+    "short_description": "",
+    "price": "100.00",
+    "image": 1,
+    "categories": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 6,
+  "fields": {
+    "sku": "9776",
+    "short_description": "Iron oxide and celadon incised jar with lid.",
+    "price": "100.00",
+    "image": 9,
+    "categories": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 7,
+  "fields": {
+    "sku": "5643",
+    "short_description": "",
+    "price": "100.00",
+    "image": 6,
+    "categories": []
+  }
+},
+{
+  "model": "home.product",
+  "pk": 8,
+  "fields": {
+    "sku": "5643",
+    "short_description": "Shino-glazed hourglass cup",
+    "price": "50.00",
+    "image": 5,
+    "categories": [
+      3
+    ]
+  }
+},
+{
+  "model": "home.product",
+  "pk": 9,
+  "fields": {
+    "sku": "5643",
+    "short_description": "Barefoot iron red cup",
+    "price": "50.00",
+    "image": 7,
+    "categories": [
+      3
+    ]
+  }
+},
+{
+  "model": "home.homepage",
+  "pk": 3,
+  "fields": {}
+},
+
 {
   "model": "home.homecarousel",
   "pk": 1,
@@ -91,534 +472,442 @@
     "image": 12
   }
 },
+
+
 {
-  "model": "wagtailsearch.sqliteftsindexentry",
-  "pk": 1,
-  "fields": {
-    "autocomplete": "IRB1",
-    "title": "IRB1",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.sqliteftsindexentry",
-  "pk": 2,
-  "fields": {
-    "autocomplete": "Black_Bottle_1600x678",
-    "title": "Black_Bottle_1600x678",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.sqliteftsindexentry",
-  "pk": 3,
-  "fields": {
-    "autocomplete": "Ash_wide_1600x678",
-    "title": "Ash_wide_1600x678",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.sqliteftsindexentry",
+  "model": "wagtailcore.page",
   "pk": 4,
   "fields": {
-    "autocomplete": "Bottle_rect",
-    "title": "Bottle_rect",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.sqliteftsindexentry",
-  "pk": 5,
-  "fields": {
-    "autocomplete": "Shino_cup1",
-    "title": "Shino_cup1",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.sqliteftsindexentry",
-  "pk": 6,
-  "fields": {
-    "autocomplete": "CRB1",
-    "title": "CRB1",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.sqliteftsindexentry",
-  "pk": 7,
-  "fields": {
-    "autocomplete": "IRC1",
-    "title": "IRC1",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.sqliteftsindexentry",
-  "pk": 8,
-  "fields": {
-    "autocomplete": "Sculpture_Clay_Bottle",
-    "title": "Sculpture_Clay_Bottle",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.sqliteftsindexentry",
-  "pk": 9,
-  "fields": {
-    "autocomplete": "IOJ1",
-    "title": "IOJ1",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.sqliteftsindexentry",
-  "pk": 10,
-  "fields": {
-    "autocomplete": "Root",
-    "title": "Root",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.sqliteftsindexentry",
-  "pk": 11,
-  "fields": {
-    "autocomplete": "",
-    "title": "",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.sqliteftsindexentry",
-  "pk": 12,
-  "fields": {
-    "autocomplete": "Gallery",
-    "title": "Gallery",
-    "body": "<a href=\"/iron-red-bottle/\"><h4 class=\"caption\">Iron Red Bottle</h4></a>, , <h4 class=\"caption\">Djini bottle - NFS<h4>, , <a href=\"/iron-red-bottle/\"><h4 class=\"caption\">White Dr Seuss Bottle</h4></a>, , <a href=\"/iron-oxide-jar/\"><h4 class=\"caption\">Iron Oxide and Celadon Incised Jar</h4></a>, , <a href=\"/copper-red-bottle/\"><h4 class=\"caption\">Copper Red Bottle</h4></a>, , <a href=\"/shino-hourglass-cup/\"><h4 class=\"caption\">Shino Hourglass Cup</h4></a>, , <a href=\"/shino-hourglass-cup/\"><h4 class=\"caption\">Shino gas can teapot</h4></a>, , <h4 class=\"caption\">Wood Fire Vase - NFS<h4>, , <h4 class=\"caption\">Raku Jar - Sold<h4>, , <a href=\"/iron-red-cup/\"><h4 class=\"caption\">Iron Red Cup</h4></a>, "
-  }
-},
-{
-  "model": "wagtailsearch.sqliteftsindexentry",
-  "pk": 13,
-  "fields": {
-    "autocomplete": "",
-    "title": "",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.sqliteftsindexentry",
-  "pk": 14,
-  "fields": {
-    "autocomplete": "IMG_3511 _EvenCrop Ash Glaze Vase",
-    "title": "IMG_3511 _EvenCrop",
-    "body": "Ash Glaze Vase"
-  }
-},
-{
-  "model": "wagtailsearch.sqliteftsindexentry",
-  "pk": 15,
-  "fields": {
-    "autocomplete": "IMG_3313",
-    "title": "IMG_3313",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.sqliteftsindexentry",
-  "pk": 16,
-  "fields": {
-    "autocomplete": "",
-    "title": "",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.sqliteftsindexentry",
-  "pk": 17,
-  "fields": {
-    "autocomplete": "il_1588xN.745612109_hyo9",
-    "title": "il_1588xN.745612109_hyo9",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.sqliteftsindexentry",
-  "pk": 18,
-  "fields": {
-    "autocomplete": "",
-    "title": "",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.sqliteftsindexentry",
-  "pk": 19,
-  "fields": {
-    "autocomplete": "",
-    "title": "",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.sqliteftsindexentry",
-  "pk": 20,
-  "fields": {
-    "autocomplete": "IMG_3399 Teapot",
-    "title": "IMG_3399",
-    "body": "Teapot"
-  }
-},
-{
-  "model": "wagtailsearch.sqliteftsindexentry",
-  "pk": 21,
-  "fields": {
-    "autocomplete": "P1010047",
-    "title": "P1010047",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.sqliteftsindexentry",
-  "pk": 23,
-  "fields": {
-    "autocomplete": "Iron Red Cup",
-    "title": "Iron Red Cup",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.indexentry",
-  "pk": 1,
-  "fields": {
-    "content_type": [
-      "wagtailimages",
-      "image"
-    ],
-    "object_id": "1",
-    "title_norm": 3.125,
-    "autocomplete": "IRB1",
-    "title": "IRB1",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.indexentry",
-  "pk": 2,
-  "fields": {
-    "content_type": [
-      "wagtailimages",
-      "image"
-    ],
-    "object_id": "2",
-    "title_norm": 0.5952380952380952,
-    "autocomplete": "Black_Bottle_1600x678",
-    "title": "Black_Bottle_1600x678",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.indexentry",
-  "pk": 3,
-  "fields": {
-    "content_type": [
-      "wagtailimages",
-      "image"
-    ],
-    "object_id": "3",
-    "title_norm": 0.8235294117647058,
-    "autocomplete": "Ash_wide_1600x678",
-    "title": "Ash_wide_1600x678",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.indexentry",
-  "pk": 4,
-  "fields": {
-    "content_type": [
-      "wagtailimages",
-      "image"
-    ],
-    "object_id": "4",
-    "title_norm": 1.2045454545454546,
-    "autocomplete": "Bottle_rect",
-    "title": "Bottle_rect",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.indexentry",
-  "pk": 5,
-  "fields": {
-    "content_type": [
-      "wagtailimages",
-      "image"
-    ],
-    "object_id": "5",
-    "title_norm": 1.26,
-    "autocomplete": "Shino_cup1",
-    "title": "Shino_cup1",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.indexentry",
-  "pk": 6,
-  "fields": {
-    "content_type": [
-      "wagtailimages",
-      "image"
-    ],
-    "object_id": "6",
-    "title_norm": 2.7916666666666665,
-    "autocomplete": "CRB1",
-    "title": "CRB1",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.indexentry",
-  "pk": 7,
-  "fields": {
-    "content_type": [
-      "wagtailimages",
-      "image"
-    ],
-    "object_id": "7",
-    "title_norm": 2.5357142857142856,
-    "autocomplete": "IRC1",
-    "title": "IRC1",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.indexentry",
-  "pk": 8,
-  "fields": {
-    "content_type": [
-      "wagtailimages",
-      "image"
-    ],
-    "object_id": "8",
-    "title_norm": 0.5476190476190477,
-    "autocomplete": "Sculpture_Clay_Bottle",
-    "title": "Sculpture_Clay_Bottle",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.indexentry",
-  "pk": 9,
-  "fields": {
-    "content_type": [
-      "wagtailimages",
-      "image"
-    ],
-    "object_id": "9",
-    "title_norm": 2.6666666666666665,
-    "autocomplete": "IOJ1",
-    "title": "IOJ1",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.indexentry",
-  "pk": 10,
-  "fields": {
-    "content_type": [
-      "wagtailcore",
-      "page"
-    ],
-    "object_id": "1",
-    "title_norm": 2.5,
-    "autocomplete": "Root",
-    "title": "Root",
-    "body": ""
-  }
-},
-{
-  "model": "wagtailsearch.indexentry",
-  "pk": 11,
-  "fields": {
+    "path": "000100010001",
+    "depth": 3,
+    "numchild": 0,
+    "translation_key": "fa9e5651-9948-4106-9ec1-9b9aadf50d3f",
+    "locale": 1,
+    "latest_revision": 1,
+    "live": true,
+    "has_unpublished_changes": false,
+    "first_published_at": "2024-06-22T21:20:40.683Z",
+    "last_published_at": "2024-06-22T21:20:40.683Z",
+    "live_revision": 1,
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "locked_at": null,
+    "locked_by": null,
+    "title": "Iron Red Bottle",
+    "draft_title": "Iron Red Bottle",
+    "slug": "iron-red-bottle",
     "content_type": [
       "home",
-      "homepage"
+      "product"
     ],
-    "object_id": "3",
-    "title_norm": 2.3636363636363638,
-    "autocomplete": "",
-    "title": "",
-    "body": ""
+    "url_path": "/home/iron-red-bottle/",
+    "owner": [
+      "esse"
+    ],
+    "seo_title": "",
+    "show_in_menus": false,
+    "search_description": "",
+    "latest_revision_created_at": "2024-06-22T21:20:40.667Z",
+    "alias_of": null
   }
 },
 {
-  "model": "wagtailsearch.indexentry",
-  "pk": 12,
+  "model": "wagtailcore.page",
+  "pk": 5,
   "fields": {
+    "path": "000100010002",
+    "depth": 3,
+    "numchild": 0,
+    "translation_key": "d071e698-bbe6-48aa-a3bc-b79f3f819330",
+    "locale": 1,
+    "latest_revision": 35,
+    "live": true,
+    "has_unpublished_changes": false,
+    "first_published_at": "2024-06-22T21:21:58.653Z",
+    "last_published_at": "2024-06-23T23:10:46.813Z",
+    "live_revision": 35,
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "locked_at": null,
+    "locked_by": null,
+    "title": "Gallery",
+    "draft_title": "Gallery",
+    "slug": "gallery",
     "content_type": [
       "home",
       "gallerypage"
     ],
-    "object_id": "5",
-    "title_norm": 1.3896103896103895,
+    "url_path": "/home/gallery/",
+    "owner": [
+      "esse"
+    ],
+    "seo_title": "",
+    "show_in_menus": false,
+    "search_description": "",
+    "latest_revision_created_at": "2024-06-23T23:10:46.797Z",
+    "alias_of": null
+  }
+},
+{
+  "model": "wagtailcore.page",
+  "pk": 6,
+  "fields": {
+    "path": "000100010003",
+    "depth": 3,
+    "numchild": 0,
+    "translation_key": "e63e2e67-efa7-4f98-9c3c-6c3ea81455c4",
+    "locale": 1,
+    "latest_revision": 17,
+    "live": true,
+    "has_unpublished_changes": false,
+    "first_published_at": "2024-06-23T20:52:35.307Z",
+    "last_published_at": "2024-06-23T20:52:35.307Z",
+    "live_revision": 17,
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "locked_at": null,
+    "locked_by": null,
+    "title": "Iron Oxide Jar",
+    "draft_title": "Iron Oxide Jar",
+    "slug": "iron-oxide-jar",
+    "content_type": [
+      "home",
+      "product"
+    ],
+    "url_path": "/home/iron-oxide-jar/",
+    "owner": [
+      "esse"
+    ],
+    "seo_title": "",
+    "show_in_menus": false,
+    "search_description": "",
+    "latest_revision_created_at": "2024-06-23T20:52:35.296Z",
+    "alias_of": null
+  }
+},
+{
+  "model": "wagtailcore.page",
+  "pk": 7,
+  "fields": {
+    "path": "000100010004",
+    "depth": 3,
+    "numchild": 0,
+    "translation_key": "c0de4e3d-30bb-4868-bd4b-6cf88fcce5db",
+    "locale": 1,
+    "latest_revision": 22,
+    "live": true,
+    "has_unpublished_changes": false,
+    "first_published_at": "2024-06-23T20:54:59.738Z",
+    "last_published_at": "2024-06-23T20:54:59.738Z",
+    "live_revision": 22,
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "locked_at": null,
+    "locked_by": null,
+    "title": "Copper Red Bottle",
+    "draft_title": "Copper Red Bottle",
+    "slug": "copper-red-bottle",
+    "content_type": [
+      "home",
+      "product"
+    ],
+    "url_path": "/home/copper-red-bottle/",
+    "owner": [
+      "esse"
+    ],
+    "seo_title": "",
+    "show_in_menus": false,
+    "search_description": "",
+    "latest_revision_created_at": "2024-06-23T20:54:59.723Z",
+    "alias_of": null
+  }
+},
+{
+  "model": "wagtailcore.page",
+  "pk": 8,
+  "fields": {
+    "path": "000100010005",
+    "depth": 3,
+    "numchild": 0,
+    "translation_key": "cdddd0a9-ad7f-4524-b987-c7d523b39801",
+    "locale": 1,
+    "latest_revision": 23,
+    "live": true,
+    "has_unpublished_changes": false,
+    "first_published_at": "2024-06-23T22:10:34.203Z",
+    "last_published_at": "2024-06-23T22:10:34.203Z",
+    "live_revision": 23,
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "locked_at": null,
+    "locked_by": null,
+    "title": "Shino Hourglass Cup",
+    "draft_title": "Shino Hourglass Cup",
+    "slug": "shino-hourglass-cup",
+    "content_type": [
+      "home",
+      "product"
+    ],
+    "url_path": "/home/shino-hourglass-cup/",
+    "owner": [
+      "esse"
+    ],
+    "seo_title": "",
+    "show_in_menus": false,
+    "search_description": "",
+    "latest_revision_created_at": "2024-06-23T22:10:34.192Z",
+    "alias_of": null
+  }
+},
+{
+  "model": "wagtailcore.page",
+  "pk": 9,
+  "fields": {
+    "path": "000100010006",
+    "depth": 3,
+    "numchild": 0,
+    "translation_key": "46f28a61-c02f-4779-a5e0-92fcd7fe24c8",
+    "locale": 1,
+    "latest_revision": 34,
+    "live": true,
+    "has_unpublished_changes": false,
+    "first_published_at": "2024-06-23T23:09:56.924Z",
+    "last_published_at": "2024-06-23T23:09:56.924Z",
+    "live_revision": 34,
+    "go_live_at": null,
+    "expire_at": null,
+    "expired": false,
+    "locked": false,
+    "locked_at": null,
+    "locked_by": null,
+    "title": "Iron Red Cup",
+    "draft_title": "Iron Red Cup",
+    "slug": "iron-red-cup",
+    "content_type": [
+      "home",
+      "product"
+    ],
+    "url_path": "/home/iron-red-cup/",
+    "owner": [
+      "esse"
+    ],
+    "seo_title": "",
+    "show_in_menus": false,
+    "search_description": "",
+    "latest_revision_created_at": "2024-06-23T23:09:56.907Z",
+    "alias_of": null
+  }
+},
+
+{
+  "model": "wagtailsearch.sqliteftsindexentry",
+  "pk": 1,
+  "fields": {
+    "autocomplete": "IRB1",
+    "title": "IRB1",
+    "body": ""
+  }
+},
+{
+  "model": "wagtailsearch.sqliteftsindexentry",
+  "pk": 2,
+  "fields": {
+    "autocomplete": "Black_Bottle_1600x678",
+    "title": "Black_Bottle_1600x678",
+    "body": ""
+  }
+},
+{
+  "model": "wagtailsearch.sqliteftsindexentry",
+  "pk": 3,
+  "fields": {
+    "autocomplete": "Ash_wide_1600x678",
+    "title": "Ash_wide_1600x678",
+    "body": ""
+  }
+},
+{
+  "model": "wagtailsearch.sqliteftsindexentry",
+  "pk": 4,
+  "fields": {
+    "autocomplete": "Bottle_rect",
+    "title": "Bottle_rect",
+    "body": ""
+  }
+},
+{
+  "model": "wagtailsearch.sqliteftsindexentry",
+  "pk": 5,
+  "fields": {
+    "autocomplete": "Shino_cup1",
+    "title": "Shino_cup1",
+    "body": ""
+  }
+},
+{
+  "model": "wagtailsearch.sqliteftsindexentry",
+  "pk": 6,
+  "fields": {
+    "autocomplete": "CRB1",
+    "title": "CRB1",
+    "body": ""
+  }
+},
+{
+  "model": "wagtailsearch.sqliteftsindexentry",
+  "pk": 7,
+  "fields": {
+    "autocomplete": "IRC1",
+    "title": "IRC1",
+    "body": ""
+  }
+},
+{
+  "model": "wagtailsearch.sqliteftsindexentry",
+  "pk": 8,
+  "fields": {
+    "autocomplete": "Sculpture_Clay_Bottle",
+    "title": "Sculpture_Clay_Bottle",
+    "body": ""
+  }
+},
+{
+  "model": "wagtailsearch.sqliteftsindexentry",
+  "pk": 9,
+  "fields": {
+    "autocomplete": "IOJ1",
+    "title": "IOJ1",
+    "body": ""
+  }
+},
+{
+  "model": "wagtailsearch.sqliteftsindexentry",
+  "pk": 10,
+  "fields": {
+    "autocomplete": "Root",
+    "title": "Root",
+    "body": ""
+  }
+},
+{
+  "model": "wagtailsearch.sqliteftsindexentry",
+  "pk": 11,
+  "fields": {
+    "autocomplete": "",
+    "title": "",
+    "body": ""
+  }
+},
+{
+  "model": "wagtailsearch.sqliteftsindexentry",
+  "pk": 12,
+  "fields": {
     "autocomplete": "Gallery",
     "title": "Gallery",
     "body": "<a href=\"/iron-red-bottle/\"><h4 class=\"caption\">Iron Red Bottle</h4></a>, , <h4 class=\"caption\">Djini bottle - NFS<h4>, , <a href=\"/iron-red-bottle/\"><h4 class=\"caption\">White Dr Seuss Bottle</h4></a>, , <a href=\"/iron-oxide-jar/\"><h4 class=\"caption\">Iron Oxide and Celadon Incised Jar</h4></a>, , <a href=\"/copper-red-bottle/\"><h4 class=\"caption\">Copper Red Bottle</h4></a>, , <a href=\"/shino-hourglass-cup/\"><h4 class=\"caption\">Shino Hourglass Cup</h4></a>, , <a href=\"/shino-hourglass-cup/\"><h4 class=\"caption\">Shino gas can teapot</h4></a>, , <h4 class=\"caption\">Wood Fire Vase - NFS<h4>, , <h4 class=\"caption\">Raku Jar - Sold<h4>, , <a href=\"/iron-red-cup/\"><h4 class=\"caption\">Iron Red Cup</h4></a>, "
   }
 },
 {
-  "model": "wagtailsearch.indexentry",
+  "model": "wagtailsearch.sqliteftsindexentry",
   "pk": 13,
   "fields": {
-    "content_type": [
-      "home",
-      "product"
-    ],
-    "object_id": "4",
-    "title_norm": 0.7960784313725491,
     "autocomplete": "",
     "title": "",
     "body": ""
   }
 },
 {
-  "model": "wagtailsearch.indexentry",
+  "model": "wagtailsearch.sqliteftsindexentry",
   "pk": 14,
   "fields": {
-    "content_type": [
-      "wagtailimages",
-      "image"
-    ],
-    "object_id": "10",
-    "title_norm": 0.5787037037037037,
     "autocomplete": "IMG_3511 _EvenCrop Ash Glaze Vase",
     "title": "IMG_3511 _EvenCrop",
     "body": "Ash Glaze Vase"
   }
 },
 {
-  "model": "wagtailsearch.indexentry",
+  "model": "wagtailsearch.sqliteftsindexentry",
   "pk": 15,
   "fields": {
-    "content_type": [
-      "wagtailimages",
-      "image"
-    ],
-    "object_id": "11",
-    "title_norm": 1.2788461538461537,
     "autocomplete": "IMG_3313",
     "title": "IMG_3313",
     "body": ""
   }
 },
 {
-  "model": "wagtailsearch.indexentry",
+  "model": "wagtailsearch.sqliteftsindexentry",
   "pk": 16,
   "fields": {
-    "content_type": [
-      "home",
-      "product"
-    ],
-    "object_id": "6",
-    "title_norm": 0.75,
     "autocomplete": "",
     "title": "",
     "body": ""
   }
 },
 {
-  "model": "wagtailsearch.indexentry",
+  "model": "wagtailsearch.sqliteftsindexentry",
   "pk": 17,
   "fields": {
-    "content_type": [
-      "wagtailimages",
-      "image"
-    ],
-    "object_id": "12",
-    "title_norm": 0.47500000000000003,
     "autocomplete": "il_1588xN.745612109_hyo9",
     "title": "il_1588xN.745612109_hyo9",
     "body": ""
   }
 },
 {
-  "model": "wagtailsearch.indexentry",
+  "model": "wagtailsearch.sqliteftsindexentry",
   "pk": 18,
   "fields": {
-    "content_type": [
-      "home",
-      "product"
-    ],
-    "object_id": "7",
-    "title_norm": 0.6911764705882353,
     "autocomplete": "",
     "title": "",
     "body": ""
   }
 },
 {
-  "model": "wagtailsearch.indexentry",
+  "model": "wagtailsearch.sqliteftsindexentry",
   "pk": 19,
   "fields": {
-    "content_type": [
-      "home",
-      "product"
-    ],
-    "object_id": "8",
-    "title_norm": 0.6353383458646616,
     "autocomplete": "",
     "title": "",
     "body": ""
   }
 },
 {
-  "model": "wagtailsearch.indexentry",
+  "model": "wagtailsearch.sqliteftsindexentry",
   "pk": 20,
   "fields": {
-    "content_type": [
-      "wagtailimages",
-      "image"
-    ],
-    "object_id": "13",
-    "title_norm": 1.4107142857142858,
     "autocomplete": "IMG_3399 Teapot",
     "title": "IMG_3399",
     "body": "Teapot"
   }
 },
 {
-  "model": "wagtailsearch.indexentry",
+  "model": "wagtailsearch.sqliteftsindexentry",
   "pk": 21,
   "fields": {
-    "content_type": [
-      "wagtailimages",
-      "image"
-    ],
-    "object_id": "14",
-    "title_norm": 1.3515625,
     "autocomplete": "P1010047",
     "title": "P1010047",
     "body": ""
   }
 },
 {
-  "model": "wagtailsearch.indexentry",
+  "model": "wagtailsearch.sqliteftsindexentry",
   "pk": 23,
   "fields": {
-    "content_type": [
-      "home",
-      "product"
-    ],
-    "object_id": "9",
-    "title_norm": 0.9068627450980392,
     "autocomplete": "Iron Red Cup",
     "title": "Iron Red Cup",
     "body": ""
   }
 },
+
 {
   "model": "wagtailcore.locale",
   "pk": 1,
@@ -5120,240 +5409,6 @@
 },
 
 {
-  "model": "wagtailcore.page",
-  "pk": 4,
-  "fields": {
-    "path": "000100010001",
-    "depth": 3,
-    "numchild": 0,
-    "translation_key": "fa9e5651-9948-4106-9ec1-9b9aadf50d3f",
-    "locale": 1,
-    "latest_revision": 1,
-    "live": true,
-    "has_unpublished_changes": false,
-    "first_published_at": "2024-06-22T21:20:40.683Z",
-    "last_published_at": "2024-06-22T21:20:40.683Z",
-    "live_revision": 1,
-    "go_live_at": null,
-    "expire_at": null,
-    "expired": false,
-    "locked": false,
-    "locked_at": null,
-    "locked_by": null,
-    "title": "Iron Red Bottle",
-    "draft_title": "Iron Red Bottle",
-    "slug": "iron-red-bottle",
-    "content_type": [
-      "home",
-      "product"
-    ],
-    "url_path": "/home/iron-red-bottle/",
-    "owner": [
-      "esse"
-    ],
-    "seo_title": "",
-    "show_in_menus": false,
-    "search_description": "",
-    "latest_revision_created_at": "2024-06-22T21:20:40.667Z",
-    "alias_of": null
-  }
-},
-{
-  "model": "wagtailcore.page",
-  "pk": 5,
-  "fields": {
-    "path": "000100010002",
-    "depth": 3,
-    "numchild": 0,
-    "translation_key": "d071e698-bbe6-48aa-a3bc-b79f3f819330",
-    "locale": 1,
-    "latest_revision": 35,
-    "live": true,
-    "has_unpublished_changes": false,
-    "first_published_at": "2024-06-22T21:21:58.653Z",
-    "last_published_at": "2024-06-23T23:10:46.813Z",
-    "live_revision": 35,
-    "go_live_at": null,
-    "expire_at": null,
-    "expired": false,
-    "locked": false,
-    "locked_at": null,
-    "locked_by": null,
-    "title": "Gallery",
-    "draft_title": "Gallery",
-    "slug": "gallery",
-    "content_type": [
-      "home",
-      "gallerypage"
-    ],
-    "url_path": "/home/gallery/",
-    "owner": [
-      "esse"
-    ],
-    "seo_title": "",
-    "show_in_menus": false,
-    "search_description": "",
-    "latest_revision_created_at": "2024-06-23T23:10:46.797Z",
-    "alias_of": null
-  }
-},
-{
-  "model": "wagtailcore.page",
-  "pk": 6,
-  "fields": {
-    "path": "000100010003",
-    "depth": 3,
-    "numchild": 0,
-    "translation_key": "e63e2e67-efa7-4f98-9c3c-6c3ea81455c4",
-    "locale": 1,
-    "latest_revision": 17,
-    "live": true,
-    "has_unpublished_changes": false,
-    "first_published_at": "2024-06-23T20:52:35.307Z",
-    "last_published_at": "2024-06-23T20:52:35.307Z",
-    "live_revision": 17,
-    "go_live_at": null,
-    "expire_at": null,
-    "expired": false,
-    "locked": false,
-    "locked_at": null,
-    "locked_by": null,
-    "title": "Iron Oxide Jar",
-    "draft_title": "Iron Oxide Jar",
-    "slug": "iron-oxide-jar",
-    "content_type": [
-      "home",
-      "product"
-    ],
-    "url_path": "/home/iron-oxide-jar/",
-    "owner": [
-      "esse"
-    ],
-    "seo_title": "",
-    "show_in_menus": false,
-    "search_description": "",
-    "latest_revision_created_at": "2024-06-23T20:52:35.296Z",
-    "alias_of": null
-  }
-},
-{
-  "model": "wagtailcore.page",
-  "pk": 7,
-  "fields": {
-    "path": "000100010004",
-    "depth": 3,
-    "numchild": 0,
-    "translation_key": "c0de4e3d-30bb-4868-bd4b-6cf88fcce5db",
-    "locale": 1,
-    "latest_revision": 22,
-    "live": true,
-    "has_unpublished_changes": false,
-    "first_published_at": "2024-06-23T20:54:59.738Z",
-    "last_published_at": "2024-06-23T20:54:59.738Z",
-    "live_revision": 22,
-    "go_live_at": null,
-    "expire_at": null,
-    "expired": false,
-    "locked": false,
-    "locked_at": null,
-    "locked_by": null,
-    "title": "Copper Red Bottle",
-    "draft_title": "Copper Red Bottle",
-    "slug": "copper-red-bottle",
-    "content_type": [
-      "home",
-      "product"
-    ],
-    "url_path": "/home/copper-red-bottle/",
-    "owner": [
-      "esse"
-    ],
-    "seo_title": "",
-    "show_in_menus": false,
-    "search_description": "",
-    "latest_revision_created_at": "2024-06-23T20:54:59.723Z",
-    "alias_of": null
-  }
-},
-{
-  "model": "wagtailcore.page",
-  "pk": 8,
-  "fields": {
-    "path": "000100010005",
-    "depth": 3,
-    "numchild": 0,
-    "translation_key": "cdddd0a9-ad7f-4524-b987-c7d523b39801",
-    "locale": 1,
-    "latest_revision": 23,
-    "live": true,
-    "has_unpublished_changes": false,
-    "first_published_at": "2024-06-23T22:10:34.203Z",
-    "last_published_at": "2024-06-23T22:10:34.203Z",
-    "live_revision": 23,
-    "go_live_at": null,
-    "expire_at": null,
-    "expired": false,
-    "locked": false,
-    "locked_at": null,
-    "locked_by": null,
-    "title": "Shino Hourglass Cup",
-    "draft_title": "Shino Hourglass Cup",
-    "slug": "shino-hourglass-cup",
-    "content_type": [
-      "home",
-      "product"
-    ],
-    "url_path": "/home/shino-hourglass-cup/",
-    "owner": [
-      "esse"
-    ],
-    "seo_title": "",
-    "show_in_menus": false,
-    "search_description": "",
-    "latest_revision_created_at": "2024-06-23T22:10:34.192Z",
-    "alias_of": null
-  }
-},
-{
-  "model": "wagtailcore.page",
-  "pk": 9,
-  "fields": {
-    "path": "000100010006",
-    "depth": 3,
-    "numchild": 0,
-    "translation_key": "46f28a61-c02f-4779-a5e0-92fcd7fe24c8",
-    "locale": 1,
-    "latest_revision": 34,
-    "live": true,
-    "has_unpublished_changes": false,
-    "first_published_at": "2024-06-23T23:09:56.924Z",
-    "last_published_at": "2024-06-23T23:09:56.924Z",
-    "live_revision": 34,
-    "go_live_at": null,
-    "expire_at": null,
-    "expired": false,
-    "locked": false,
-    "locked_at": null,
-    "locked_by": null,
-    "title": "Iron Red Cup",
-    "draft_title": "Iron Red Cup",
-    "slug": "iron-red-cup",
-    "content_type": [
-      "home",
-      "product"
-    ],
-    "url_path": "/home/iron-red-cup/",
-    "owner": [
-      "esse"
-    ],
-    "seo_title": "",
-    "show_in_menus": false,
-    "search_description": "",
-    "latest_revision_created_at": "2024-06-23T23:09:56.907Z",
-    "alias_of": null
-  }
-},
-{
   "model": "wagtailcore.modellogentry",
   "pk": 1,
   "fields": {
@@ -5551,300 +5606,7 @@
     "object_id": "15"
   }
 },
-{
-  "model": "wagtailimages.image",
-  "pk": 1,
-  "fields": {
-    "collection": 2,
-    "title": "IRB1",
-    "file": "original_images/IRB1_JMFXWwc.jpg",
-    "width": 4516,
-    "height": 3890,
-    "created_at": "2024-06-22T21:20:36.678Z",
-    "uploaded_by_user": [
-      "esse"
-    ],
-    "focal_point_x": null,
-    "focal_point_y": null,
-    "focal_point_width": null,
-    "focal_point_height": null,
-    "file_size": 279870,
-    "file_hash": "58a54d5be38b94a28a2f7da5fb87f21cb0300137"
-  }
-},
-{
-  "model": "wagtailimages.image",
-  "pk": 2,
-  "fields": {
-    "collection": 1,
-    "title": "Black_Bottle_1600x678",
-    "file": "original_images/Black_Bottle_1600x678_AqQaTgY.jpeg",
-    "width": 1600,
-    "height": 678,
-    "created_at": "2024-06-22T21:20:57.278Z",
-    "uploaded_by_user": [
-      "esse"
-    ],
-    "focal_point_x": null,
-    "focal_point_y": null,
-    "focal_point_width": null,
-    "focal_point_height": null,
-    "file_size": 590672,
-    "file_hash": "7c6757f70b6fbdf7902c8cb6dd15f42041eacdc9"
-  }
-},
-{
-  "model": "wagtailimages.image",
-  "pk": 3,
-  "fields": {
-    "collection": 1,
-    "title": "Ash_wide_1600x678",
-    "file": "original_images/Ash_wide_1600x678_heuqBcs.JPG",
-    "width": 1600,
-    "height": 678,
-    "created_at": "2024-06-22T21:21:18.674Z",
-    "uploaded_by_user": [
-      "esse"
-    ],
-    "focal_point_x": null,
-    "focal_point_y": null,
-    "focal_point_width": null,
-    "focal_point_height": null,
-    "file_size": 580157,
-    "file_hash": "d9f6acca4d6b30dbc5542c62afd654ed8c835051"
-  }
-},
-{
-  "model": "wagtailimages.image",
-  "pk": 4,
-  "fields": {
-    "collection": 2,
-    "title": "Bottle_rect",
-    "file": "original_images/Bottle_rect.jpg",
-    "width": 3738,
-    "height": 3019,
-    "created_at": "2024-06-22T21:23:12.076Z",
-    "uploaded_by_user": [
-      "esse"
-    ],
-    "focal_point_x": null,
-    "focal_point_y": null,
-    "focal_point_width": null,
-    "focal_point_height": null,
-    "file_size": 4370183,
-    "file_hash": "4c648502dd95ab5022f163542206d168cdbe3b4d"
-  }
-},
-{
-  "model": "wagtailimages.image",
-  "pk": 5,
-  "fields": {
-    "collection": 2,
-    "title": "Shino_cup1",
-    "file": "original_images/Shino_cup1_yenXh2h.jpg",
-    "width": 2230,
-    "height": 2713,
-    "created_at": "2024-06-22T21:23:12.282Z",
-    "uploaded_by_user": [
-      "esse"
-    ],
-    "focal_point_x": null,
-    "focal_point_y": null,
-    "focal_point_width": null,
-    "focal_point_height": null,
-    "file_size": 341699,
-    "file_hash": "aa5e950d5832d02b38fd3f812b8cc5e695d6078d"
-  }
-},
-{
-  "model": "wagtailimages.image",
-  "pk": 6,
-  "fields": {
-    "collection": 2,
-    "title": "CRB1",
-    "file": "original_images/CRB1_doiSLg6.jpg",
-    "width": 3024,
-    "height": 4032,
-    "created_at": "2024-06-22T21:23:12.677Z",
-    "uploaded_by_user": [
-      "esse"
-    ],
-    "focal_point_x": null,
-    "focal_point_y": null,
-    "focal_point_width": null,
-    "focal_point_height": null,
-    "file_size": 878217,
-    "file_hash": "ee5a683ae43a6531fc1f13db9b03dfddbe51d760"
-  }
-},
-{
-  "model": "wagtailimages.image",
-  "pk": 7,
-  "fields": {
-    "collection": 2,
-    "title": "IRC1",
-    "file": "original_images/IRC1_jAMEI5k.jpg",
-    "width": 2390,
-    "height": 2854,
-    "created_at": "2024-06-22T21:23:12.978Z",
-    "uploaded_by_user": [
-      "esse"
-    ],
-    "focal_point_x": null,
-    "focal_point_y": null,
-    "focal_point_width": null,
-    "focal_point_height": null,
-    "file_size": 1017296,
-    "file_hash": "a426cf8606b76b6714a5663803a3978b1efd679b"
-  }
-},
-{
-  "model": "wagtailimages.image",
-  "pk": 8,
-  "fields": {
-    "collection": 2,
-    "title": "Sculpture_Clay_Bottle",
-    "file": "original_images/Sculpture_Clay_Bottle_K48ajb5.jpg",
-    "width": 1290,
-    "height": 1413,
-    "created_at": "2024-06-22T21:23:13.065Z",
-    "uploaded_by_user": [
-      "esse"
-    ],
-    "focal_point_x": null,
-    "focal_point_y": null,
-    "focal_point_width": null,
-    "focal_point_height": null,
-    "file_size": 216335,
-    "file_hash": "c836bd7c70bde065fcbae4e7b1ee67d194720879"
-  }
-},
-{
-  "model": "wagtailimages.image",
-  "pk": 9,
-  "fields": {
-    "collection": 2,
-    "title": "IOJ1",
-    "file": "original_images/IOJ1_YhAXOFT.jpg",
-    "width": 3501,
-    "height": 3945,
-    "created_at": "2024-06-22T21:23:14.067Z",
-    "uploaded_by_user": [
-      "esse"
-    ],
-    "focal_point_x": null,
-    "focal_point_y": null,
-    "focal_point_width": null,
-    "focal_point_height": null,
-    "file_size": 7216705,
-    "file_hash": "9dab642c028d6e475846dda37944ea7bbe8c1dfe"
-  }
-},
-{
-  "model": "wagtailimages.image",
-  "pk": 10,
-  "fields": {
-    "collection": 2,
-    "title": "IMG_3511 _EvenCrop",
-    "file": "original_images/IMG_3511__EvenCrop.JPG",
-    "width": 2960,
-    "height": 3808,
-    "created_at": "2024-06-23T16:32:23.696Z",
-    "uploaded_by_user": [
-      "esse"
-    ],
-    "focal_point_x": null,
-    "focal_point_y": null,
-    "focal_point_width": null,
-    "focal_point_height": null,
-    "file_size": 1260328,
-    "file_hash": "37aa8f6678f69fa9976d3be9b5f71daa56c610b5"
-  }
-},
-{
-  "model": "wagtailimages.image",
-  "pk": 11,
-  "fields": {
-    "collection": 2,
-    "title": "IMG_3313",
-    "file": "original_images/IMG_3313_vKOUemD.JPG",
-    "width": 4032,
-    "height": 3024,
-    "created_at": "2024-06-23T20:48:00.453Z",
-    "uploaded_by_user": [
-      "esse"
-    ],
-    "focal_point_x": null,
-    "focal_point_y": null,
-    "focal_point_width": null,
-    "focal_point_height": null,
-    "file_size": 1670751,
-    "file_hash": "2bd38be65a82abffa2197c8695a161bf6ced567d"
-  }
-},
-{
-  "model": "wagtailimages.image",
-  "pk": 12,
-  "fields": {
-    "collection": 1,
-    "title": "il_1588xN.745612109_hyo9",
-    "file": "original_images/il_1588xN.745612109_hyo9.webp",
-    "width": 1588,
-    "height": 1340,
-    "created_at": "2024-06-23T20:53:54.625Z",
-    "uploaded_by_user": [
-      "esse"
-    ],
-    "focal_point_x": null,
-    "focal_point_y": null,
-    "focal_point_width": null,
-    "focal_point_height": null,
-    "file_size": 141446,
-    "file_hash": "6fd984f2988f75d6e299d7df4952168b0509cbf6"
-  }
-},
-{
-  "model": "wagtailimages.image",
-  "pk": 13,
-  "fields": {
-    "collection": 2,
-    "title": "IMG_3399",
-    "file": "original_images/IMG_3399_ZwTLnJG.JPG",
-    "width": 3024,
-    "height": 3024,
-    "created_at": "2024-06-23T22:57:10.129Z",
-    "uploaded_by_user": [
-      "esse"
-    ],
-    "focal_point_x": null,
-    "focal_point_y": null,
-    "focal_point_width": null,
-    "focal_point_height": null,
-    "file_size": 1772763,
-    "file_hash": "9dcc4c009eba6870cb04dfb3140934322c38c38d"
-  }
-},
-{
-  "model": "wagtailimages.image",
-  "pk": 14,
-  "fields": {
-    "collection": 2,
-    "title": "P1010047",
-    "file": "original_images/P1010047.JPG",
-    "width": 4608,
-    "height": 3456,
-    "created_at": "2024-06-23T23:06:27.154Z",
-    "uploaded_by_user": [
-      "esse"
-    ],
-    "focal_point_x": null,
-    "focal_point_y": null,
-    "focal_point_width": null,
-    "focal_point_height": null,
-    "file_size": 3212730,
-    "file_hash": "e0bd4c16c358731e1f35127dc06efa754251d3b4"
-  }
-},
+
 {
   "model": "wagtailusers.userprofile",
   "pk": 1,
@@ -5863,88 +5625,6 @@
     "theme": "system",
     "density": "default"
   }
-},
-{
-  "model": "home.snipcartsettings",
-  "pk": 1,
-  "fields": {
-    "site": [
-      "localhost",
-      80
-    ],
-    "api_key": ""
-  }
-},
-{
-  "model": "home.gallerypage",
-  "pk": 5,
-  "fields": {
-    "body": "[{\"type\": \"image_block\", \"value\": {\"image\": 1, \"caption\": \"<a href=\\\"/iron-red-bottle/\\\"><h4 class=\\\"caption\\\">Iron Red Bottle</h4></a>\", \"attribution\": \"\"}, \"id\": \"815be7f5-b4fa-4742-a268-f98f264f17c4\"}, {\"type\": \"image_block\", \"value\": {\"image\": 4, \"caption\": \"<h4 class=\\\"caption\\\">Djini bottle - NFS<h4>\", \"attribution\": \"\"}, \"id\": \"f7706d89-4554-437e-8114-9298261af2c4\"}, {\"type\": \"image_block\", \"value\": {\"image\": 11, \"caption\": \"<a href=\\\"/iron-red-bottle/\\\"><h4 class=\\\"caption\\\">White Dr Seuss Bottle</h4></a>\", \"attribution\": \"\"}, \"id\": \"ffb383b1-44ef-4b1f-b72b-805e68b84bc4\"}, {\"type\": \"image_block\", \"value\": {\"image\": 9, \"caption\": \"<a href=\\\"/iron-oxide-jar/\\\"><h4 class=\\\"caption\\\">Iron Oxide and Celadon Incised Jar</h4></a>\", \"attribution\": \"\"}, \"id\": \"12a9c0e4-b469-4ac9-9989-545b17a3d615\"}, {\"type\": \"image_block\", \"value\": {\"image\": 6, \"caption\": \"<a href=\\\"/copper-red-bottle/\\\"><h4 class=\\\"caption\\\">Copper Red Bottle</h4></a>\", \"attribution\": \"\"}, \"id\": \"cd2d5c35-7fc1-45e2-9fcf-4bda6cff3bf0\"}, {\"type\": \"image_block\", \"value\": {\"image\": 5, \"caption\": \"<a href=\\\"/shino-hourglass-cup/\\\"><h4 class=\\\"caption\\\">Shino Hourglass Cup</h4></a>\", \"attribution\": \"\"}, \"id\": \"253407c6-28a0-4c86-8b48-a195ba4e7942\"}, {\"type\": \"image_block\", \"value\": {\"image\": 13, \"caption\": \"<a href=\\\"/shino-hourglass-cup/\\\"><h4 class=\\\"caption\\\">Shino gas can teapot</h4></a>\", \"attribution\": \"\"}, \"id\": \"2a120322-10ba-4778-b1f7-078e57477c1f\"}, {\"type\": \"image_block\", \"value\": {\"image\": 10, \"caption\": \"<h4 class=\\\"caption\\\">Wood Fire Vase - NFS<h4>\", \"attribution\": \"\"}, \"id\": \"167f584e-2250-4e38-afd6-16a7f16831fa\"}, {\"type\": \"image_block\", \"value\": {\"image\": 14, \"caption\": \"<h4 class=\\\"caption\\\">Raku Jar - Sold<h4>\", \"attribution\": \"\"}, \"id\": \"27f8be06-c297-4831-8a23-ee0fe5d40b0a\"}, {\"type\": \"image_block\", \"value\": {\"image\": 7, \"caption\": \"<a href=\\\"/iron-red-cup/\\\"><h4 class=\\\"caption\\\">Iron Red Cup</h4></a>\", \"attribution\": \"\"}, \"id\": \"def64ada-838c-43e9-88c0-5dc802b06334\"}]",
-    "subtitle": "Gallery Page"
-  }
-},
-{
-  "model": "home.product",
-  "pk": 4,
-  "fields": {
-    "sku": "1234",
-    "short_description": "",
-    "price": "100.00",
-    "image": 1,
-    "categories": []
-  }
-},
-{
-  "model": "home.product",
-  "pk": 6,
-  "fields": {
-    "sku": "9776",
-    "short_description": "Iron oxide and celadon incised jar with lid.",
-    "price": "100.00",
-    "image": 9,
-    "categories": []
-  }
-},
-{
-  "model": "home.product",
-  "pk": 7,
-  "fields": {
-    "sku": "5643",
-    "short_description": "",
-    "price": "100.00",
-    "image": 6,
-    "categories": []
-  }
-},
-{
-  "model": "home.product",
-  "pk": 8,
-  "fields": {
-    "sku": "5643",
-    "short_description": "Shino-glazed hourglass cup",
-    "price": "50.00",
-    "image": 5,
-    "categories": [
-      3
-    ]
-  }
-},
-{
-  "model": "home.product",
-  "pk": 9,
-  "fields": {
-    "sku": "5643",
-    "short_description": "Barefoot iron red cup",
-    "price": "50.00",
-    "image": 7,
-    "categories": [
-      3
-    ]
-  }
-},
-{
-  "model": "home.homepage",
-  "pk": 3,
-  "fields": {}
 }
+
 ]

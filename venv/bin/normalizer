@@ -1,4 +1,4 @@
-#!/Users/esse/dev/potteryshop/venv/bin/python3
+#!/Users/esse/dev/potteryshop3/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

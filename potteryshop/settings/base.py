@@ -220,3 +220,6 @@ BASE_URL = 'http://example.com'
 
 # Activate Django-Heroku.
 # django_heroku.settings(locals())
+
+STRIPE_PUBLIC_KEY = 'pk_test_51RWRUwPOdyD5UK3gXnT4WFvLwf1t4np88cd2kr9EgkLLrUHYqSM1JGPrKJNoJTA6QKWvNqbFqngVuzYqK1owWG4R00kpcRWITg'
+STRIPE_SECRET_KEY = 'sk_test_51RWRUwPOdyD5UK3gchwyHfYjTFu85PRUYWwVXO19pW2vo8yxaXXKJkGqYhBgT93J2mhCkLToAdX1Ad0S1Mkq9G6O00k62Y1HwO'
