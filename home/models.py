@@ -9,7 +9,20 @@ from wagtail.contrib.settings.models import BaseSiteSetting, register_setting
 from wagtail.models import DraftStateMixin, Page, RevisionMixin, Orderable
 from wagtail.search import index
 from wagtail.fields import StreamField
+from wagtail.fields import RichTextField
+from wagtail.admin.panels import FieldPanel
 
+class PaymentPage(Page):
+    intro = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('intro'),
+    ]
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        context['payment_url'] = '/payments/'
+        return context
 
 
 

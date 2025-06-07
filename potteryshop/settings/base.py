@@ -35,6 +35,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     # 'customimage',
     'home',
+    'payments',
     'search',
     'wagtail.contrib.search_promotions',
 

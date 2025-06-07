@@ -18,6 +18,7 @@ urlpatterns = [
     path('profile/', TemplateView.as_view(template_name="profile.html")),
     # path('gallery/', TemplateView.as_view(template_name="gallery.html")),
     # Creates urls like yourwebsite.com/login/
+    path('payments/', include('payments.urls')),  # Add payments app URLs
     path('', include('allauth.urls')),
 
 ]
