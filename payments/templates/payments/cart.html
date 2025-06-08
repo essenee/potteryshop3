@@ -1,7 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Shopping Cart</title>
+{% extends "base.html" %}
+{% load static wagtailimages_tags %}
+
+{% block content %}
+
+<div data-rsssl="1" class="product-template-default single single-product postid-220 logged-in theme-savoy woocommerce woocommerce-page woocommerce-js preview-product-horizontal-thumbs nm-page-load-transition-0 header-fixed header-mobile-default header-border-1 widget-panel-dark wpb-js-composer js-comp-ver-6.9.0 vc_responsive wishlist-show-buttons">
+
+
+<noscript>
+	<style>.woocommerce-product-gallery{ opacity: 1 !important; }</style>
+</noscript>
     <style>
         .cart-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
         .cart-table th, .cart-table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
@@ -11,8 +18,7 @@
         .checkout-button { padding: 10px 20px; background-color: #28a745; color: white; border: none; cursor: pointer; }
         .checkout-button:disabled { background-color: #ccc; cursor: not-allowed; }
     </style>
-</head>
-<body>
+<br>
     <h1>Your Cart</h1>
     {% if cart_items %}
         <table class="cart-table">
@@ -51,7 +57,7 @@
         <p>Your cart is empty.</p>
     {% endif %}
     <a href="/">Continue Shopping</a>
-
+</div>
     <script src="https://js.stripe.com/v3/"></script>
     <script>
         // Update quantity
@@ -163,5 +169,6 @@
                 });
         });
     </script>
-</body>
-</html>
+<br>
+<br>
+{% endblock %}

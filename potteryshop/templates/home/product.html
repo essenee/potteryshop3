@@ -128,23 +128,26 @@
             </div>
          </div>
 <!--                Snipcart button-->
-                <button class="snipcart-add-item nm-simple-add-to-cart-button single_add_to_cart_button button alt wp-element-button"
-                data-item-name="{{ page.title }}"
-                    data-item-id="{{ page.sku }}"
-                    data-item-url="{{ page.get_full_url }}"
-                    data-item-price="{{ page.price }}"
-                    data-item-description="{{ page.short_description}}"
-                    data-item-image="{{ temp_image.url }}"
-                    {% for f in custom_fields %}
-                        data-item-custom{{forloop.counter}}-name="{{f.name}}"
-                        data-item-custom{{forloop.counter}}-options="{{f.options}}"
-                    {% endfor %}>
-                    Add to cart
-                </button>
+<!--                <button class="snipcart-add-item nm-simple-add-to-cart-button single_add_to_cart_button button alt wp-element-button"-->
+<!--                data-item-name="{{ page.title }}"-->
+<!--                    data-item-id="{{ page.sku }}"-->
+<!--                    data-item-url="{{ page.get_full_url }}"-->
+<!--                    data-item-price="{{ page.price }}"-->
+<!--                    data-item-description="{{ page.short_description}}"-->
+<!--                    data-item-image="{{ temp_image.url }}"-->
+<!--                    {% for f in custom_fields %}-->
+<!--                        data-item-custom{{forloop.counter}}-name="{{f.name}}"-->
+<!--                        data-item-custom{{forloop.counter}}-options="{{f.options}}"-->
+<!--                    {% endfor %}>-->
+<!--                    Add to cart-->
+<!--                </button>-->
 
 <!--        Stripe Button-->
 
-    <button id="add-to-cart-button" data-product-id="{{ page.id }}" data-title="{{ page.title }}" data-price="{{ page.price }}" data-image-url="{{ temp_image.url|default:"" }}">Add to Cart</button>
+    <button id="add-to-cart-button" class="nm-simple-add-to-cart-button single_add_to_cart_button button alt wp-element-button"
+            data-product-id="{{ page.id }}" data-title="{{ page.title }}" data-price="{{ page.price }}"
+            data-image-url="{{ temp_image.url|default:"" }}">Add to Cart</button>
+
     <a href="/cart/">View Cart</a>
     <script src="https://js.stripe.com/v3/"></script>
 
