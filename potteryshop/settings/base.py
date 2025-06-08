@@ -96,6 +96,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.csrf',  # Required for {{ csrf_token }}
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -224,3 +225,10 @@ BASE_URL = 'http://example.com'
 
 STRIPE_PUBLIC_KEY = 'pk_test_51RWRUwPOdyD5UK3gXnT4WFvLwf1t4np88cd2kr9EgkLLrUHYqSM1JGPrKJNoJTA6QKWvNqbFqngVuzYqK1owWG4R00kpcRWITg'
 STRIPE_SECRET_KEY = 'sk_test_51RWRUwPOdyD5UK3gchwyHfYjTFu85PRUYWwVXO19pW2vo8yxaXXKJkGqYhBgT93J2mhCkLToAdX1Ad0S1Mkq9G6O00k62Y1HwO'
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://127.0.0.1:8000',
+    'http://localhost:8000',
+    'https://*.ngrok-free.app',  # Wildcard for ngrok subdomains
+    # 'https://e9e9-93-190-138-188.ngrok-free.app',  # Specific ngrok URL
+]

@@ -143,51 +143,97 @@
                 </button>
 
 <!--        Stripe Button-->
-            <button id="checkout-button"
-            class="nm-simple-add-to-cart-button single_add_to_cart_button button alt wp-element-button">Checkout</button>
 
-            <script src="https://js.stripe.com/v3/"></script>
-            <script src="https://js.stripe.com/v3/"></script>
+    <button id="add-to-cart-button" data-product-id="{{ page.id }}" data-title="{{ page.title }}" data-price="{{ page.price }}" data-image-url="{{ temp_image.url|default:"" }}">Add to Cart</button>
+    <a href="/cart/">View Cart</a>
+    <script src="https://js.stripe.com/v3/"></script>
+
     <script>
-        // Fetch the Stripe public key
-        fetch('/payments/config/')
-            .then(response => response.json())
+        document.getElementById('add-to-cart-button').addEventListener('click', () => {
+            const button = document.getElementById('add-to-cart-button');
+            const payload = {
+                product_id: button.dataset.productId,
+                title: button.dataset.title,
+                price: button.dataset.price,
+                image_url: window.location.origin + button.dataset.imageUrl
+            };
+            console.log('Adding to cart:', payload);
+            fetch('/cart/add/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}' || alert('CSRF token missing')
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(response => {
+                console.log('Response status:', response.status);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then(data => {
-                const stripe = Stripe(data.publicKey);
-
-                document.getElementById('checkout-button').addEventListener('click', () => {
-                    const imageUrl = '{{ temp_image.url|default:"" }}';
-                    const absoluteImageUrl = imageUrl ? window.location.origin + imageUrl : '';
-                    const payload = {
-                        price: '{{ page.price }}',
-                        title: '{{ page.title }}',
-                        image_url: absoluteImageUrl,
-                        cancel_url: window.location.origin + '{{ page.url }}'
-                    };
-                    console.log('Sending payload:', payload); // Debug payload
-                    fetch('/payments/create-checkout-session/', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRFToken': '{{ csrf_token }}',
-                        },
-                        body: JSON.stringify(payload)
-                    })
-                    .then(response => {
-                        console.log('Response status:', response.status); // Debug status
-                        return response.json();
-                    })
-                    .then(data => {
-                        if (data.sessionId) {
-                            stripe.redirectToCheckout({ sessionId: data.sessionId });
-                        } else {
-                            console.error('Error:', data.error);
-                        }
-                    })
-                    .catch(error => console.error('Fetch error:', error));
-                });
+                if (data.success) {
+                    alert('Product added to cart!');
+                } else {
+                    console.error('Error:', data.error);
+                    alert('Error adding to cart: ' + data.error);
+                }
+            })
+            .catch(error => {
+                console.error('Fetch error:', error);
+                alert('Error: ' + error.message);
             });
+        });
     </script>
+
+
+<!--            <button id="checkout-button"-->
+<!--            class="nm-simple-add-to-cart-button single_add_to_cart_button button alt wp-element-button">Checkout</button>-->
+
+<!--            <script src="https://js.stripe.com/v3/"></script>-->
+<!--            <script src="https://js.stripe.com/v3/"></script>-->
+<!--    <script>-->
+<!--        // Fetch the Stripe public key-->
+<!--        fetch('/payments/config/')-->
+<!--            .then(response => response.json())-->
+<!--            .then(data => {-->
+<!--                const stripe = Stripe(data.publicKey);-->
+
+<!--                document.getElementById('checkout-button').addEventListener('click', () => {-->
+<!--                    const imageUrl = '{{ temp_image.url|default:"" }}';-->
+<!--                    const absoluteImageUrl = imageUrl ? window.location.origin + imageUrl : '';-->
+<!--                    const payload = {-->
+<!--                        price: '{{ page.price }}',-->
+<!--                        title: '{{ page.title }}',-->
+<!--                        image_url: absoluteImageUrl,-->
+<!--                        cancel_url: window.location.origin + '{{ page.url }}'-->
+<!--                    };-->
+<!--                    console.log('Sending payload:', payload); // Debug payload-->
+<!--                    fetch('/payments/create-checkout-session/', {-->
+<!--                        method: 'POST',-->
+<!--                        headers: {-->
+<!--                            'Content-Type': 'application/json',-->
+<!--                            'X-CSRFToken': '{{ csrf_token }}',-->
+<!--                        },-->
+<!--                        body: JSON.stringify(payload)-->
+<!--                    })-->
+<!--                    .then(response => {-->
+<!--                        console.log('Response status:', response.status); // Debug status-->
+<!--                        return response.json();-->
+<!--                    })-->
+<!--                    .then(data => {-->
+<!--                        if (data.sessionId) {-->
+<!--                            stripe.redirectToCheckout({ sessionId: data.sessionId });-->
+<!--                        } else {-->
+<!--                            console.error('Error:', data.error);-->
+<!--                        }-->
+<!--                    })-->
+<!--                    .catch(error => console.error('Fetch error:', error));-->
+<!--                });-->
+<!--            });-->
+<!--    </script>-->
 
 
         <div class="nm-product-share-wrap has-share-buttons">

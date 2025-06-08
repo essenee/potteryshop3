@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import include, path
 from django.contrib import admin
 
@@ -19,9 +20,10 @@ urlpatterns = [
     # path('gallery/', TemplateView.as_view(template_name="gallery.html")),
     # Creates urls like yourwebsite.com/login/
     path('payments/', include('payments.urls')),  # Add payments app URLs
+    path('', include('payments.urls')),     # Add this to handle /cart/ and /cart/add/
     path('', include('allauth.urls')),
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 if settings.DEBUG:

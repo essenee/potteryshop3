@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart</title>
+    <style>
+        .cart-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        .cart-table th, .cart-table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        .cart-table th { background-color: #f2f2f2; }
+        .quantity-input { width: 60px; }
+        .remove-button { color: red; cursor: pointer; }
+        .checkout-button { padding: 10px 20px; background-color: #28a745; color: white; border: none; cursor: pointer; }
+        .checkout-button:disabled { background-color: #ccc; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    {% if cart_items %}
+        <table class="cart-table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart_items %}
+                    <tr>
+                        <td>
+                            {% if item.image_url %}
+                                <img src="{{ item.image_url }}" alt="{{ item.title }}" style="max-width: 100px;">
+                            {% endif %}
+                        </td>
+                        <td>{{ item.title }}</td>
+                        <td>${{ item.price|floatformat:2 }}</td>
+                        <td>
+                            <input type="number" class="quantity-input" data-product-id="{{ item.product_id }}" value="{{ item.quantity }}" min="0">
+                        </td>
+                        <td>${{ item.total|floatformat:2 }}</td>
+                        <td><span class="remove-button" data-product-id="{{ item.product_id }}">Remove</span></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <p><strong>Total: ${{ total_price|floatformat:2 }}</strong></p>
+        <button id="checkout-button" class="checkout-button" {% if not cart_items %}disabled{% endif %}>Checkout</button>
+    {% else %}
+        <p>Your cart is empty.</p>
+    {% endif %}
+    <a href="/">Continue Shopping</a>
+
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        // Update quantity
+        document.querySelectorAll('.quantity-input').forEach(input => {
+            input.addEventListener('change', () => {
+                const productId = input.dataset.productId;
+                const quantity = parseInt(input.value);
+                fetch('/cart/update/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}',
+                    },
+                    body: JSON.stringify({ product_id: productId, quantity: quantity })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        window.location.reload();
+                    } else {
+                        alert('Error updating cart: ' + data.error);
+                    }
+                })
+                .catch(error => console.error('Fetch error:', error));
+            });
+        });
+
+        // Remove item
+        document.querySelectorAll('.remove-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const productId = button.dataset.productId;
+                fetch('/cart/update/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': '{{ csrf_token }}',
+                    },
+                    body: JSON.stringify({ product_id: productId, quantity: 0 })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        window.location.reload();
+                    } else {
+                        alert('Error removing item: ' + data.error);
+                    }
+                })
+                .catch(error => console.error('Fetch error:', error));
+            });
+        });
+
+        // Checkout with Stripe
+        document.getElementById('checkout-button')?.addEventListener('click', () => {
+            fetch('/payments/config/')
+                .then(response => response.json())
+                .then(data => {
+                    const stripe = Stripe(data.publicKey);
+                    const lineItems = [
+                        {% for item in cart_items %}
+                            {
+                                price: '{{ item.price }}',
+                                title: '{{ item.title|escapejs }}',
+                                image_url: '{{ item.image_url|default:"" }}',
+                                quantity: {{ item.quantity }}
+                            }{% if not forloop.last %},{% endif %}
+                        {% endfor %}
+                    ];
+                    // Validate image URLs
+                    lineItems.forEach(item => {
+                        console.log('Validating image_url:', item.image_url);
+                        if (item.image_url && !item.image_url.match(/^https?:\/\/(localhost|127\.0\.0\.1:\d+|.*\.ngrok-free\.app)\/media\/.+$/)) {
+                            console.warn('Invalid image_url, omitting:', item.image_url);
+                            item.image_url = '';
+                        }
+                    });
+                    const payload = {
+                        line_items: lineItems,
+                        cancel_url: window.location.origin + '/cart/'
+                    };
+                    console.log('Checkout payload:', JSON.stringify(payload, null, 2));
+                    fetch('/payments/create-checkout-session/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': '{{ csrf_token }}'
+                        },
+                        body: JSON.stringify(payload)
+                    })
+                    .then(response => {
+                        console.log('Response status:', response.status);
+                        if (!response.ok) {
+                            return response.json().then(data => {
+                                throw new Error(data.error || 'Checkout failed');
+                            });
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.sessionId) {
+                            stripe.redirectToCheckout({ sessionId: data.sessionId });
+                        } else {
+                            throw new Error(data.error || 'Invalid session ID');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Checkout error:', error);
+                        alert('Error initiating checkout: ' + error.message);
+                    });
+                });
+        });
+    </script>
+</body>
+</html>
