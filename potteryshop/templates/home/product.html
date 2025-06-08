@@ -144,14 +144,10 @@
 
 <!--        Stripe Button-->
 
-    <button id="add-to-cart-button" class="nm-simple-add-to-cart-button single_add_to_cart_button button alt wp-element-button"
-            data-product-id="{{ page.id }}" data-title="{{ page.title }}" data-price="{{ page.price }}"
-            data-image-url="{{ temp_image.url|default:"" }}">Add to Cart</button>
-
+<button class ="nm-simple-add-to-cart-button single_add_to_cart_button button alt wp-element-button" id="add-to-cart-button" data-product-id="{{ page.id }}" data-title="{{ page.title }}" data-price="{{ page.price }}" data-image-url="{{ temp_image.url|default:"" }}">Add to Cart</button>
     <a href="/cart/">View Cart</a>
-    <script src="https://js.stripe.com/v3/"></script>
 
-    <script>
+<script>
         document.getElementById('add-to-cart-button').addEventListener('click', () => {
             const button = document.getElementById('add-to-cart-button');
             const payload = {
@@ -165,7 +161,7 @@
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-CSRFToken': '{{ csrf_token }}' || alert('CSRF token missing')
+                    'X-CSRFToken': '{{ csrf_token }}' || console.error('CSRF token missing')
                 },
                 body: JSON.stringify(payload)
             })
@@ -178,7 +174,20 @@
             })
             .then(data => {
                 if (data.success) {
-                    alert('Product added to cart!');
+                    // Update cart icon and count
+                    const cartIcon = document.getElementById('cart-icon');
+                    const cartCount = document.getElementById('cart-count');
+                    const count = data.cart_count || 0;
+                    cartCount.textContent = count;
+                    if (count > 0) {
+                        cartIcon.classList.remove('nm-font-cart');
+                        cartIcon.classList.add('nm-font-cart-filled');
+                        cartCount.classList.add('visible');
+                    } else {
+                        cartIcon.classList.remove('nm-font-cart-filled');
+                        cartIcon.classList.add('nm-font-cart');
+                        cartCount.classList.remove('visible');
+                    }
                 } else {
                     console.error('Error:', data.error);
                     alert('Error adding to cart: ' + data.error);
@@ -625,16 +634,16 @@
 
 
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelector('.custom-field-select').onchange = function(event) {
-            if (event.target.dataset.field) {
-                document.querySelector('.snipcart-add-item')
-                    .dataset['itemCustom' + event.target.dataset.field + 'Value'] = event.target.value;
-            }
-        };
-    },false);
-</script>
+<!--<script>-->
+<!--    document.addEventListener('DOMContentLoaded', function() {-->
+<!--        document.querySelector('.custom-field-select').onchange = function(event) {-->
+<!--            if (event.target.dataset.field) {-->
+<!--                document.querySelector('.snipcart-add-item')-->
+<!--                    .dataset['itemCustom' + event.target.dataset.field + 'Value'] = event.target.value;-->
+<!--            }-->
+<!--        };-->
+<!--    },false);-->
+<!--</script>-->
 
 
 {% endblock %}

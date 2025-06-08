@@ -19,7 +19,11 @@
         .checkout-button:disabled { background-color: #ccc; cursor: not-allowed; }
     </style>
 <br>
-    <h1>Your Cart</h1>
+
+<div style="padding:20px">
+
+
+<h1>Your Cart</h1>
     {% if cart_items %}
         <table class="cart-table">
             <thead>
@@ -58,6 +62,7 @@
     {% endif %}
     <a href="/">Continue Shopping</a>
 </div>
+</div>
     <script src="https://js.stripe.com/v3/"></script>
     <script>
         // Update quantity
@@ -76,6 +81,20 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
+                        // Update cart icon
+                        const cartIcon = document.getElementById('cart-icon');
+                        const cartCount = document.getElementById('cart-count');
+                        const count = data.cart_count || 0;
+                        cartCount.textContent = count;
+                        if (count > 0) {
+                            cartIcon.classList.remove('nm-font-cart');
+                            cartIcon.classList.add('nm-font-cart-filled');
+                            cartCount.classList.add('visible');
+                        } else {
+                            cartIcon.classList.remove('nm-font-cart-filled');
+                            cartIcon.classList.add('nm-font-cart');
+                            cartCount.classList.remove('visible');
+                        }
                         window.location.reload();
                     } else {
                         alert('Error updating cart: ' + data.error);
@@ -100,6 +119,20 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
+                        // Update cart icon
+                        const cartIcon = document.getElementById('cart-icon');
+                        const cartCount = document.getElementById('cart-count');
+                        const count = data.cart_count || 0;
+                        cartCount.textContent = count;
+                        if (count > 0) {
+                            cartIcon.classList.remove('nm-font-cart');
+                            cartIcon.classList.add('nm-font-cart-filled');
+                            cartCount.classList.add('visible');
+                        } else {
+                            cartIcon.classList.remove('nm-font-cart-filled');
+                            cartIcon.classList.add('nm-font-cart');
+                            cartCount.classList.remove('visible');
+                        }
                         window.location.reload();
                     } else {
                         alert('Error removing item: ' + data.error);
@@ -125,7 +158,6 @@
                             }{% if not forloop.last %},{% endif %}
                         {% endfor %}
                     ];
-                    // Validate image URLs
                     lineItems.forEach(item => {
                         console.log('Validating image_url:', item.image_url);
                         if (item.image_url && !item.image_url.match(/^https?:\/\/(localhost|127\.0\.0\.1:\d+|.*\.ngrok-free\.app)\/media\/.+$/)) {

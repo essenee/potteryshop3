@@ -13687,9 +13687,15 @@ form.woocommerce-checkout>.nm-shop-notice {
     content: "\e903"
 }
 
+
 .nm-font-cart:before {
     content: "\e904"
 }
+
+
+.ps-font-cart:before {
+}
+
 
 .nm-font-single-user:before {
     content: "\e905"
@@ -13711,9 +13717,16 @@ form.woocommerce-checkout>.nm-shop-notice {
     content: "\e159"
 }
 
+
 .nm-font-cart-filled:before {
     content: "\e8cc"
 }
+
+
+.ps-font-cart-filled:before {
+    content: "\e8cc"
+}
+
 
 .nm-font-refresh:before {
     content: "\e5d5"

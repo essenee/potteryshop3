@@ -15,16 +15,17 @@
                 <div class="nm-main-menu-wrap col-xs-6">
                     <nav class="nm-main-menu">
                         <ul id="nm-main-menu-ul" class="nm-menu">
-                            <li class="nm-menu-offscreen menu-item-default">
-                                <span class="nm-menu-cart-count count nm-count-zero">0</span>
-                                <a href="#" id="nm-mobile-menu-button" class="clicked" onclick="toggleMobileMenu(document.body)">
-                                    <div class="nm-menu-icon">
-                                        <span class="line-1"></span>
-                                        <span class="line-2"></span>
-                                        <span class="line-3"></span>
-                                    </div>
-                                </a>
-                            </li>
+<!--                            <li class="nm-menu-offscreen menu-item-default">-->
+<!--                                <span class="nm-menu-cart-count count nm-count-zero">0</span>-->
+<!--                                <a href="#" id="nm-mobile-menu-button" class="clicked" onclick="toggleMobileMenu(document.body)">-->
+<!--                                    <div class="nm-menu-icon">-->
+<!--                                        <span class="line-1"></span>-->
+<!--                                        <span class="line-2"></span>-->
+<!--                                        <span class="line-3"></span>-->
+<!--                                    </div>-->
+<!--                                </a>-->
+
+<!--                            </li>-->
                             <li id="menu-item-20" class="megamenu col-2 shop-link menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-has-children current-menu-item current_page_item menu-item-20">
                                 <a href="/" aria-current="page">Shop</a>
                                 <div class='sub-menu'>
@@ -162,11 +163,18 @@
                             </li>
 
                             <li class="nm-menu-cart menu-item-default no-icon">
-                                <a href="" class="snipcart-checkout">
-                                    <span class="nm-menu-cart-title">
-                                        <i class="nm-menu-cart-icon nm-font nm-font-cart"></i>
+<!--                                <a href="" class="snipcart-checkout">-->
+<!--                                    <span class="nm-menu-cart-title">-->
+<!--                                        <i class="nm-menu-cart-icon nm-font nm-font-cart"></i>-->
+<!--                                    </span>-->
+<!--                                    <span class="snipcart-items-count nm-menu-cart-count count nm-count-zero">0</span>-->
+<!--                                </a>-->
+
+                                <a href="/cart/">
+                                    <span class="nm-menu-cart-title" id="cart-icon">
+<!--                                        <i class="nm-menu-cart-icon nm-font nm-font-cart"></i>-->
                                     </span>
-                                    <span class="snipcart-items-count nm-menu-cart-count count nm-count-zero">0</span>
+                                    <span class="cart-count nm-menu-cart-count count nm-count-zero" id="cart-count">0</span>
                                 </a>
                             </li>
                         </ul>

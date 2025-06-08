@@ -31,33 +31,77 @@
     <link rel="stylesheet" href="{% static 'font/MaisonNeueWEB-Book.woff' %}">
     <link rel="icon" href="{% static 'img/favicon.png' %}">
 
-    {# Snipcart #}
+<!--    {# Snipcart #}-->
 
-    {% if settings.home.SnipcartSettings.api_key %}
-    <script async src="https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.js"></script>
-    <div hidden id="snipcart" data-api-key="{{ settings.home.SnipcartSettings.api_key }}"></div>
-    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.css" />
-    {% endif %}
+<!--    {% if settings.home.SnipcartSettings.api_key %}-->
+<!--    <script async src="https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.js"></script>-->
+<!--    <div hidden id="snipcart" data-api-key="{{ settings.home.SnipcartSettings.api_key }}"></div>-->
+<!--    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.css" />-->
+<!--    {% endif %}-->
 
-        <style type="text/css">
-        .snipcart-item-line__media--small{
-            min-width:auto;
-            height:64px;
-         }
+<!--        <style type="text/css">-->
+<!--        .snipcart-item-line__media&#45;&#45;small{-->
+<!--            min-width:auto;-->
+<!--            height:64px;-->
+<!--         }-->
 
-        .snipcart-modal__container {
-            position: fixed; /* Stay in place front is invalid - may break your css so removed */
-            left: 0;
-            right:0; /* Full width (left and right 0) */
-            top: 0;
-            bottom: 0; /* Full height top and bottom 0 */
-            overflow-y: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: var(--bgColor-modal,#f1f2f4);
-            z-index: 9999; /* Sit on top - higher than any other z-index in your site*/
-        }
+<!--        .snipcart-modal__container {-->
+<!--            position: fixed; /* Stay in place front is invalid - may break your css so removed */-->
+<!--            left: 0;-->
+<!--            right:0; /* Full width (left and right 0) */-->
+<!--            top: 0;-->
+<!--            bottom: 0; /* Full height top and bottom 0 */-->
+<!--            overflow-y: auto; /* Enable scroll if needed */-->
+<!--            background-color: rgb(0,0,0); /* Fallback color */-->
+<!--            background-color: var(&#45;&#45;bgColor-modal,#f1f2f4);-->
+<!--            z-index: 9999; /* Sit on top - higher than any other z-index in your site*/-->
+<!--        }-->
 
-        </style>
+<!--        </style>-->
+
+<!--        <style>-->
+<!--        /* Existing styles */-->
+<!--        .ps-font-cart:before {-->
+<!--            content: "\e904";-->
+<!--        }-->
+<!--        .ps-font-cart-filled:before {-->
+<!--            content: "\e8cc";-->
+<!--        }-->
+<!--        /* New styles for cart icon and badge */-->
+<!--        .ps-menu-cart-icon {-->
+<!--            position: relative;-->
+<!--            font-size: 24px;-->
+<!--            cursor: pointer;-->
+<!--        }-->
+<!--        .cart-count {-->
+<!--            position: absolute;-->
+<!--            top: -10px;-->
+<!--            right: -10px;-->
+<!--            background-color: #ff0000;-->
+<!--            color: white;-->
+<!--            font-size: 12px;-->
+<!--            width: 18px;-->
+<!--            height: 18px;-->
+<!--            border-radius: 50%;-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            justify-content: center;-->
+<!--            display: none; /* Hidden when count is 0 */-->
+<!--        }-->
+<!--        .cart-count.visible {-->
+<!--            display: flex;-->
+<!--        }-->
+<!--        header {-->
+<!--            display: flex;-->
+<!--            justify-content: space-between;-->
+<!--            align-items: center;-->
+<!--            padding: 10px 20px;-->
+<!--            background-color: #f8f8f8;-->
+<!--        }-->
+<!--        nav a {-->
+<!--            margin-left: 15px;-->
+<!--        }-->
+<!--    </style>-->
 </head>
 
 <body class="{% block body_class %}{% endblock %}">
@@ -211,31 +255,36 @@
                                             <i class="nm-font nm-font-heart-outline"></i>
                                         </a>
                                     </li>
-        <!--            Login Desktop-->
-                            <li class="nm-menu-account menu-item-default no-icon" aria-label="My account">
-                                {% if request.user.is_authenticated %}
-                                <a href="{% url 'account_logout' %}" id="nm-menu-account-btn">
-<!--                                    logout-->
-                                    <i class="nm-myaccount-icon nm-font nm-font-head"></i>
+                <!--            Login Desktop-->
+                                    <li class="nm-menu-account menu-item-default no-icon" aria-label="My account">
+                                        {% if request.user.is_authenticated %}
+                                        <a href="{% url 'account_logout' %}" id="nm-menu-account-btn">
+        <!--                                    logout-->
+                                            <i class="nm-myaccount-icon nm-font nm-font-head"></i>
 
-                                </a>
-                                {% else %}
-                                <a href="{% url 'account_login' %}" id="nm-menu-account-btn">
-                                    <i class="nm-myaccount-icon nm-font nm-font-head"></i>
-                                </a>
-                                {% endif %}
-                            </li>
+                                        </a>
+                                        {% else %}
+                                        <a href="{% url 'account_login' %}" id="nm-menu-account-btn">
+                                            <i class="nm-myaccount-icon nm-font nm-font-head"></i>
+                                        </a>
+                                        {% endif %}
+                                    </li>
 
-                            <li class="nm-menu-cart menu-item-default no-icon">
-                                <a href="" class="snipcart-checkout">
+                                    <li class="nm-menu-cart menu-item-default no-icon">
+        <!--                                <a href="" class="snipcart-checkout">-->
+        <!--                                    <span class="nm-menu-cart-title">-->
+        <!--                                        <i class="nm-menu-cart-icon nm-font nm-font-cart"></i>-->
+        <!--                                    </span>-->
+        <!--                                    <span class="snipcart-items-count nm-menu-cart-count count nm-count-zero">0</span>-->
+        <!--                                </a>-->
 
-                                <!--                                                <a href="#" id="nm-menu-cart-btn">-->
-                                    <span class="nm-menu-cart-title">
-                                        <i class="nm-menu-cart-icon nm-font nm-font-cart"></i>
-                                    </span>
-                                    <span class="snipcart-items-count nm-menu-cart-count count nm-count-zero">0</span>
-                                </a>
-                            </li>
+                                        <a href="/cart/">
+                                            <span class="nm-menu-cart-title" id="cart-icon">
+        <!--                                        <i class="nm-menu-cart-icon nm-font nm-font-cart"></i>-->
+                                            </span>
+                                            <span class="cart-count nm-menu-cart-count count nm-count-zero" id="cart-count">0</span>
+                                        </a>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>
@@ -246,12 +295,39 @@
     {% block content %}
     {% endblock %}
 {% endblock %}
-
+<script>
+        // Initialize cart icon on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/cart/count/', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                const cartIcon = document.getElementById('cart-icon');
+                const cartCount = document.getElementById('cart-count');
+                const count = data.cart_count || 0;
+                cartCount.textContent = count;
+                if (count > 0) {
+                    cartIcon.classList.remove('nm-font-cart');
+                    cartIcon.classList.add('nm-font-cart-filled');
+                    cartCount.classList.add('visible');
+                } else {
+                    cartIcon.classList.remove('nm-font-cart-filled');
+                    cartIcon.classList.add('nm-font-cart');
+                    cartCount.classList.remove('visible');
+                }
+            })
+            .catch(error => console.error('Error fetching cart count:', error));
+        });
+    </script>
 
     {# Global javascript #}
     <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/jquery-migrate.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/snipcartwagtaildemo.js' %}"></script>
+<!--    <script type="text/javascript" src="{% static 'js/snipcartwagtaildemo.js' %}"></script>-->
     <script type="module" src="{% static 'js/index.js' %}"></script>
 
 

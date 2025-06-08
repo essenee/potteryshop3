@@ -53,7 +53,6 @@ def create_checkout_session(request):
                         print(f"Invalid image_url, omitting: {image_url}")
                         image_url = ''
                     else:
-                        # Ensure absolute URL
                         image_url = urljoin(domain_url, image_url)
                         print(f"Normalized image_url: {image_url}")
 
@@ -81,7 +80,6 @@ def create_checkout_session(request):
             else:
                 cancel_url = default_cancel_url
 
-            # Validate success_url
             success_url = urljoin(domain_url, '/payments/success/')
             print(f"Stripe line items: {stripe_line_items}, Success URL: {success_url}, Cancel URL: {cancel_url}")
 
@@ -91,6 +89,7 @@ def create_checkout_session(request):
                 payment_method_types=['card'],
                 mode='payment',
                 line_items=stripe_line_items,
+                locale='en',
             )
             return JsonResponse({'sessionId': checkout_session['id']})
         except json.JSONDecodeError:
@@ -133,12 +132,24 @@ def add_to_cart(request):
             request.session['cart'] = cart
             request.session.modified = True
 
-            print(f"Cart updated: {cart}")
-            return JsonResponse({'success': True, 'message': 'Product added to cart'})
+            # Calculate total item count
+            cart_count = sum(item['quantity'] for item in cart.values())
+
+            print(f"Cart updated: {cart}, Total items: {cart_count}")
+            return JsonResponse({'success': True, 'message': 'Product added to cart', 'cart_count': cart_count})
         except json.JSONDecodeError:
             return JsonResponse({'error': 'Invalid JSON payload'}, status=400)
         except Exception as e:
             return JsonResponse({'error': f'Server error: {str(e)}'}, status=400)
+    return JsonResponse({'error': 'Invalid request method'}, status=400)
+
+@csrf_exempt
+def cart_count(request):
+    """Return the total number of items in the cart."""
+    if request.method == 'GET':
+        cart = request.session.get('cart', {})
+        cart_count = sum(item['quantity'] for item in cart.values())
+        return JsonResponse({'cart_count': cart_count})
     return JsonResponse({'error': 'Invalid request method'}, status=400)
 
 @csrf_exempt
@@ -184,8 +195,10 @@ def update_cart(request):
                     cart[product_id]['quantity'] = quantity
                 request.session['cart'] = cart
                 request.session.modified = True
-                print(f"Cart updated: {cart}")
-                return JsonResponse({'success': True, 'message': 'Cart updated'})
+                # Calculate total item count
+                cart_count = sum(item['quantity'] for item in cart.values())
+                print(f"Cart updated: {cart}, Total items: {cart_count}")
+                return JsonResponse({'success': True, 'message': 'Cart updated', 'cart_count': cart_count})
             return JsonResponse({'error': 'Product not in cart'}, status=400)
         except json.JSONDecodeError:
             return JsonResponse({'error': 'Invalid JSON payload'}, status=400)
@@ -200,5 +213,5 @@ def clear_cart(request):
         request.session['cart'] = {}
         request.session.modified = True
         print("Cart cleared")
-        return JsonResponse({'success': True, 'message': 'Cart cleared'})
+        return JsonResponse({'success': True, 'message': 'Cart cleared', 'cart_count': 0})
     return JsonResponse({'error': 'Invalid request method'}, status=400)
