@@ -1863,9 +1863,9 @@ function createElement(className, tagName, appendToEl) {
       const uid = ++this._uid;
       Promise.all(promiseArray).then(iterableModules => {
         if (this.shouldOpen) {
-          const mainModule = iterableModules[0];
+          const maipsodule = iterableModules[0];
   
-          this._openPhotoswipe(mainModule, uid);
+          this._openPhotoswipe(maipsodule, uid);
         }
       });
     }

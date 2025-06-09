@@ -1916,7 +1916,7 @@ function createElement(className, tagName, appendToEl) {
    * @param {PointerEvent} event
    * @returns {boolean}
    */
-  function didTapOnMainContent(event) {
+  function didTapOpsainContent(event) {
     return !!
     /** @type {HTMLElement} */
     event.target.closest('.pswp__container');
@@ -1959,7 +1959,7 @@ function createElement(className, tagName, appendToEl) {
   
   
     tap(point, originalEvent) {
-      if (didTapOnMainContent(originalEvent)) {
+      if (didTapOpsainContent(originalEvent)) {
         this._doClickOrTapAction('tap', point, originalEvent);
       }
     }
@@ -1970,7 +1970,7 @@ function createElement(className, tagName, appendToEl) {
   
   
     doubleTap(point, originalEvent) {
-      if (didTapOnMainContent(originalEvent)) {
+      if (didTapOpsainContent(originalEvent)) {
         this._doClickOrTapAction('doubleTap', point, originalEvent);
       }
     }

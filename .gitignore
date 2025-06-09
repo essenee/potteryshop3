@@ -94,6 +94,8 @@ package-lock.json
 #Images
 **/*.jpg
 !/home/static/img/*.jpg
+!/media/original_images/*.jpg
+
 
 #wsgi (to be different on prod)
 /potteryshop/wsgi.py

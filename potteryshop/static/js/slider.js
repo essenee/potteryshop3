@@ -6,8 +6,8 @@
                 cssEase: 'linear',
                 swipe: false,
                 arrows: true,
-                prevArrow: '<a class="slick-prev"><i class="nm-font nm-font-angle-left"></i></a>',
-                nextArrow: '<a class="slick-next"><i class="nm-font nm-font-angle-right"></i></a>',
+                prevArrow: '<a class="slick-prev"><i class="ps-font ps-font-angle-left"></i></a>',
+                nextArrow: '<a class="slick-next"><i class="ps-font ps-font-angle-right"></i></a>',
                 useTransform: false
 
             });

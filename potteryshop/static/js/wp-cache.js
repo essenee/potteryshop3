@@ -1039,7 +1039,7 @@ var SnapbackCache = function (c) {
                 b.removeClass().addClass(a.wrapperClass);
                 b.html(a.body);
                 setTimeout(function () {
-                    var d = b.children(".nm-products").children(".hide");
+                    var d = b.children(".ps-products").children(".hide");
                     d.length && (d.find(".lazyloading").removeClass("lazyloading").addClass("lazyloaded"), d.removeClass("hide"));
                 }, 300);
                 "function" === typeof c.removeAutofocus && c.removeAutofocus();
@@ -1090,7 +1090,7 @@ var SnapbackCache = function (c) {
             if (sessionStorage && history) {
                 "function" === typeof c.removeAutofocus && c.removeAutofocus();
                 var a = jQuery(c.bodySelector);
-                a.children(".nm-infload-controls").removeClass("nm-loader");
+                a.children(".ps-infload-controls").removeClass("ps-loader");
                 a = { body: a.html(), wrapperClass: jQuery(c.bodySelector).attr("class"), positionY: window.pageYOffset, positionX: window.pageXOffset, cachedAt: new Date().getTime() };
                 var b = document.location.href;
                 a && n();
@@ -4115,11 +4115,11 @@ var SnapbackCache = function (c) {
         x();
 });
 
-var nm_wp_vars = {
+var ps_wp_vars = {
     themeUri: "https://savoy.nordicmade.com/wp-content/themes/savoy",
     ajaxUrl: "/wp-admin/admin-ajax.php",
     woocommerceAjaxUrl: "/?wc-ajax=%%endpoint%%",
-    searchUrl: "https://savoy.nordicmade.com/?s=%%nmsearchkey%%",
+    searchUrl: "https://savoy.nordicmade.com/?s=%%pssearchkey%%",
     pageLoadTransition: "0",
     headerPlaceholderSetHeight: "1",
     cartPanelQtyArrows: "1",
@@ -4138,7 +4138,7 @@ var nm_wp_vars = {
     shopScrollOffsetMobile: "70",
     shopSearch: "1",
     shopSearchHeader: "0",
-    shopSearchUrl: "https://savoy.nordicmade.com/?post_type=product&s=%%nmsearchkey%%",
+    shopSearchUrl: "https://savoy.nordicmade.com/?post_type=product&s=%%pssearchkey%%",
     shopSearchMinChar: "2",
     shopSearchAutoClose: "1",
     searchSuggestions: "0",
@@ -4161,14 +4161,14 @@ var nm_wp_vars = {
     infloadBufferBlog: "0",
     infloadPreserveScrollPos: "1",
     infloadSnapbackCache: "1",
-    infloadSnapbackCacheLinks: ".nm-shop-loop-attribute-link, .product_type_variable, .product_type_grouped, .nm-shop-loop-thumbnail-link, .nm-shop-loop-title-link",
+    infloadSnapbackCacheLinks: ".ps-shop-loop-attribute-link, .product_type_variable, .product_type_grouped, .ps-shop-loop-thumbnail-link, .ps-shop-loop-title-link",
 };
 
 (function (b) {
     function n() {
         this.init();
     }
-    b.nmThemeExtensions || (b.nmThemeExtensions = {});
+    b.psThemeExtensions || (b.psThemeExtensions = {});
     n.prototype = {
         init: function () {
             var a = this;
@@ -4180,62 +4180,62 @@ var nm_wp_vars = {
             a.$document = b(document);
             a.$html = b("html");
             a.$body = b("body");
-            a.$pageIncludes = b("#nm-page-includes");
-            a.$pageOverlay = b("#nm-page-overlay");
-            a.$topBar = b("#nm-top-bar");
-            a.$header = b("#nm-header");
-            a.$headerPlaceholder = b("#nm-header-placeholder");
+            a.$pageIncludes = b("#ps-page-includes");
+            a.$pageOverlay = b("#ps-page-overlay");
+            a.$topBar = b("#ps-top-bar");
+            a.$header = b("#ps-header");
+            a.$headerPlaceholder = b("#ps-header-placeholder");
             a.headerScrollTolerance = 0;
-            a.$mobileMenuBtn = b("#nm-mobile-menu-button");
-            a.$mobileMenu = b("#nm-mobile-menu");
-            a.$mobileMenuScroller = a.$mobileMenu.children(".nm-mobile-menu-scroll");
+            a.$mobileMenuBtn = b("#ps-mobile-menu-button");
+            a.$mobileMenu = b("#ps-mobile-menu");
+            a.$mobileMenuScroller = a.$mobileMenu.children(".ps-mobile-menu-scroll");
             a.$mobileMenuLi = a.$mobileMenu.find("ul li.menu-item");
-            a.$widgetPanel = b("#nm-widget-panel");
+            a.$widgetPanel = b("#ps-widget-panel");
             a.widgetPanelAnimSpeed = 250;
             a.panelsAnimSpeed = 200;
-            a.$shopWrap = b("#nm-shop");
+            a.$shopWrap = b("#ps-shop");
             a.isShop = a.$shopWrap.length ? !0 : !1;
-            a.shopCustomSelect = "0" != nm_wp_vars.shopCustomSelect ? !0 : !1;
-            a.searchEnabled = "0" !== nm_wp_vars.shopSearch ? !0 : !1;
+            a.shopCustomSelect = "0" != ps_wp_vars.shopCustomSelect ? !0 : !1;
+            a.searchEnabled = "0" !== ps_wp_vars.shopSearch ? !0 : !1;
             a.isChromium = !!window.chrome;
             a.isFirefox = -1 < navigator.userAgent.toLowerCase().indexOf("firefox");
-            if ("0" != nm_wp_vars.pageLoadTransition) {
+            if ("0" != ps_wp_vars.pageLoadTransition) {
                 a.isIos = navigator.userAgent.match(/iPad/i) || navigator.userAgent.match(/iPhone/i);
                 if (!a.isIos)
                     a.$window.on("beforeunload", function (c) {
-                        b("#nm-page-load-overlay").addClass("nm-loader");
-                        a.$html.removeClass("nm-page-loaded");
+                        b("#ps-page-load-overlay").addClass("ps-loader");
+                        a.$html.removeClass("ps-page-loaded");
                     });
                 "onpagehide" in window
                     ? window.addEventListener(
                           "pageshow",
                           function () {
                               setTimeout(function () {
-                                  a.$html.addClass("nm-page-loaded");
+                                  a.$html.addClass("ps-page-loaded");
                               }, 150);
                           },
                           !1
                       )
                     : setTimeout(function () {
-                          a.$html.addClass("nm-page-loaded");
+                          a.$html.addClass("ps-page-loaded");
                       }, 150);
             }
-            a.$body.removeClass("nm-preload");
+            a.$body.removeClass("ps-preload");
             a.isTouch = a.$html.hasClass("touch") ? !0 : !1;
-            a.isTouch ? "0" != nm_wp_vars.touchHover && a.$html.addClass("has-hover") : a.$html.addClass("has-hover");
+            a.isTouch ? "0" != ps_wp_vars.touchHover && a.$html.addClass("has-hover") : a.$html.addClass("has-hover");
             a.headerIsFixed = a.$body.hasClass("header-fixed") ? !0 : !1;
-            ("0" != nm_wp_vars.pushStateMobile || a.$html.hasClass("no-touch")) && a.$html.hasClass("history") ? ((a.hasPushState = !0), window.history.replaceState({ nmShop: !0 }, "", window.location.href)) : (a.hasPushState = !1);
+            ("0" != ps_wp_vars.pushStateMobile || a.$html.hasClass("no-touch")) && a.$html.hasClass("history") ? ((a.hasPushState = !0), window.history.replaceState({ psShop: !0 }, "", window.location.href)) : (a.hasPushState = !1);
             a.setScrollbarWidth();
             a.headerCheckPlaceholderHeight();
             a.headerIsFixed && (a.headerSetScrollTolerance(), a.mobileMenuPrep());
             a.widgetPanelPrep();
-            0 < window.navigator.userAgent.indexOf("MSIE ") && a.$html.addClass("nm-old-ie");
-            "0" == nm_wp_vars.infloadSnapbackCache || a.isTouch || a.shopInfloadSnapbackCache();
+            0 < window.navigator.userAgent.indexOf("MSIE ") && a.$html.addClass("ps-old-ie");
+            "0" == ps_wp_vars.infloadSnapbackCache || a.isTouch || a.shopInfloadSnapbackCache();
             a.loadExtension();
             a.bind();
             a.initPageIncludes();
-            a.$body.hasClass("nm-added-to-cart") &&
-                (a.$body.removeClass("nm-added-to-cart"),
+            a.$body.hasClass("ps-added-to-cart") &&
+                (a.$body.removeClass("ps-added-to-cart"),
                 a.$window.on("load", function () {
                     a.$widgetPanel.length &&
                         (a.widgetPanelShow(!0, !0),
@@ -4245,12 +4245,12 @@ var nm_wp_vars = {
                 }));
         },
         loadExtension: function () {
-            b.nmThemeExtensions.shop && b.nmThemeExtensions.shop.call(this);
-            this.searchEnabled && b.nmThemeExtensions.search && b.nmThemeExtensions.search.call(this);
-            b.nmThemeExtensions.singleProduct && b.nmThemeExtensions.singleProduct.call(this);
-            b.nmThemeExtensions.cart && b.nmThemeExtensions.cart.call(this);
-            b.nmThemeExtensions.checkout && b.nmThemeExtensions.checkout.call(this);
-            b.nmThemeExtensions.blog && b.nmThemeExtensions.blog.call(this);
+            b.psThemeExtensions.shop && b.psThemeExtensions.shop.call(this);
+            this.searchEnabled && b.psThemeExtensions.search && b.psThemeExtensions.search.call(this);
+            b.psThemeExtensions.singleProduct && b.psThemeExtensions.singleProduct.call(this);
+            b.psThemeExtensions.cart && b.psThemeExtensions.cart.call(this);
+            b.psThemeExtensions.checkout && b.psThemeExtensions.checkout.call(this);
+            b.psThemeExtensions.blog && b.psThemeExtensions.blog.call(this);
         },
         setScrollbarWidth: function () {
             var a = document.createElement("div");
@@ -4277,10 +4277,10 @@ var nm_wp_vars = {
             return a.href;
         },
         setPushState: function (a) {
-            this.hasPushState && window.history.pushState({ nmShop: !0 }, "", a);
+            this.hasPushState && window.history.pushState({ psShop: !0 }, "", a);
         },
         headerCheckPlaceholderHeight: function () {
-            if (0 == nm_wp_vars.headerPlaceholderSetHeight) return console.log("NM: Header placeholder height NOT set"), !1;
+            if (0 == ps_wp_vars.headerPlaceholderSetHeight) return console.log("ps: Header placeholder height NOT set"), !1;
             if (!this.$body.hasClass(this.classHeaderFixed)) {
                 var a = Math.round(this.$header.innerHeight()),
                     c = Math.round(parseInt(this.$headerPlaceholder.css("height")));
@@ -4317,7 +4317,7 @@ var nm_wp_vars = {
                 try {
                     g.addListener(d), k.addListener(f);
                 } catch (h) {
-                    console.error("NM: Media query matching - " + h);
+                    console.error("ps: Media query matching - " + h);
                 }
             }
             if (a.isTouch)
@@ -4328,13 +4328,13 @@ var nm_wp_vars = {
                     }, 500);
                 });
             a.headerIsFixed &&
-                (a.$window.on("scroll.nmheader", function () {
+                (a.$window.on("scroll.psheader", function () {
                     a.headerToggleFixedClass(a);
                 }),
                 a.$window.trigger("scroll"));
-            d = b("#nm-top-menu").children(".menu-item");
-            f = b("#nm-main-menu-ul").children(".menu-item");
-            g = b("#nm-right-menu-ul").children(".menu-item");
+            d = b("#ps-top-menu").children(".menu-item");
+            f = b("#ps-main-menu-ul").children(".menu-item");
+            g = b("#ps-right-menu-ul").children(".menu-item");
             b()
                 .add(d)
                 .add(f)
@@ -4349,7 +4349,7 @@ var nm_wp_vars = {
                         m -= p + q;
                         0 > m && h.css("left", m - 33 + "px");
                         e.hasClass("bridge-height-set") ||
-                            ((m = e.closest("nav")), m.length && (e.addClass("bridge-height-set"), (e = Math.ceil((m.height() - e.height()) / 2)), h.children(".nm-sub-menu-bridge").css("height", e + 1 + "px")));
+                            ((m = e.closest("nav")), m.length && (e.addClass("bridge-height-set"), (e = Math.ceil((m.height() - e.height()) / 2)), h.children(".ps-sub-menu-bridge").css("height", e + 1 + "px")));
                     }
                 })
                 .on("mouseleave", function () {
@@ -4357,7 +4357,7 @@ var nm_wp_vars = {
                     e.length && e.css("left", "");
                 });
             if (!a.isShop)
-                a.$header.on("click.nmHeaderShopRedirect", ".shop-redirect-link > a", function (e) {
+                a.$header.on("click.psHeaderShopRedirect", ".shop-redirect-link > a", function (e) {
                     e.preventDefault();
                     e = b(this).attr("href");
                     window.location.href = e + "#shop";
@@ -4366,32 +4366,32 @@ var nm_wp_vars = {
                 e.preventDefault();
                 a.$body.hasClass(a.classMobileMenuOpen) ? a.mobileMenuClose(!0) : a.mobileMenuOpen();
             });
-            a.$mobileMenuLi.on("click.nmMenuToggle", function (e) {
+            a.$mobileMenuLi.on("click.psMenuToggle", function (e) {
                 e.stopPropagation();
-                a.$document.trigger("nm_mobile_menu_toggle", [e, this]);
+                a.$document.trigger("ps_mobile_menu_toggle", [e, this]);
                 var h = b(this),
                     m = h.children("ul");
-                !m.length || (h.hasClass("nm-notoggle") && !b(e.target).hasClass("nm-menu-toggle")) || (e.preventDefault(), h.toggleClass("active"), m.toggleClass("open"));
+                !m.length || (h.hasClass("ps-notoggle") && !b(e.target).hasClass("ps-menu-toggle")) || (e.preventDefault(), h.toggleClass("active"), m.toggleClass("open"));
             });
             a.$widgetPanel.length && a.widgetPanelBind();
             if (a.$pageIncludes.hasClass("login-popup")) {
                 var l = !1;
-                b("#nm-menu-account-btn").on("click.nmLoginShowPopup", function (e) {
+                b("#ps-menu-account-btn").on("click.psLoginShowPopup", function (e) {
                     e.preventDefault();
-                    b("#nm-login-wrap").children(".login").css("display", "");
+                    b("#ps-login-wrap").children(".login").css("display", "");
                     b.magnificPopup.open({
-                        mainClass: "nm-login-popup nm-mfp-fade-in",
+                        mainClass: "ps-login-popup ps-mfp-fade-in",
                         alignTop: !0,
-                        closeMarkup: '<a class="mfp-close nm-font nm-font-close2"></a>',
+                        closeMarkup: '<a class="mfp-close ps-font ps-font-close2"></a>',
                         removalDelay: 180,
-                        items: { src: "#nm-login-popup-wrap", type: "inline" },
+                        items: { src: "#ps-login-popup-wrap", type: "inline" },
                         callbacks: {
                             open: function () {
                                 l ||
                                     ((l = !0),
                                     b.ajax({
                                         type: "POST",
-                                        url: wc_add_to_cart_params.wc_ajax_url.toString().replace("%%endpoint%%", "nm_ajax_login_get_nonces"),
+                                        url: wc_add_to_cart_params.wc_ajax_url.toString().replace("%%endpoint%%", "ps_ajax_login_get_nonces"),
                                         dataType: "json",
                                         cache: !1,
                                         headers: { "cache-control": "no-cache" },
@@ -4402,8 +4402,8 @@ var nm_wp_vars = {
                                     }));
                             },
                             close: function () {
-                                b("#nm-login-wrap").addClass("inline fade-in slide-up");
-                                b("#nm-register-wrap").removeClass("inline fade-in slide-up");
+                                b("#ps-login-wrap").addClass("inline fade-in slide-up");
+                                b("#ps-register-wrap").removeClass("inline fade-in slide-up");
                             },
                         },
                     });
@@ -4412,38 +4412,38 @@ var nm_wp_vars = {
             a.$pageOverlay.on("click", function () {
                 a.pageOverlayHide();
             });
-            if ("1" == nm_wp_vars.shopAttsSwapImage)
-                if (a.isTouch && "1" == nm_wp_vars.shopAttsSwapImageOnTouch)
-                    a.$body.on("click", ".nm-shop-loop-attribute-link", function (e) {
+            if ("1" == ps_wp_vars.shopAttsSwapImage)
+                if (a.isTouch && "1" == ps_wp_vars.shopAttsSwapImageOnTouch)
+                    a.$body.on("click", ".ps-shop-loop-attribute-link", function (e) {
                         var h = b(this);
                         h.hasClass("selected") || (e.preventDefault(), h.parent().children(".selected").removeClass("selected"), h.addClass("selected"), a.shopAttsSwapImage(h));
                     });
                 else
-                    a.$body.on("mouseenter", ".nm-shop-loop-attribute-link", function () {
+                    a.$body.on("mouseenter", ".ps-shop-loop-attribute-link", function () {
                         var e = b(this);
                         a.shopAttsSwapImage(e);
                     }),
-                        "1" == nm_wp_vars.shopAttsSwapImageRevert &&
-                            (a.$body.on("mouseleave.nmShopImageRevert", ".nm-shop-loop-attributes", function () {
+                        "1" == ps_wp_vars.shopAttsSwapImageRevert &&
+                            (a.$body.on("mouseleave.psShopImageRevert", ".ps-shop-loop-attributes", function () {
                                 var e = b(this);
                                 a.shopAttsSwapImageRevert(e, !1);
                             }),
                             a.$window.on("beforeunload", function (e) {
-                                a.$body.off("mouseleave.nmShopImageRevert");
+                                a.$body.off("mouseleave.psShopImageRevert");
                             }));
         },
         pageOverlayShow: function () {
             this.$body.hasClass(this.classMobileMenuOpen)
-                ? this.$pageOverlay.addClass("nm-mobile-menu-overlay")
+                ? this.$pageOverlay.addClass("ps-mobile-menu-overlay")
                 : this.$body.hasClass(this.classSearchOpen)
-                ? this.$pageOverlay.addClass("nm-header-search-overlay")
-                : this.$body.hasClass(this.classWidgetPanelOpen) && this.$pageOverlay.addClass("nm-widget-panel-overlay");
+                ? this.$pageOverlay.addClass("ps-header-search-overlay")
+                : this.$body.hasClass(this.classWidgetPanelOpen) && this.$pageOverlay.addClass("ps-widget-panel-overlay");
             this.$pageOverlay.addClass("show");
         },
         pageOverlayHide: function () {
             var a = this;
             a.$body.hasClass(a.classMobileMenuOpen) ? a.mobileMenuClose(!1) : a.$body.hasClass(a.classSearchOpen) ? a.headerSearchTogglePanel() : a.$body.hasClass(a.classWidgetPanelOpen) && a.widgetPanelHide();
-            a.$body.trigger("nm_page_overlay_hide");
+            a.$body.trigger("ps_page_overlay_hide");
             a.$pageOverlay.addClass("fade-out");
             setTimeout(function () {
                 a.$pageOverlay.removeClass();
@@ -4463,15 +4463,15 @@ var nm_wp_vars = {
             this.$body.removeClass(this.classMobileMenuOpen);
             a && this.pageOverlayHide();
             setTimeout(function () {
-                b("#nm-mobile-menu-main-ul").children(".active").removeClass("active").children("ul").removeClass("open");
-                b("#nm-mobile-menu-secondary-ul").children(".active").removeClass("active").children("ul").removeClass("open");
+                b("#ps-mobile-menu-main-ul").children(".active").removeClass("active").children("ul").removeClass("open");
+                b("#ps-mobile-menu-secondary-ul").children(".active").removeClass("active").children("ul").removeClass("open");
             }, 250);
         },
         widgetPanelPrep: function () {
             var a = this;
             a.widgetPanelCartHideScrollbar();
             a.cartPanelAjax = null;
-            "0" != nm_wp_vars.cartPanelQtyArrows &&
+            "0" != ps_wp_vars.cartPanelQtyArrows &&
                 (a.quantityInputsBindButtons(a.$widgetPanel),
                 a.$widgetPanel.on("blur", "input.qty", function () {
                     var c = b(this),
@@ -4482,7 +4482,7 @@ var nm_wp_vars = {
                     d > f && (c.val(f), (d = f));
                     0 < d && a.widgetPanelCartUpdate(c);
                 }),
-                a.$document.on("nm_qty_change", function (c, d) {
+                a.$document.on("ps_qty_change", function (c, d) {
                     a.$body.hasClass(a.classWidgetPanelOpen) && a.widgetPanelCartUpdate(b(d));
                 }));
         },
@@ -4495,7 +4495,7 @@ var nm_wp_vars = {
                 a.$widgetPanel.on("touchmove", function (c) {
                     c.stopPropagation();
                 }));
-            b("#nm-menu-cart-btn, #nm-mobile-menu-cart-btn").on("click.nmAtc", function (c) {
+            b("#ps-menu-cart-btn, #ps-mobile-menu-cart-btn").on("click.psAtc", function (c) {
                 c.preventDefault();
                 if (a.$body.hasClass(a.classMobileMenuOpen)) {
                     var d = b(this);
@@ -4505,18 +4505,18 @@ var nm_wp_vars = {
                     }, a.panelsAnimSpeed);
                 } else a.widgetPanelShow();
             });
-            b("#nm-widget-panel-close").on("click.nmWidgetPanelClose", function (c) {
+            b("#ps-widget-panel-close").on("click.psWidgetPanelClose", function (c) {
                 c.preventDefault();
                 a.pageOverlayHide();
             });
-            a.$widgetPanel.on("click.nmCartPanelClose", "#nm-cart-panel-continue", function (c) {
+            a.$widgetPanel.on("click.psCartPanelClose", "#ps-cart-panel-continue", function (c) {
                 c.preventDefault();
                 a.pageOverlayHide();
             });
         },
         widgetPanelShow: function (a, c) {
             var d = this;
-            c && "0" == nm_wp_vars.cartPanelShowOnAtc
+            c && "0" == ps_wp_vars.cartPanelShowOnAtc
                 ? d.shopShowNotices()
                 : (a && d.widgetPanelCartShowLoader(),
                   d.$body.addClass("widget-panel-opening " + d.classWidgetPanelOpen),
@@ -4534,26 +4534,26 @@ var nm_wp_vars = {
             }, a.widgetPanelAnimSpeed);
         },
         widgetPanelCartShowLoader: function () {
-            b("#nm-cart-panel-loader").addClass("show");
+            b("#ps-cart-panel-loader").addClass("show");
         },
         widgetPanelCartHideLoader: function () {
-            b("#nm-cart-panel-loader").addClass("fade-out");
+            b("#ps-cart-panel-loader").addClass("fade-out");
             setTimeout(function () {
-                b("#nm-cart-panel-loader").removeClass("fade-out show");
+                b("#ps-cart-panel-loader").removeClass("fade-out show");
             }, 200);
         },
         widgetPanelCartHideScrollbar: function () {
-            this.$widgetPanel.children(".nm-widget-panel-inner").css("marginRight", "-" + this.scrollbarWidth + "px");
+            this.$widgetPanel.children(".ps-widget-panel-inner").css("marginRight", "-" + this.scrollbarWidth + "px");
         },
         widgetPanelCartUpdate: function (a) {
             var c = this;
             c.cartPanelAjax && c.cartPanelAjax.abort();
             a.closest("li").addClass("loading");
-            var d = b("#nm-cart-panel-form"),
+            var d = b("#ps-cart-panel-form"),
                 f = d.find("#_wpnonce"),
                 g = {};
             f.length
-                ? ((g.nm_cart_panel_update = "1"),
+                ? ((g.ps_cart_panel_update = "1"),
                   (g.update_cart = "1"),
                   (g[a.attr("name")] = a.val()),
                   (g._wpnonce = f.val()),
@@ -4563,8 +4563,8 @@ var nm_wp_vars = {
                       data: g,
                       dataType: "html",
                       error: function (k, l, e) {
-                          console.log("NM: AJAX error - widgetPanelCartUpdate() - " + e);
-                          b("#nm-cart-panel .cart_list").children(".loading").removeClass("loading");
+                          console.log("ps: AJAX error - widgetPanelCartUpdate() - " + e);
+                          b("#ps-cart-panel .cart_list").children(".loading").removeClass("loading");
                       },
                       success: function (k) {
                           b(document.body).trigger("wc_fragment_refresh").trigger("updated_cart_totals");
@@ -4573,7 +4573,7 @@ var nm_wp_vars = {
                           c.cartPanelAjax = null;
                       },
                   })))
-                : console.log("NM - widgetPanelCartUpdate: Nonce field not found.");
+                : console.log("ps - widgetPanelCartUpdate: Nonce field not found.");
         },
         shopReplaceFragments: function (a) {
             var c;
@@ -4589,20 +4589,20 @@ var nm_wp_vars = {
                 var d = a.find(".attachment-woocommerce_thumbnail").first();
                 d.attr("src", c);
                 d.attr("srcset", c);
-                a.addClass("nm-attr-image-set");
+                a.addClass("ps-attr-image-set");
             } else this.shopAttsSwapImageRevert(a, !0);
         },
         shopAttsSwapImageRevert: function (a, c) {
             var d = a.closest(".product");
-            if (d.hasClass("nm-attr-image-set")) {
-                var f = c ? a.closest(".nm-shop-loop-attributes") : a,
+            if (d.hasClass("ps-attr-image-set")) {
+                var f = c ? a.closest(".ps-shop-loop-attributes") : a,
                     g = f.data("thumb-src");
                 if (g) {
                     var k = f.closest(".product").find(".attachment-woocommerce_thumbnail").first();
                     f = f.data("thumb-srcset");
                     k.attr("src", g);
                     k.attr("srcset", f);
-                    d.removeClass("nm-attr-image-set");
+                    d.removeClass("ps-attr-image-set");
                 }
             }
         },
@@ -4614,19 +4614,19 @@ var nm_wp_vars = {
                     f && "{}" !== f && ((d = parseInt(d) + 1), sessionStorage.setItem("pageCacheViews", d));
                 } else sessionStorage.setItem("pageCacheViews", 1);
             });
-            if (!b("#nm-shop-browse-wrap").length) return !1;
-            var a = SnapbackCache({ bodySelector: "#nm-shop-browse-wrap" }),
-                c = nm_wp_vars.infloadSnapbackCacheLinks;
-            this.$body.on("click", "#nm-shop-browse-wrap a", function () {
+            if (!b("#ps-shop-browse-wrap").length) return !1;
+            var a = SnapbackCache({ bodySelector: "#ps-shop-browse-wrap" }),
+                c = ps_wp_vars.infloadSnapbackCacheLinks;
+            this.$body.on("click", "#ps-shop-browse-wrap a", function () {
                 var d = b(this);
-                b("#nm-shop-browse-wrap").hasClass("products-loaded") && d.is(c) && a.cachePage();
+                b("#ps-shop-browse-wrap").hasClass("products-loaded") && d.is(c) && a.cachePage();
             });
         },
         quantityInputsBindButtons: function (a) {
             var c = this,
                 d,
-                f = nm_wp_vars.cartPanelQtyThrottleTimeout;
-            a.off("click.nmQty").on("click.nmQty", ".nm-qty-plus, .nm-qty-minus", function () {
+                f = ps_wp_vars.cartPanelQtyThrottleTimeout;
+            a.off("click.psQty").on("click.psQty", ".ps-qty-plus, .ps-qty-minus", function () {
                 d && clearTimeout(d);
                 var g = b(this),
                     k = g.closest(".quantity").find(".qty"),
@@ -4638,7 +4638,7 @@ var nm_wp_vars = {
                 if ("" === e || "NaN" === e) e = "";
                 if ("" === h || "NaN" === h) h = 0;
                 if ("any" === m || "" === m || void 0 === m || "NaN" === parseFloat(m)) m = 1;
-                g.hasClass("nm-qty-plus")
+                g.hasClass("ps-qty-plus")
                     ? e && (e == l || l > e)
                         ? k.val(e)
                         : (k.val(l + parseFloat(m)),
@@ -4656,14 +4656,14 @@ var nm_wp_vars = {
         },
         quantityInputsTriggerEvents: function (a) {
             a.trigger("change");
-            this.$document.trigger("nm_qty_change", a);
+            this.$document.trigger("ps_qty_change", a);
         },
 
         initPageIncludes: function () {
             var a = this;
             if (a.$pageIncludes.hasClass("row-full-height")) {
                 var c = function () {
-                    var g = b(".nm-row-full-height:first");
+                    var g = b(".ps-row-full-height:first");
                     if (g.length) {
                         var k = a.$window.height(),
                             l = g.offset().top,
@@ -4673,48 +4673,48 @@ var nm_wp_vars = {
                 };
                 c();
                 var d = null;
-                a.$window.on("resize.nmRow", function () {
+                a.$window.on("resize.psRow", function () {
                     d && clearTimeout(d);
                     d = setTimeout(function () {
                         c();
                     }, 250);
                 });
             }
-            (a.isTouch && 0 == nm_wp_vars.rowVideoOnTouch) ||
+            (a.isTouch && 0 == ps_wp_vars.rowVideoOnTouch) ||
                 !a.$pageIncludes.hasClass("video-background") ||
-                b(".nm-row-video").each(function () {
+                b(".ps-row-video").each(function () {
                     var g = b(this),
                         k = g.data("video-url");
                     k && (k = vcExtractYoutubeId(k)) && insertYoutubeVideoAsBackground(g, k);
                 });
             a.$window.on("load", function () {
-                a.$pageIncludes.hasClass("banner") && a.elementBanner(b(".nm-banner"));
+                a.$pageIncludes.hasClass("banner") && a.elementBanner(b(".ps-banner"));
                 a.$pageIncludes.hasClass("banner-slider") &&
-                    b(".nm-banner-slider").each(function () {
+                    b(".ps-banner-slider").each(function () {
                         a.elementBannerSlider(b(this));
                     });
                 a.$pageIncludes.hasClass("product-slider") &&
-                    b(".nm-product-slider").each(function () {
+                    b(".ps-product-slider").each(function () {
                         a.elementProductSlider(b(this));
                     });
                 a.$pageIncludes.hasClass("product-reviews-slider") &&
-                    b(".nm-product-reviews-slider").each(function () {
+                    b(".ps-product-reviews-slider").each(function () {
                         a.elementProductReviewsSlider(b(this));
                     });
                 a.$pageIncludes.hasClass("post-slider") &&
-                    b(".nm-post-slider").each(function () {
+                    b(".ps-post-slider").each(function () {
                         a.elementPostSlider(b(this));
                     });
-                "0" != nm_wp_vars.wpGalleryPopup &&
+                "0" != ps_wp_vars.wpGalleryPopup &&
                     a.$pageIncludes.hasClass("wp-gallery") &&
                     b(".gallery").each(function () {
                         b(this).magnificPopup({
-                            mainClass: "nm-wp-gallery-popup nm-mfp-fade-in",
-                            closeMarkup: '<a class="mfp-close nm-font nm-font-close2"></a>',
+                            mainClass: "ps-wp-gallery-popup ps-mfp-fade-in",
+                            closeMarkup: '<a class="mfp-close ps-font ps-font-close2"></a>',
                             removalDelay: 180,
                             delegate: ".gallery-icon > a",
                             type: "image",
-                            gallery: { enabled: !0, arrowMarkup: '<a title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir% nm-font nm-font-angle-right"></a>' },
+                            gallery: { enabled: !0, arrowMarkup: '<a title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir% ps-font ps-font-angle-right"></a>' },
                             image: {
                                 titleSrc: function (g) {
                                     return g.el.parent().next(".wp-caption-text").text() || "";
@@ -4726,7 +4726,7 @@ var nm_wp_vars = {
             });
             if (a.$pageIncludes.hasClass("product_categories")) {
                 a = this;
-                var f = b(".nm-product-categories");
+                var f = b(".ps-product-categories");
                 a.elementProductCategoriesBindLinks(f);
                 if (a.$pageIncludes.hasClass("product_categories_masonry"))
                     a.$window.on("load", function () {
@@ -4734,11 +4734,11 @@ var nm_wp_vars = {
                     });
             }
             a.$pageIncludes.hasClass("lightbox") &&
-                b(".nm-lightbox").each(function () {
+                b(".ps-lightbox").each(function () {
                     a.elementLightbox(b(this));
                 });
             a.$pageIncludes.hasClass("elementor-tabs") &&
-                b(".nm-elementor-tabs").each(function () {
+                b(".ps-elementor-tabs").each(function () {
                     a.elementElementorTabs(b(this));
                 });
         },
@@ -4746,7 +4746,7 @@ var nm_wp_vars = {
         elementBanner: function (a) {
             var c = this;
             if (c.isShop && c.filtersEnableAjax)
-                a.find(".nm-banner-shop-link").on("click.nmBannerAjax", function (d) {
+                a.find(".ps-banner-shop-link").on("click.psBannerAjax", function (d) {
                     d.preventDefault();
                     b(this).attr("href") && c.shopExternalGetPage(b(this).attr("href"));
                 });
@@ -4756,19 +4756,19 @@ var nm_wp_vars = {
                 a.slideIndex = c;
                 a.$bannerContent && a.$bannerContent.removeClass(a.bannerAnimation);
                 var d = a.isSlick ? a.find(".slick-track .slick-active") : a.children(".flickity-viewport").children(".flickity-slider").children(".is-selected");
-                a.$bannerContent = d.find(".nm-banner-text-inner");
+                a.$bannerContent = d.find(".ps-banner-text-inner");
                 a.$bannerContent.length && ((a.bannerAnimation = a.$bannerContent.data("animate")), a.$bannerContent.addClass(a.bannerAnimation));
             }
         },
         elementBannerSlider: function (a) {
             var c = this;
             a.isSlick = a.hasClass("plugin-slick") ? !0 : !1;
-            a.children().wrap('<div class="nm-banner-slide"></div>');
+            a.children().wrap('<div class="ps-banner-slide"></div>');
             if (a.isSlick) {
                 var d = {
                     arrows: !1,
-                    prevArrow: '<a class="slick-prev"><i class="nm-font nm-font-angle-thin-left"></i></a>',
-                    nextArrow: '<a class="slick-next"><i class="nm-font nm-font-angle-thin-right"></i></a>',
+                    prevArrow: '<a class="slick-prev"><i class="ps-font ps-font-angle-thin-left"></i></a>',
+                    nextArrow: '<a class="slick-next"><i class="ps-font ps-font-angle-thin-right"></i></a>',
                     dots: !1,
                     edgeFriction: 0,
                     infinite: !1,
@@ -4808,7 +4808,7 @@ var nm_wp_vars = {
                 });
                 a.trigger("select.flickity");
                 if (a.hasClass("has-text-parallax")) {
-                    var g = a.find(".nm-banner-text"),
+                    var g = a.find(".ps-banner-text"),
                         k;
                     a.on("scroll.flickity", function (l, e) {
                         f.slides.forEach(function (h, m) {
@@ -4820,20 +4820,20 @@ var nm_wp_vars = {
             }
         },
         elementBannerSliderToggleLayoutClass: function (a, c) {
-            var d = c.children(".nm-banner");
+            var d = c.children(".ps-banner");
             d.hasClass("alt-mobile-layout")
-                ? "absolute" != d.children(".nm-banner-content").css("position")
+                ? "absolute" != d.children(".ps-banner-content").css("position")
                     ? a.addClass("alt-mobile-layout-showing")
                     : a.removeClass("alt-mobile-layout-showing")
                 : a.removeClass("alt-mobile-layout-showing");
         },
         elementProductSlider: function (a) {
-            var c = a.find(".nm-products:first"),
+            var c = a.find(".ps-products:first"),
                 d = {
                     adaptiveHeight: !0,
                     arrows: !1,
-                    prevArrow: '<a class="slick-prev"><i class="nm-font nm-font-angle-thin-left"></i></a>',
-                    nextArrow: '<a class="slick-next"><i class="nm-font nm-font-angle-thin-right"></i></a>',
+                    prevArrow: '<a class="slick-prev"><i class="ps-font ps-font-angle-thin-left"></i></a>',
+                    nextArrow: '<a class="slick-next"><i class="ps-font ps-font-angle-thin-right"></i></a>',
                     dots: !0,
                     edgeFriction: 0,
                     infinite: !1,
@@ -4860,12 +4860,12 @@ var nm_wp_vars = {
             c.slick(d);
         },
         elementProductReviewsSlider: function (a) {
-            var c = a.find(".nm-product-reviews-ul"),
+            var c = a.find(".ps-product-reviews-ul"),
                 d = {
                     adaptiveHeight: !0,
                     arrows: !1,
-                    prevArrow: '<a class="slick-prev"><i class="nm-font nm-font-angle-thin-left"></i></a>',
-                    nextArrow: '<a class="slick-next"><i class="nm-font nm-font-angle-thin-right"></i></a>',
+                    prevArrow: '<a class="slick-prev"><i class="ps-font ps-font-angle-thin-left"></i></a>',
+                    nextArrow: '<a class="slick-next"><i class="ps-font ps-font-angle-thin-right"></i></a>',
                     dots: !0,
                     edgeFriction: 0,
                     infinite: !1,
@@ -4915,8 +4915,8 @@ var nm_wp_vars = {
             var c = {
                 adaptiveHeight: !0,
                 arrows: !1,
-                prevArrow: '<a class="slick-prev"><i class="nm-font nm-font-angle-thin-left"></i></a>',
-                nextArrow: '<a class="slick-next"><i class="nm-font nm-font-angle-thin-right"></i></a>',
+                prevArrow: '<a class="slick-prev"><i class="ps-font ps-font-angle-thin-left"></i></a>',
+                nextArrow: '<a class="slick-next"><i class="ps-font ps-font-angle-thin-right"></i></a>',
                 dots: !0,
                 edgeFriction: 0,
                 infinite: !1,
@@ -4940,7 +4940,7 @@ var nm_wp_vars = {
                 var c = a.children(".woocommerce").children("ul");
                 c.masonry({ itemSelector: ".product-category", gutter: 0, initLayout: !1 });
                 c.masonry("on", "layoutComplete", function () {
-                    c.closest(".nm-product-categories").removeClass("nm-loader");
+                    c.closest(".ps-product-categories").removeClass("ps-loader");
                     c.addClass("show");
                 });
                 c.masonry();
@@ -4960,70 +4960,70 @@ var nm_wp_vars = {
                 c.stopPropagation();
                 c = b(this);
                 var d = c.data("mfp-type"),
-                    f = { mainClass: "nm-wp-gallery-popup nm-mfp-zoom-in", closeMarkup: '<a class="mfp-close nm-font nm-font-close2"></a>', removalDelay: 180, type: d, closeBtnInside: !1, image: { titleSrc: "data-mfp-title" } };
+                    f = { mainClass: "ps-wp-gallery-popup ps-mfp-zoom-in", closeMarkup: '<a class="mfp-close ps-font ps-font-close2"></a>', removalDelay: 180, type: d, closeBtnInside: !1, image: { titleSrc: "data-mfp-title" } };
                 f.closeOnContentClick = "inline" == d ? !1 : !0;
                 c.magnificPopup(f).magnificPopup("open");
             });
         },
         elementElementorTabs: function (a) {
             var c, d;
-            a.children(".nm-elementor-tabs-wrapper")
-                .children(".nm-elementor-tab")
+            a.children(".ps-elementor-tabs-wrapper")
+                .children(".ps-elementor-tab")
                 .on("click", function (f) {
                     f.preventDefault();
                     c = b(this);
-                    c.hasClass("nm-elementor-active") ||
-                        ((d = c.closest(".nm-elementor-tabs-wrapper").children(".nm-elementor-active")),
-                        d.removeClass("nm-elementor-active"),
-                        c.addClass("nm-elementor-active"),
-                        b("#" + d.attr("aria-controls")).removeClass("nm-elementor-active"),
-                        b("#" + c.attr("aria-controls")).addClass("nm-elementor-active"));
+                    c.hasClass("ps-elementor-active") ||
+                        ((d = c.closest(".ps-elementor-tabs-wrapper").children(".ps-elementor-active")),
+                        d.removeClass("ps-elementor-active"),
+                        c.addClass("ps-elementor-active"),
+                        b("#" + d.attr("aria-controls")).removeClass("ps-elementor-active"),
+                        b("#" + c.attr("aria-controls")).addClass("ps-elementor-active"));
                 });
         },
     };
-    b.nmTheme = n.prototype;
-    b.nmReady = function (a) {
+    b.psTheme = n.prototype;
+    b.psReady = function (a) {
         "complete" === document.readyState || "interactive" === document.readyState ? setTimeout(a, 1) : document.addEventListener("DOMContentLoaded", a);
     };
-    b.nmReady(function () {
-        b.nmThemeInstance = new n();
+    b.psReady(function () {
+        b.psThemeInstance = new n();
     });
 })(jQuery);
 
 (function (b) {
-    b.extend(b.nmTheme, {
+    b.extend(b.psTheme, {
         blog_init: function () {
             var a = this;
-            a.$blogList = b("#nm-blog-list");
-            b("#nm-blog-categories-toggle-link").on("click", function (e) {
+            a.$blogList = b("#ps-blog-list");
+            b("#ps-blog-categories-toggle-link").on("click", function (e) {
                 e.preventDefault();
                 var d = b(this);
-                b("#nm-blog-categories-list").slideToggle(200, function () {
+                b("#ps-blog-categories-list").slideToggle(200, function () {
                     var f = b(this);
                     d.toggleClass("active");
                     d.hasClass("active") || f.css("display", "");
                 });
             });
             a.$window.on("load", function () {
-                a.$pageIncludes.hasClass("blog-masonry") && b("#nm-blog-list").masonry({ itemSelector: ".post", gutter: 0, hiddenStyle: {}, visibleStyle: {} });
+                a.$pageIncludes.hasClass("blog-masonry") && b("#ps-blog-list").masonry({ itemSelector: ".post", gutter: 0, hiddenStyle: {}, visibleStyle: {} });
             });
             a.$blogList && a.blogInfLoadBind();
         },
         blogInfLoadBind: function () {
             var a = this;
-            a.$blogPaginationWrap = b("#nm-blog-pagination");
-            a.$blogInfLoadWrap = b("#nm-blog-infinite-load");
+            a.$blogPaginationWrap = b("#ps-blog-pagination");
+            a.$blogInfLoadWrap = b("#ps-blog-infinite-load");
             if (a.$blogInfLoadWrap.length)
                 if (((a.$blogInfLoadLink = a.$blogInfLoadWrap.children("a")), (a.infloadScroll = a.$blogPaginationWrap.hasClass("scroll-mode") ? !0 : !1), a.infloadScroll)) {
                     a.infscrollLock = !1;
                     var e,
                         d = Math.round(a.$document.height() - a.$blogPaginationWrap.offset().top),
-                        f = parseInt(nm_wp_vars.infloadBufferBlog),
+                        f = parseInt(ps_wp_vars.infloadBufferBlog),
                         c = null;
-                    a.$window.off("resize.nmBlogInfLoad").on("resize.nmBlogInfLoad", function () {
+                    a.$window.off("resize.psBlogInfLoad").on("resize.psBlogInfLoad", function () {
                         c && clearTimeout(c);
                         c = setTimeout(function () {
-                            var g = b("#nm-blog-infinite-load");
+                            var g = b("#ps-blog-infinite-load");
                             g.length && (d = Math.round(a.$document.height() - g.offset().top));
                         }, 100);
                     });
@@ -5041,9 +5041,9 @@ var nm_wp_vars = {
             if (a.blogAjax) return !1;
             var e = a.$blogInfLoadLink.attr("href");
             e
-                ? (a.$blogPaginationWrap.addClass("loading nm-loader"),
+                ? (a.$blogPaginationWrap.addClass("loading ps-loader"),
                   (e = a.updateUrlParameter(e, "blog_load", "1")),
-                  a.$document.trigger("nm_blog_infload_before", e),
+                  a.$document.trigger("ps_blog_infload_before", e),
                   (a.blogAjax = b.ajax({
                       url: e,
                       dataType: "html",
@@ -5051,12 +5051,12 @@ var nm_wp_vars = {
                       headers: { "cache-control": "no-cache" },
                       method: "GET",
                       error: function (d, f, c) {
-                          a.$blogPaginationWrap.removeClass("loading nm-loader");
-                          console.log("NM: AJAX error - blogInfLoadGetPage() - " + c);
+                          a.$blogPaginationWrap.removeClass("loading ps-loader");
+                          console.log("ps: AJAX error - blogInfLoadGetPage() - " + c);
                       },
                       success: function (d) {
                           var f = b("<div>" + d + "</div>"),
-                              c = f.find("#nm-blog-list").children();
+                              c = f.find("#ps-blog-list").children();
                           c.addClass("fade-out");
                           if (a.$pageIncludes.hasClass("blog-masonry")) {
                               d = c.find("img");
@@ -5065,7 +5065,7 @@ var nm_wp_vars = {
                               g.on("load", function () {
                                   a.$blogList.masonry("appended", c);
                                   a.blogInfLoadPrepButton(f);
-                                  a.$document.trigger("nm_blog_infload_after", c);
+                                  a.$document.trigger("ps_blog_infload_after", c);
                                   setTimeout(function () {
                                       c.removeClass("fade-out");
                                       a.infloadScroll && a.$window.trigger("scroll");
@@ -5076,7 +5076,7 @@ var nm_wp_vars = {
                           } else
                               a.$blogList.append(c),
                                   a.blogInfLoadPrepButton(f),
-                                  a.$document.trigger("nm_blog_infload_after", c),
+                                  a.$document.trigger("ps_blog_infload_after", c),
                                   setTimeout(function () {
                                       c.removeClass("fade-out");
                                       a.infloadScroll && a.$window.trigger("scroll");
@@ -5087,19 +5087,19 @@ var nm_wp_vars = {
                 : a.infloadScroll && (a.infscrollLock = !0);
         },
         blogInfLoadPrepButton: function (a) {
-            (a = a.find("#nm-blog-infinite-load").children("a").attr("href"))
-                ? (this.$blogInfLoadLink.attr("href", a), this.$blogPaginationWrap.removeClass("loading nm-loader"))
+            (a = a.find("#ps-blog-infinite-load").children("a").attr("href"))
+                ? (this.$blogInfLoadLink.attr("href", a), this.$blogPaginationWrap.removeClass("loading ps-loader"))
                 : (this.$blogPaginationWrap.addClass("all-pages-loaded"), this.infloadScroll && (this.infscrollLock = !0));
         },
     });
-    b.nmThemeExtensions.blog = b.nmTheme.blog_init;
+    b.psThemeExtensions.blog = b.psTheme.blog_init;
 })(jQuery);
 
 (function (b) {
-    b.nmReady(function () {
+    b.psReady(function () {
         function d() {
-            var a = b("#nm-login-wrap"),
-                c = b("#nm-register-wrap");
+            var a = b("#ps-login-wrap"),
+                c = b("#ps-register-wrap");
             a.removeClass("fade-in");
             setTimeout(function () {
                 c.addClass("inline fade-in slide-up");
@@ -5107,19 +5107,19 @@ var nm_wp_vars = {
             }, 250);
         }
         function e() {
-            var a = b("#nm-login-wrap"),
-                c = b("#nm-register-wrap");
+            var a = b("#ps-login-wrap"),
+                c = b("#ps-register-wrap");
             c.removeClass("fade-in");
             setTimeout(function () {
                 a.addClass("inline fade-in slide-up");
                 c.removeClass("inline slide-up");
             }, 250);
         }
-        b("#nm-show-register-button").on("click", function (a) {
+        b("#ps-show-register-button").on("click", function (a) {
             a.preventDefault();
             d();
         });
-        b("#nm-show-login-button").on("click", function (a) {
+        b("#ps-show-login-button").on("click", function (a) {
             a.preventDefault();
             e();
         });
@@ -5157,7 +5157,7 @@ var nm_wp_vars = {
             this._rootElement.hasAttribute("aria-hidden") ? (this._savedAriaHidden = this._rootElement.getAttribute("aria-hidden")) : (this._savedAriaHidden = null),
             this._rootElement.setAttribute("aria-hidden", "true"),
             this._makeSubtreeUnfocusable(this._rootElement),
-            (this._observer = new MutationObserver(this._onMutation.bind(this))),
+            (this._observer = new MutationObserver(this._opsutation.bind(this))),
             this._observer.observe(this._rootElement, { attributes: !0, childList: !0, subtree: !0 });
     }
     function h(e, t) {
@@ -5205,7 +5205,7 @@ var nm_wp_vars = {
                     this._observer.disconnect(),
                         this._rootElement && (null !== this._savedAriaHidden ? this._rootElement.setAttribute("aria-hidden", this._savedAriaHidden) : this._rootElement.removeAttribute("aria-hidden")),
                         this._managedNodes.forEach(function (e) {
-                            this._unmanageNode(e.node);
+                            this._upsanageNode(e.node);
                         }, this),
                         (this._observer = null),
                         (this._rootElement = null),
@@ -5248,17 +5248,17 @@ var nm_wp_vars = {
                 },
             },
             {
-                key: "_unmanageNode",
+                key: "_upsanageNode",
                 value: function (e) {
                     (e = this._inertManager.deregister(e, this)) && this._managedNodes.delete(e);
                 },
             },
             {
-                key: "_unmanageSubtree",
+                key: "_upsanageSubtree",
                 value: function (e) {
                     var t = this;
                     c(e, function (e) {
-                        return t._unmanageNode(e);
+                        return t._upsanageNode(e);
                     });
                 },
             },
@@ -5273,7 +5273,7 @@ var nm_wp_vars = {
                 },
             },
             {
-                key: "_onMutation",
+                key: "_opsutation",
                 value: function (t, n) {
                     t.forEach(function (t) {
                         var n,
@@ -5283,7 +5283,7 @@ var nm_wp_vars = {
                                   this._makeSubtreeUnfocusable(e);
                               }, this),
                               e.call(t.removedNodes).forEach(function (e) {
-                                  this._unmanageSubtree(e);
+                                  this._upsanageSubtree(e);
                               }, this))
                             : "attributes" === t.type &&
                               ("tabindex" === t.attributeName
@@ -6880,7 +6880,7 @@ try {
                                   x.now(_(t));
                               })
                             : S && !d
-                            ? ((S = (d = new S()).port2), (d.port1.onmessage = E), (i = f(S.postMessage, S)))
+                            ? ((S = (d = new S()).port2), (d.port1.opsessage = E), (i = f(S.postMessage, S)))
                             : u.addEventListener && a(u.postMessage) && !u.importScripts && o && "file:" !== o.protocol && !s(e)
                             ? ((i = e), u.addEventListener("message", E, !1))
                             : (i =
@@ -7081,39 +7081,39 @@ try {
 })(jQuery);
 
 (function (c) {
-    c.extend(c.nmTheme, {
+    c.extend(c.psTheme, {
         search_init: function () {
-            this.headerSearch = "0" !== nm_wp_vars.shopSearchHeader ? !0 : !1;
+            this.headerSearch = "0" !== ps_wp_vars.shopSearchHeader ? !0 : !1;
             this.searchCurrentQuery = "";
             this.headerSearch &&
-                ("0" !== nm_wp_vars.searchSuggestions
-                    ? ((this.instantSuggestions = "0" !== nm_wp_vars.searchSuggestionsInstant ? !0 : !1) && this.instantSuggestionsLoad(),
+                ("0" !== ps_wp_vars.searchSuggestions
+                    ? ((this.instantSuggestions = "0" !== ps_wp_vars.searchSuggestionsInstant ? !0 : !1) && this.instantSuggestionsLoad(),
                       (this.suggestions = !0),
                       (this.suggestionsAjax = null),
                       (this.suggestionsCacheEnabled = !0),
                       (this.suggestionsCache = {}),
-                      (this.suggestionsMaxResults = nm_wp_vars.searchSuggestionsMax))
+                      (this.suggestionsMaxResults = ps_wp_vars.searchSuggestionsMax))
                     : (this.suggestions = !1),
-                (this.$searchPanel = c("#nm-header-search")),
+                (this.$searchPanel = c("#ps-header-search")),
                 this.$searchPanel.css("margin-right", "-" + this.scrollbarWidth + "px"),
-                (this.$searchBtn = c("#nm-menu-search-btn")),
-                (this.$searchInput = c("#nm-header-search-input")),
-                (this.$searchNotice = c("#nm-header-search-notice")),
+                (this.$searchBtn = c("#ps-menu-search-btn")),
+                (this.$searchInput = c("#ps-header-search-input")),
+                (this.$searchNotice = c("#ps-header-search-notice")),
                 this.headerSearchBind());
-            this.shopSearch = "0" !== nm_wp_vars.shopSearch ? !0 : !1;
+            this.shopSearch = "0" !== ps_wp_vars.shopSearch ? !0 : !1;
             this.isShop &&
                 this.shopSearch &&
-                ((this.$searchBtn = c("#nm-shop-search-btn")),
-                (this.$searchPanel = c("#nm-shop-search")),
-                (this.$searchInput = c("#nm-shop-search-input")),
-                (this.$searchNotice = c("#nm-shop-search-notice")),
+                ((this.$searchBtn = c("#ps-shop-search-btn")),
+                (this.$searchPanel = c("#ps-shop-search")),
+                (this.$searchInput = c("#ps-shop-search-input")),
+                (this.$searchNotice = c("#ps-shop-search-notice")),
                 (this.searchAjax = null),
                 (this.currentSearch = ""),
                 this.shopSearchBind());
         },
         searchValidateInput: function (a, b) {
             var d = a.replace(/ /g, "");
-            return b || this.searchCurrentQuery != d ? (0 < d.length && a.length > nm_wp_vars.shopSearchMinChar - 1 ? ((this.searchCurrentQuery = d), "valid") : "invalid") : "unchanged";
+            return b || this.searchCurrentQuery != d ? (0 < d.length && a.length > ps_wp_vars.shopSearchMinChar - 1 ? ((this.searchCurrentQuery = d), "valid") : "invalid") : "unchanged";
         },
         searchShowNotice: function () {
             this.$searchNotice.addClass("show");
@@ -7127,7 +7127,7 @@ try {
                 b.preventDefault();
                 a.headerSearchTogglePanel();
             });
-            c("#nm-header-search-close").on("click", function (b) {
+            c("#ps-header-search-close").on("click", function (b) {
                 b.preventDefault();
                 a.headerSearchTogglePanel();
             });
@@ -7150,10 +7150,10 @@ try {
             var a = this;
             a.$body.toggleClass(a.classSearchOpen);
             a.$body.hasClass(a.classSearchOpen)
-                ? (a.pageOverlayShow(), c("#nm-header-search-input").trigger("focus"))
+                ? (a.pageOverlayShow(), c("#ps-header-search-input").trigger("focus"))
                 : (a.pageOverlayHide(),
                   setTimeout(function () {
-                      c("#nm-header-search-input").val("");
+                      c("#ps-header-search-input").val("");
                       a.suggestions && a.suggestionsHide();
                   }, a.panelsAnimSpeed + 150));
             a.searchHideNotice();
@@ -7162,17 +7162,17 @@ try {
             a = a.val();
             "valid" === this.searchValidateInput(a, !0) &&
                 (this.searchHideNotice(),
-                this.suggestions && (c("#nm-header-search-form").addClass("nm-loader"), c(".nm-header-search-wrap").addClass("redirecting")),
-                (a = nm_wp_vars.shopSearchUrl.toString().replace("%%nmsearchkey%%", encodeURIComponent(a))),
+                this.suggestions && (c("#ps-header-search-form").addClass("ps-loader"), c(".ps-header-search-wrap").addClass("redirecting")),
+                (a = ps_wp_vars.shopSearchUrl.toString().replace("%%pssearchkey%%", encodeURIComponent(a))),
                 (window.location.href = a));
         },
         shopSearchBind: function () {
             var a = this;
-            c("#nm-shop-search-close").on("click", function (b) {
+            c("#ps-shop-search-close").on("click", function (b) {
                 b.preventDefault();
                 a.$searchBtn.trigger("click");
             });
-            c("#nm-shop-search-input")
+            c("#ps-shop-search-input")
                 .on("input", function () {
                     var b = a.searchValidateInput(c(this).val());
                     "valid" === b ? a.searchShowNotice() : "invalid" === b && a.searchHideNotice();
@@ -7185,13 +7185,13 @@ try {
                     "13" == (b.keyCode ? b.keyCode : b.which) &&
                         (b.preventDefault(),
                         "valid" === a.searchValidateInput(e, !0) && a.currentSearch !== e
-                            ? d.hasClass("nm-mobile-menu-search")
+                            ? d.hasClass("ps-mobile-menu-search")
                                 ? (a.pageOverlayHide(),
                                   setTimeout(function () {
-                                      c("#nm-mobile-menu-shop-search-input").val("");
+                                      c("#ps-mobile-menu-shop-search-input").val("");
                                       a.shopSearchAjaxSearch(e);
                                   }, a.panelsAnimSpeed))
-                                : ("0" != nm_wp_vars.shopSearchAutoClose ? a.$searchBtn.trigger("click") : a.searchHideNotice(),
+                                : ("0" != ps_wp_vars.shopSearchAutoClose ? a.$searchBtn.trigger("click") : a.searchHideNotice(),
                                   setTimeout(function () {
                                       a.shopSearchAjaxSearch(e);
                                   }, a.filterPanelSlideSpeed))
@@ -7200,7 +7200,7 @@ try {
         },
         shopSearchTogglePanel: function () {
             var a = this,
-                b = c("#nm-shop-search-input");
+                b = c("#ps-shop-search-input");
             a.$searchPanel.slideToggle(200, function () {
                 a.$searchPanel.toggleClass("fade-in");
                 a.$searchPanel.hasClass("fade-in") ? b.trigger("focus") : b.val("");
@@ -7211,17 +7211,17 @@ try {
         shopSearchAjaxSearch: function (a) {
             var b = this;
             b.$searchInput.blur();
-            "popup" == b.shopSidebarLayout && "0" !== nm_wp_vars.shopFiltersPopupAutoClose && b.shopFiltersPopupHide();
+            "popup" == b.shopSidebarLayout && "0" !== ps_wp_vars.shopFiltersPopupAutoClose && b.shopFiltersPopupHide();
             b.shopShowLoader();
             b.currentSearch = a;
-            a = nm_wp_vars.searchUrl.toString().replace("%%nmsearchkey%%", encodeURIComponent(a));
+            a = ps_wp_vars.searchUrl.toString().replace("%%pssearchkey%%", encodeURIComponent(a));
             b.searchAjax = c.ajax({
                 url: a,
                 data: { shop_load: "search", post_type: "product", shop_filters_layout: b.shopSidebarLayout },
                 dataType: "html",
                 method: "GET",
                 error: function (d, e, f) {
-                    console.log("NM: AJAX error - shopSearchAjaxSearch() - " + f);
+                    console.log("ps: AJAX error - shopSearchAjaxSearch() - " + f);
                     b.shopHideLoader();
                     b.searchAjax = null;
                 },
@@ -7236,15 +7236,15 @@ try {
             if (b.instantSuggestions) b.instantSuggestionsGet(a);
             else {
                 b.suggestionsAjax && b.suggestionsAjax.abort();
-                var d = c("#nm-header-search-form"),
-                    e = c("#nm-search-suggestions"),
+                var d = c("#ps-header-search-form"),
+                    e = c("#ps-search-suggestions"),
                     f = b.suggestionsEscapeQuery(a);
                 b.suggestionsCacheEnabled && b.suggestionsCache[f]
                     ? b.suggestionsShow(b.suggestionsCache[f], null, e)
-                    : (d.addClass("nm-loader"),
-                      e.children(".nm-search-suggestions-inner").children().length && e.addClass("doing-search"),
-                      (f = "undefined" !== typeof wc_add_to_cart_params ? wc_add_to_cart_params.wc_ajax_url : nm_wp_vars.woocommerceAjaxUrl),
-                      (f = f.toString().replace("%%endpoint%%", "nm_shop_search")),
+                    : (d.addClass("ps-loader"),
+                      e.children(".ps-search-suggestions-inner").children().length && e.addClass("doing-search"),
+                      (f = "undefined" !== typeof wc_add_to_cart_params ? wc_add_to_cart_params.wc_ajax_url : ps_wp_vars.woocommerceAjaxUrl),
+                      (f = f.toString().replace("%%endpoint%%", "ps_shop_search")),
                       (b.suggestionsAjax = c.ajax({
                           type: "POST",
                           url: f,
@@ -7255,7 +7255,7 @@ try {
                               b.suggestionsShow(g, null, e);
                           },
                           complete: function () {
-                              d.removeClass("nm-loader");
+                              d.removeClass("ps-loader");
                               b.suggestionsAjax = null;
                           },
                       })));
@@ -7269,34 +7269,34 @@ try {
             this.suggestionsCache[d] = b;
         },
         suggestionsShow: function (a, b, d) {
-            var e = c("#nm-search-suggestions-product-list");
+            var e = c("#ps-search-suggestions-product-list");
             e.html(a);
             d.removeClass("doing-search");
             d.addClass("show");
             b = b ? b : e.children().length;
             a = 0 == b ? "no-results" : b == this.suggestionsMaxResults ? "press-enter" : "has-results";
-            c("#nm-search-suggestions-notice")
+            c("#ps-search-suggestions-notice")
                 .removeClass()
                 .addClass("show " + a);
         },
         suggestionsHide: function () {
             this.suggestionsAjax && this.suggestionsAjax.abort();
-            c("#nm-search-suggestions-product-list").html("");
-            c("#nm-search-suggestions").removeClass();
-            c("#nm-search-suggestions-notice").removeClass();
+            c("#ps-search-suggestions-product-list").html("");
+            c("#ps-search-suggestions").removeClass();
+            c("#ps-search-suggestions-notice").removeClass();
             this.searchCurrentQuery = "";
         },
         instantSuggestionsLoad: function () {
             var a = this;
             a.productDataJSON = null;
-            var b = "undefined" !== typeof wc_add_to_cart_params ? wc_add_to_cart_params.wc_ajax_url : nm_wp_vars.woocommerceAjaxUrl;
-            b = b.toString().replace("%%endpoint%%", "nm_suggestions_product_data");
+            var b = "undefined" !== typeof wc_add_to_cart_params ? wc_add_to_cart_params.wc_ajax_url : ps_wp_vars.woocommerceAjaxUrl;
+            b = b.toString().replace("%%endpoint%%", "ps_suggestions_product_data");
             c.ajax({
                 type: "post",
                 url: b,
                 dataType: "json",
                 error: function (d, e, f) {
-                    console.log("NM: AJAX error - instantSuggestionsLoad() - " + f);
+                    console.log("ps: AJAX error - instantSuggestionsLoad() - " + f);
                 },
                 success: function (d) {
                     a.productDataJSON = d;
@@ -7331,11 +7331,11 @@ try {
             var b = "";
             if (0 < a.length) {
                 for (var d = 0; d < a.length; d++) b += a[d].product_html;
-                this.suggestionsShow(b, a.length, c("#nm-search-suggestions"));
-            } else this.suggestionsShow("", 0, c("#nm-search-suggestions"));
+                this.suggestionsShow(b, a.length, c("#ps-search-suggestions"));
+            } else this.suggestionsShow("", 0, c("#ps-search-suggestions"));
         },
     });
-    c.nmThemeExtensions.search = c.nmTheme.search_init;
+    c.psThemeExtensions.search = c.psTheme.search_init;
 })(jQuery);
 
 
@@ -7370,7 +7370,7 @@ try {
 
 
 (function (b) {
-    b.extend(b.nmTheme, {
+    b.extend(b.psTheme, {
         shop_init: function () {
             var a = this;
             a.shopSelectConfig = {
@@ -7390,16 +7390,16 @@ try {
             };
             if (a.isShop) {
                 a.shopAjax = !1;
-                a.scrollOffsetDesktop = parseInt(nm_wp_vars.shopScrollOffset);
-                a.scrollOffsetTablet = parseInt(nm_wp_vars.shopScrollOffsetTablet);
-                a.scrollOffsetMobile = parseInt(nm_wp_vars.shopScrollOffsetMobile);
+                a.scrollOffsetDesktop = parseInt(ps_wp_vars.shopScrollOffset);
+                a.scrollOffsetTablet = parseInt(ps_wp_vars.shopScrollOffsetTablet);
+                a.scrollOffsetMobile = parseInt(ps_wp_vars.shopScrollOffsetMobile);
                 a.infloadScroll = !1;
                 a.categoryClicked = !1;
                 a.shopLoaderSpeed = 300;
                 a.shopScrollSpeed = 410;
-                a.$shopBrowseWrap = b("#nm-shop-browse-wrap");
-                a.imageLazyLoading = "0" != nm_wp_vars.shopImageLazyLoad ? !0 : !1;
-                a.filtersEnableAjax = "0" != nm_wp_vars.shopFiltersAjax ? (a.isTouch && "1" != nm_wp_vars.shopFiltersAjax ? !1 : !0) : !1;
+                a.$shopBrowseWrap = b("#ps-shop-browse-wrap");
+                a.imageLazyLoading = "0" != ps_wp_vars.shopImageLazyLoad ? !0 : !1;
+                a.filtersEnableAjax = "0" != ps_wp_vars.shopFiltersAjax ? (a.isTouch && "1" != ps_wp_vars.shopFiltersAjax ? !1 : !0) : !1;
                 a.shopSetScrollOffset();
                 a.shopSetMinHeight();
                 var d = null;
@@ -7420,21 +7420,21 @@ try {
                         a.$shopWrap.addClass("images-show");
                     }, 50);
                 if (a.filtersEnableAjax)
-                    a.$window.on("popstate.nmshop", function (c) {
-                        c.originalEvent.state && c.originalEvent.state.nmShop && a.shopGetPage(window.location.href, !0);
+                    a.$window.on("popstate.psshop", function (c) {
+                        c.originalEvent.state && c.originalEvent.state.psShop && a.shopGetPage(window.location.href, !0);
                     });
-                b("#nm-main-menu-ul")
+                b("#ps-main-menu-ul")
                     .children(".shop-link")
                     .find("> a")
                     .on("click", function (c) {
                         c.preventDefault();
                         a.shopScrollToTop();
                     });
-                a.$shopWrap.on("click.nmShopFiltersReset", "#nm-shop-filters-reset", function (c) {
+                a.$shopWrap.on("click.psShopFiltersReset", "#ps-shop-filters-reset", function (c) {
                     c.preventDefault();
                     a.shopFiltersReset(this);
                 });
-                a.$shopWrap.on("click.nmShopSearchTaxonomyReset", "#nm-shop-search-taxonomy-reset", function (c) {
+                a.$shopWrap.on("click.psShopSearchTaxonomyReset", "#ps-shop-search-taxonomy-reset", function (c) {
                     c.preventDefault();
                     a.shopSearchTaxonomyReset(this);
                 });
@@ -7444,18 +7444,18 @@ try {
             });
             "undefined" !== typeof wc_add_to_cart_params && "yes" !== wc_add_to_cart_params.cart_redirect_after_add
                 ? (a.$body.on("adding_to_cart", function (c, e, f) {
-                      a.$widgetPanel.length ? a.quickviewIsOpen() || a.widgetPanelShow(!0, !0) : (a.$pageOverlay.addClass("nm-loader"), a.pageOverlayShow());
+                      a.$widgetPanel.length ? a.quickviewIsOpen() || a.widgetPanelShow(!0, !0) : (a.$pageOverlay.addClass("ps-loader"), a.pageOverlayShow());
                   }),
                   a.$body.on("added_to_cart", function (c, e, f) {
-                      a.$widgetPanel.length ? a.quickviewIsOpen() || a.widgetPanelCartHideLoader() : (a.pageOverlayHide(), a.$pageOverlay.removeClass("nm-loader"));
+                      a.$widgetPanel.length ? a.quickviewIsOpen() || a.widgetPanelCartHideLoader() : (a.pageOverlayHide(), a.$pageOverlay.removeClass("ps-loader"));
                   }))
                 : a.$document.off("click", ".add_to_cart_button");
             a.shopLoadExtension();
         },
         shopLoadExtension: function () {
-            b.nmThemeExtensions.add_to_cart && b.nmThemeExtensions.add_to_cart.call(this);
-            this.isShop && (b.nmThemeExtensions.infload && b.nmThemeExtensions.infload.call(this), b.nmThemeExtensions.filters && b.nmThemeExtensions.filters.call(this));
-            this.$pageIncludes.hasClass("quickview") && b.nmThemeExtensions.quickview && b.nmThemeExtensions.quickview.call(this);
+            b.psThemeExtensions.add_to_cart && b.psThemeExtensions.add_to_cart.call(this);
+            this.isShop && (b.psThemeExtensions.infload && b.psThemeExtensions.infload.call(this), b.psThemeExtensions.filters && b.psThemeExtensions.filters.call(this));
+            this.$pageIncludes.hasClass("quickview") && b.psThemeExtensions.quickview && b.psThemeExtensions.quickview.call(this);
         },
         shopUrlHashScroll: function () {
             "#shop" === window.location.hash && this.shopScrollToTop(!0);
@@ -7476,36 +7476,36 @@ try {
             this.scrollOffset = 863 < a ? (this.$header.hasClass("static-on-scroll") ? this.$header.outerHeight() : this.scrollOffsetDesktop) : 383 < a ? this.scrollOffsetTablet : this.scrollOffsetMobile;
         },
         shopSetMinHeight: function () {
-            var a = b("#nm-footer").outerHeight(!0);
+            var a = b("#ps-footer").outerHeight(!0);
             this.$shopWrap.css("min-height", this.$window.height() - (a + this.scrollOffset) + "px");
         },
         shopScrollToTop: function (a, d) {
             var c = 0,
-                e = 399 < this.$window.width() ? Math.round(this.$shopWrap.offset().top - this.scrollOffset) : Math.round(b("#nm-shop-products").offset().top - 24 - this.scrollOffset);
+                e = 399 < this.$window.width() ? Math.round(this.$shopWrap.offset().top - this.scrollOffset) : Math.round(b("#ps-shop-products").offset().top - 24 - this.scrollOffset);
             if (50 > Math.abs(e - this.$html.scrollTop())) return c;
             a && this.shopSetMinHeight();
             d ? b("html, body").scrollTop(e) : ((c = this.shopScrollSpeed), b("html, body").animate({ scrollTop: e }, this.shopScrollSpeed));
             return c;
         },
         shopShowNotices: function () {
-            this.$body.addClass("nm-woocommerce-message-show");
-            this.isShop && "0" != nm_wp_vars.cartPanelHideOnAtcScroll && this.shopScrollToTop();
+            this.$body.addClass("ps-woocommerce-message-show");
+            this.isShop && "0" != ps_wp_vars.cartPanelHideOnAtcScroll && this.shopScrollToTop();
         },
         shopRemoveNotices: function () {
-            b("#nm-shop-notices-wrap").empty();
+            b("#ps-shop-notices-wrap").empty();
         },
         shopShowLoader: function (a) {
-            var d = b("#nm-shop-products-overlay");
+            var d = b("#ps-shop-products-overlay");
             a && d.addClass("no-anim");
             d.addClass("show");
             this.$shopWrap.addClass("loading");
         },
         shopHideLoader: function (a) {
-            var d = b("#nm-shop-products-overlay");
+            var d = b("#ps-shop-products-overlay");
             a || d.removeClass("no-anim");
-            d.removeClass("nm-loader").addClass("fade-out");
+            d.removeClass("ps-loader").addClass("fade-out");
             setTimeout(function () {
-                d.removeClass("show fade-out").addClass("nm-loader");
+                d.removeClass("show fade-out").addClass("ps-loader");
             }, this.shopLoaderSpeed);
             this.infloadScroll && ((this.infscrollLock = !1), this.$window.trigger("scroll"));
             this.$shopWrap.removeClass("loading");
@@ -7517,7 +7517,7 @@ try {
         },
         shopSearchTaxonomyReset: function (a) {
             a = b(a);
-            a = a.closest(".nm-shop-results-bar").hasClass("is-search") ? (this.urlGetParameter("s") ? a.data("shop-url") : location.href.replace(location.search, "")) : a.data("shop-url");
+            a = a.closest(".ps-shop-results-bar").hasClass("is-search") ? (this.urlGetParameter("s") ? a.data("shop-url") : location.href.replace(location.search, "")) : a.data("shop-url");
             this.filtersEnableAjax ? this.shopGetPage(a) : (window.location.href = a);
         },
         singleProductVariationsInit: function (a) {
@@ -7526,16 +7526,16 @@ try {
                 e = a.children(".single_variation_wrap").children(".single_variation");
             if (d.shopCustomSelect) {
                 a = c.find("select");
-                for (var f, g = 0; g < a.length; g++) (f = a.eq(g)), f.parent().hasClass("nm-select-hidden") || f.selectOrDie(d.shopSelectConfig);
+                for (var f, g = 0; g < a.length; g++) (f = a.eq(g)), f.parent().hasClass("ps-select-hidden") || f.selectOrDie(d.shopSelectConfig);
             }
             var h = null;
-            c.find(".nm-variation-control")
+            c.find(".ps-variation-control")
                 .children("li")
                 .on("click", function () {
                     if (!h) {
                         var k = b(this),
                             l = k.parent(),
-                            m = l.parent().children(".nm-select-hidden").find("select"),
+                            m = l.parent().children(".ps-select-hidden").find("select"),
                             n = k.data("value");
                         k.hasClass("selected") ? (k.removeClass("selected"), m.val("").trigger("change")) : (l.children(".selected").removeClass("selected"), k.addClass("selected"), m.val(n).trigger("change"));
                         h = setTimeout(function () {
@@ -7558,8 +7558,8 @@ try {
                 .each(function () {
                     var d = b(this);
                     a.shopCustomSelect && d.selectOrDie("update");
-                    if (d.parent(".nm-select-hidden").length)
-                        for (var c = d.closest(".value").children(".nm-variation-control").children("li"), e, f, g, h = 0; h < c.length; h++)
+                    if (d.parent(".ps-select-hidden").length)
+                        for (var c = d.closest(".value").children(".ps-variation-control").children("li"), e, f, g, h = 0; h < c.length; h++)
                             (e = b(c[h])),
                                 (f = e.data("value")),
                                 (f = d.children('[value="' + f + '"]')),
@@ -7569,32 +7569,32 @@ try {
                 });
         },
         quickviewIsOpen: function () {
-            return b("#nm-quickview").is(":visible");
+            return b("#ps-quickview").is(":visible");
         },
     });
-    b.nmThemeExtensions.shop = b.nmTheme.shop_init;
+    b.psThemeExtensions.shop = b.psTheme.shop_init;
 })(jQuery);
 (function (f) {
-    f.extend(f.nmTheme, {
+    f.extend(f.psTheme, {
         infload_init: function () {
-            var a = this.$shopBrowseWrap.children(".nm-pagination");
-            a.length && a.hasClass("nm-infload") && this.shopInfLoadBind();
+            var a = this.$shopBrowseWrap.children(".ps-pagination");
+            a.length && a.hasClass("ps-infload") && this.shopInfLoadBind();
         },
         shopInfLoadBind: function () {
             var a = this,
-                d = a.$shopBrowseWrap.children(".nm-infload-controls");
+                d = a.$shopBrowseWrap.children(".ps-infload-controls");
             a.shopInfLoadBound = !0;
             a.infloadScroll = d.hasClass("scroll-mode") ? !0 : !1;
             if (a.infloadScroll) {
                 a.infscrollLock = !1;
                 var g,
                     c = Math.round(a.$document.height() - d.offset().top),
-                    h = parseInt(nm_wp_vars.infloadBuffer),
+                    h = parseInt(ps_wp_vars.infloadBuffer),
                     e = null;
-                a.$window.off("resize.nmInfLoad").on("resize.nmInfLoad", function () {
+                a.$window.off("resize.psInfLoad").on("resize.psInfLoad", function () {
                     e && clearTimeout(e);
                     e = setTimeout(function () {
-                        var b = a.$shopBrowseWrap.children(".nm-infload-controls");
+                        var b = a.$shopBrowseWrap.children(".ps-infload-controls");
                         b.length && (c = Math.round(a.$document.height() - b.offset().top));
                     }, 100);
                 });
@@ -7602,12 +7602,12 @@ try {
                     a.infscrollLock || ((g = 0 + a.$document.height() - a.$window.scrollTop() - a.$window.height()), g - h < c && a.shopInfLoadGetPage());
                 });
             } else
-                (d = f("#nm-shop-products")),
-                    d.on("click", ".nm-infload-btn", function (b) {
+                (d = f("#ps-shop-products")),
+                    d.on("click", ".ps-infload-btn", function (b) {
                         b.preventDefault();
                         a.shopInfLoadGetPage();
                     }),
-                    d.on("click", ".nm-infload-to-top", function (b) {
+                    d.on("click", ".ps-infload-to-top", function (b) {
                         b.preventDefault();
                         a.shopScrollToTop();
                     });
@@ -7617,14 +7617,14 @@ try {
             var a = this;
             if (a.shopAjax) return !1;
             a.shopRemoveNotices();
-            var d = a.$shopBrowseWrap.children(".nm-infload-link").find("a"),
-                g = a.$shopBrowseWrap.children(".nm-infload-controls"),
+            var d = a.$shopBrowseWrap.children(".ps-infload-link").find("a"),
+                g = a.$shopBrowseWrap.children(".ps-infload-controls"),
                 c = d.attr("href"),
                 h;
             c
                 ? ((c = a.updateUrlParameter(c, "shop_load", "products")),
-                  g.addClass("nm-loader"),
-                  a.$document.trigger("nm_infload_before", c),
+                  g.addClass("ps-loader"),
+                  a.$document.trigger("ps_infload_before", c),
                   (a.shopAjax = f.ajax({
                       url: c,
                       dataType: "html",
@@ -7632,41 +7632,41 @@ try {
                       headers: { "cache-control": "no-cache" },
                       method: "GET",
                       error: function (e, b, k) {
-                          console.log("NM: AJAX error - shopInfLoadGetPage() - " + k);
+                          console.log("ps: AJAX error - shopInfLoadGetPage() - " + k);
                       },
                       complete: function () {
-                          g.removeClass("nm-loader");
+                          g.removeClass("ps-loader");
                       },
                       success: function (e) {
                           e = f("<div>" + e + "</div>");
-                          var b = e.children(".nm-products").children("li");
+                          var b = e.children(".ps-products").children("li");
                           b.addClass("hide");
                           h = a.$document.scrollTop();
-                          a.$shopBrowseWrap.find(".nm-products:first").append(b);
-                          "0" != nm_wp_vars.infloadPreserveScrollPos && a.isChromium && a.$html.scrollTop(h);
+                          a.$shopBrowseWrap.find(".ps-products:first").append(b);
+                          "0" != ps_wp_vars.infloadPreserveScrollPos && a.isChromium && a.$html.scrollTop(h);
                           setTimeout(function () {
                               b.removeClass("hide");
                           }, 300);
                           a.$shopBrowseWrap.hasClass("products-loaded") || a.$shopBrowseWrap.addClass("products-loaded");
-                          (c = e.find(".nm-infload-link").children("a").attr("href"))
+                          (c = e.find(".ps-infload-link").children("a").attr("href"))
                               ? d.attr("href", c)
                               : (a.$shopBrowseWrap.addClass("all-products-loaded"), a.infloadScroll ? (a.infscrollLock = !0) : g.addClass("hide-btn"), d.removeAttr("href"));
                           a.shopAjax = !1;
                           a.infloadScroll && a.$window.trigger("scroll");
-                          a.$document.trigger("nm_infload_after", b);
+                          a.$document.trigger("ps_infload_after", b);
                       },
                   })))
                 : a.infloadScroll && (a.infscrollLock = !0);
         },
     });
-    f.nmThemeExtensions.infload = f.nmTheme.infload_init;
+    f.psThemeExtensions.infload = f.psTheme.infload_init;
 })(jQuery);
 (function (c) {
-    c.extend(c.nmTheme, {
+    c.extend(c.psTheme, {
         filters_init: function () {
-            this.$shopFilterMenu = c("#nm-shop-filter-menu");
-            this.$shopSidebarPopupBtn = c("#nm-shop-sidebar-popup-button");
-            this.shopSidebarLayout = c("#nm-shop-sidebar").data("sidebar-layout");
+            this.$shopFilterMenu = c("#ps-shop-filter-menu");
+            this.$shopSidebarPopupBtn = c("#ps-shop-sidebar-popup-button");
+            this.shopSidebarLayout = c("#ps-shop-sidebar").data("sidebar-layout");
             this.filterPanelSliding = !1;
             this.filterPanelSlideSpeed = 200;
             this.filterPanelHideWidth = 551;
@@ -7676,13 +7676,13 @@ try {
         shopFiltersBind: function () {
             var a = this;
             if (a.filtersEnableAjax)
-                a.$header.on("click.nmHeaderShopAjax", ".shop-ajax-link > a", function (b) {
+                a.$header.on("click.psHeaderShopAjax", ".shop-ajax-link > a", function (b) {
                     b.preventDefault();
                     var h = c(this),
                         g = h.parents(".menu-item").last();
                     g.addClass("no-hover");
                     a.shopFiltersSearchClose();
-                    c("#nm-shop-categories-wrap").find(".current-cat").removeClass("current-cat");
+                    c("#ps-shop-categories-wrap").find(".current-cat").removeClass("current-cat");
                     b = a.shopScrollToTop();
                     setTimeout(function () {
                         a.shopGetPage(h.attr("href"));
@@ -7707,19 +7707,19 @@ try {
                 }
             });
             if (a.filtersEnableAjax && a.$pageIncludes.hasClass("shop_categories"))
-                a.$shopWrap.on("click", "#nm-shop-categories-wrap a", function (b) {
+                a.$shopWrap.on("click", "#ps-shop-categories-wrap a", function (b) {
                     b.preventDefault();
                     b = c(this);
                     var h = b.parent("li");
                     a.shopFiltersSearchClose();
-                    c("#nm-shop-categories-wrap").find(".current-cat").removeClass("current-cat");
+                    c("#ps-shop-categories-wrap").find(".current-cat").removeClass("current-cat");
                     h.addClass("current-cat");
                     a.shopGetPage(b.attr("href"));
                 });
             if (a.$shopSidebarPopupBtn.length) {
-                a.$shopSidebarPopup = c("#nm-shop-sidebar-popup");
+                a.$shopSidebarPopup = c("#ps-shop-sidebar-popup");
                 var d = null;
-                a.$window.on("scroll.nmShopPopupBtn resize.nmShopPopupBtn", function () {
+                a.$window.on("scroll.psShopPopupBtn resize.psShopPopupBtn", function () {
                     d && clearTimeout(d);
                     d = setTimeout(function () {
                         a.$body.hasClass("shop-filters-popup-open") || a.shopFiltersPopupButtonToggle();
@@ -7728,27 +7728,27 @@ try {
                 a.$shopSidebarPopupBtn.on("click", function () {
                     a.shopFiltersPopupShow();
                 });
-                c("#nm-shop-sidebar-popup-reset-button").on("click", function (b) {
+                c("#ps-shop-sidebar-popup-reset-button").on("click", function (b) {
                     b.preventDefault();
                     a.shopFiltersPopupReset();
                 });
             }
             var f = a.isTouch ? !1 : !0,
                 e = !1;
-            a.$shopWrap.on("click", "#nm-shop-sidebar .nm-widget-title", function (b) {
+            a.$shopWrap.on("click", "#ps-shop-sidebar .ps-widget-title", function (b) {
                 b = c(this).closest("li");
-                if (b.hasClass("show")) f && b.children(".nm-shop-widget-col").last().css("height", ""), b.removeClass("show");
+                if (b.hasClass("show")) f && b.children(".ps-shop-widget-col").last().css("height", ""), b.removeClass("show");
                 else {
-                    var h = b.parent("#nm-shop-widgets-ul").children(".show");
+                    var h = b.parent("#ps-shop-widgets-ul").children(".show");
                     if (f) {
-                        var g = b.children(".nm-shop-widget-col").last(),
+                        var g = b.children(".ps-shop-widget-col").last(),
                             k = g.children().first().outerHeight(!0) + "px",
-                            l = h.children(".nm-shop-widget-col").last();
+                            l = h.children(".ps-shop-widget-col").last();
                         g.css("height", k);
                         l.css("height", "");
                         e ||
                             ((e = !0),
-                            a.$window.one("resize.nmShopWidget", function () {
+                            a.$window.one("resize.psShopWidget", function () {
                                 a.shopFiltersWidgetHideOpen();
                                 e = !1;
                             }));
@@ -7759,20 +7759,20 @@ try {
             });
             a.filtersEnableAjax &&
                 a.$pageIncludes.hasClass("shop_filters") &&
-                (a.$shopWrap.on("click", "#nm-shop-sidebar .nm_widget a", function (b) {
+                (a.$shopWrap.on("click", "#ps-shop-sidebar .ps_widget a", function (b) {
                     b.preventDefault();
                     a.shopGetPage(c(this).attr("href"));
                 }),
-                a.$shopWrap.on("click", "#nm-shop-sidebar .widget_product_categories a", function (b) {
+                a.$shopWrap.on("click", "#ps-shop-sidebar .widget_product_categories a", function (b) {
                     b.preventDefault();
                     a.shopGetPage(c(this).attr("href"));
                 }),
-                a.$shopWrap.on("click", "#nm-shop-sidebar .widget_layered_nav a", function (b) {
+                a.$shopWrap.on("click", "#ps-shop-sidebar .widget_layered_nav a", function (b) {
                     b.preventDefault();
                     a.shopGetPage(c(this).attr("href"));
                 }),
-                a.$document.on("nm_ajax_shop_update_content", function () {
-                    a.$shopWrap.on("change", "#nm-shop-sidebar select.woocommerce-widget-layered-nav-dropdown", function () {
+                a.$document.on("ps_ajax_shop_update_content", function () {
+                    a.$shopWrap.on("change", "#ps-shop-sidebar select.woocommerce-widget-layered-nav-dropdown", function () {
                         var b = c(this),
                             h = b.closest("form"),
                             g = b.val(),
@@ -7782,20 +7782,20 @@ try {
                         k.length && (k.val(g), b.attr("multiple") || h.submit());
                     });
                 }),
-                a.$shopWrap.on("click", "#nm-shop-sidebar .widget_layered_nav_filters a", function (b) {
+                a.$shopWrap.on("click", "#ps-shop-sidebar .widget_layered_nav_filters a", function (b) {
                     b.preventDefault();
                     a.shopGetPage(c(this).attr("href"));
                 }),
-                a.$shopWrap.on("click", "#nm-shop-sidebar .widget_product_tag_cloud a", function (b) {
+                a.$shopWrap.on("click", "#ps-shop-sidebar .widget_product_tag_cloud a", function (b) {
                     b.preventDefault();
                     a.shopGetPage(c(this).attr("href"), !1, !0);
                 }),
-                a.$shopWrap.on("click", "#nm-shop-sidebar .widget_rating_filter a", function (b) {
+                a.$shopWrap.on("click", "#ps-shop-sidebar .widget_rating_filter a", function (b) {
                     b.preventDefault();
                     a.shopGetPage(c(this).attr("href"));
                 }),
                 a.$body.on("price_slider_change", function (b, h, g) {
-                    b = c("#nm-shop-sidebar").find(".widget_price_filter").first().find("form");
+                    b = c("#ps-shop-sidebar").find(".widget_price_filter").first().find("form");
                     var k = parseInt(b.find("#min_price").attr("value")),
                         l = parseInt(b.find("#max_price").attr("value"));
                     if (k != h || l != g) (h = b.attr("action")), (g = b.serialize()), a.shopGetPage(h + "?" + g);
@@ -7803,7 +7803,7 @@ try {
         },
         shopFiltersCategoriesToggle: function () {
             var a = this,
-                d = c("#nm-shop-categories-wrap"),
+                d = c("#ps-shop-categories-wrap"),
                 f = d.is(":visible");
             f && d.removeClass("fade-in");
             d.slideToggle(a.filterPanelSlideSpeed, function () {
@@ -7812,11 +7812,11 @@ try {
             });
         },
         shopFiltersCategoriesReset: function () {
-            c("#nm-shop-categories-wrap").removeClass("fade-in force-show").css("display", "");
+            c("#ps-shop-categories-wrap").removeClass("fade-in force-show").css("display", "");
         },
         shopFiltersSidebarToggle: function () {
             var a = this,
-                d = c("#nm-shop-sidebar"),
+                d = c("#ps-shop-sidebar"),
                 f = d.is(":visible");
             f && d.removeClass("fade-in");
             d.slideToggle(a.filterPanelSlideSpeed, function () {
@@ -7825,12 +7825,12 @@ try {
             });
         },
         shopFiltersWidgetHideOpen: function () {
-            var a = c("#nm-shop-widgets-ul").children(".show");
-            a.length && a.find(".nm-widget-title").trigger("click");
+            var a = c("#ps-shop-widgets-ul").children(".show");
+            a.length && a.find(".ps-widget-title").trigger("click");
         },
         shopDefaultSidebarToggle: function () {
             var a = this,
-                d = c("#nm-shop-sidebar"),
+                d = c("#ps-shop-sidebar"),
                 f = d.is(":visible");
             f && d.removeClass("fade-in");
             d.slideToggle(a.filterPanelSlideSpeed, function () {
@@ -7888,13 +7888,13 @@ try {
         shopFiltersPopupReset: function () {
             var a = location.href.replace(location.search, "");
             this.shopGetPage(a);
-            "0" !== nm_wp_vars.shopFiltersPopupAutoClose && this.shopFiltersPopupHide();
+            "0" !== ps_wp_vars.shopFiltersPopupAutoClose && this.shopFiltersPopupHide();
         },
         shopExternalGetPage: function (a) {
             var d = this;
             if (a == window.location.href) d.shopScrollToTop();
             else {
-                c("#nm-shop-categories-wrap").find(".current-cat").removeClass("current-cat");
+                c("#ps-shop-categories-wrap").find(".current-cat").removeClass("current-cat");
                 var f = d.shopScrollToTop();
                 setTimeout(function () {
                     d.shopGetPage(a);
@@ -7906,7 +7906,7 @@ try {
             if (e.shopAjax) return !1;
             a &&
                 (e.shopRemoveNotices(),
-                "popup" == e.shopSidebarLayout && "0" !== nm_wp_vars.shopFiltersPopupAutoClose && e.shopFiltersPopupHide(),
+                "popup" == e.shopSidebarLayout && "0" !== ps_wp_vars.shopFiltersPopupAutoClose && e.shopFiltersPopupHide(),
                 e.$body.width() < e.filterPanelHideWidth ? (e.shopShowLoader(!0), (f = e.filterPanelSlideSpeed), (e.filterPanelSlideSpeed = 0), e.shopFiltersHideActivePanel(), (e.filterPanelSlideSpeed = f)) : e.shopShowLoader(),
                 (a = a.replace(/\/?(\?|#|$)/, "/$1")),
                 d || e.setPushState(a),
@@ -7918,7 +7918,7 @@ try {
                     headers: { "cache-control": "no-cache" },
                     method: "POST",
                     error: function (b, h, g) {
-                        console.log("NM: AJAX error - shopGetPage() - " + g);
+                        console.log("ps: AJAX error - shopGetPage() - " + g);
                         e.shopHideLoader();
                         e.shopAjax = !1;
                     },
@@ -7931,28 +7931,28 @@ try {
         shopUpdateContent: function (a) {
             var d = this;
             a = c("<div>" + a + "</div>");
-            if (nm_wp_vars.shopAjaxUpdateTitle) {
-                var f = a.find("#nm-wp-title").text();
+            if (ps_wp_vars.shopAjaxUpdateTitle) {
+                var f = a.find("#ps-wp-title").text();
                 f.length && (document.title = f);
             }
-            var e = a.find("#nm-body-class"),
-                b = a.find("#nm-shop-taxonomy-header"),
-                h = a.find(".nm-shop-taxonomy-heading");
-            f = a.find("#nm-shop-categories-wrap");
-            var g = a.find("#nm-shop-widgets-ul"),
-                k = a.find("#nm-shop-browse-wrap");
+            var e = a.find("#ps-body-class"),
+                b = a.find("#ps-shop-taxonomy-header"),
+                h = a.find(".ps-shop-taxonomy-heading");
+            f = a.find("#ps-shop-categories-wrap");
+            var g = a.find("#ps-shop-widgets-ul"),
+                k = a.find("#ps-shop-browse-wrap");
             e.hasClass("post-type-archive")
                 ? d.$body.removeClass("tax-product_cat tax-product_tag").addClass("post-type-archive post-type-archive-product")
                 : e.hasClass("tax-product_cat")
                 ? d.$body.removeClass("post-type-archive post-type-archive-product tax-product_tag").addClass("tax-product_cat")
                 : e.hasClass("tax-product_tag") && d.$body.removeClass("post-type-archive post-type-archive-product tax-product_cat").addClass("tax-product_tag");
-            b.length ? ((e = c("#nm-shop-taxonomy-header")), e.replaceWith(b), e.removeClass("hidden")) : c("#nm-shop-taxonomy-header").addClass("hidden");
-            h.length ? c(".nm-shop-taxonomy-heading").replaceWith(h) : c(".nm-shop-taxonomy-heading").addClass("hidden");
-            f.length && ((b = c("#nm-shop-categories-wrap")), b.hasClass("fade-in") && f.addClass("fade-in force-show"), b.replaceWith(f));
-            g.length && (c("#nm-shop-widgets-ul").replaceWith(g), d.shopFiltersInitPriceSlider());
+            b.length ? ((e = c("#ps-shop-taxonomy-header")), e.replaceWith(b), e.removeClass("hidden")) : c("#ps-shop-taxonomy-header").addClass("hidden");
+            h.length ? c(".ps-shop-taxonomy-heading").replaceWith(h) : c(".ps-shop-taxonomy-heading").addClass("hidden");
+            f.length && ((b = c("#ps-shop-categories-wrap")), b.hasClass("fade-in") && f.addClass("fade-in force-show"), b.replaceWith(f));
+            g.length && (c("#ps-shop-widgets-ul").replaceWith(g), d.shopFiltersInitPriceSlider());
             k.length && d.$shopBrowseWrap.replaceWith(k);
-            d.$document.trigger("nm_ajax_shop_update_content", a);
-            d.$shopBrowseWrap = c("#nm-shop-browse-wrap");
+            d.$document.trigger("ps_ajax_shop_update_content", a);
+            d.$shopBrowseWrap = c("#ps-shop-browse-wrap");
             "undefined" === typeof d.shopInfLoadBound || d.shopInfLoadBound || d.infload_init();
             a = d.shopScrollToTop();
             setTimeout(function () {
@@ -8014,42 +8014,42 @@ try {
             })();
         },
     });
-    c.nmThemeExtensions.filters = c.nmTheme.filters_init;
+    c.psThemeExtensions.filters = c.psTheme.filters_init;
 })(jQuery);
 jQuery(function (b) {
-    var c = b("#nm-shop");
+    var c = b("#ps-shop");
     if (c.length)
-        if (c.hasClass("nm-shop-sidebar-default")) {
-            var f = b.nmTheme;
+        if (c.hasClass("ps-shop-sidebar-default")) {
+            var f = b.psTheme;
             c = function () {
-                var a = b("#nm-shop-widgets-ul").find("a"),
+                var a = b("#ps-shop-widgets-ul").find("a"),
                     d = b("body").hasClass("preview-shop-list") ? "list" : "1";
                 for (i = 0; i < a.length; i++) {
                     var e = b(a[i]);
                     var h = f.updateUrlParameter(e.attr("href"), "shop_sidebar", d);
                     e.attr("href", h);
                 }
-                a = b("#nm-shop-filters-reset");
+                a = b("#ps-shop-filters-reset");
                 a.length && ((e = f.updateUrlParameter(location.href.replace(location.search, ""), "shop_sidebar", d)), a.attr("data-shop-override-url", e));
-                a = b("#nm-shop-search-taxonomy-reset");
+                a = b("#ps-shop-search-taxonomy-reset");
                 a.length && ((d = f.updateUrlParameter(a.data("shop-url"), "shop_sidebar", d)), a.data("shop-url", d));
             };
-            b(document).on("nm_ajax_shop_update_content", c);
+            b(document).on("ps_ajax_shop_update_content", c);
             c();
         } else
             b("body").hasClass("preview-category-menu-thumbs") &&
-                ((f = b.nmTheme),
+                ((f = b.psTheme),
                 (c = function () {
-                    var a = b("#nm-shop-categories").find("a");
+                    var a = b("#ps-shop-categories").find("a");
                     for (i = 0; i < a.length; i++) {
                         var d = b(a[i]);
                         var e = f.updateUrlParameter(d.attr("href"), "cat_center", "1");
                         d.attr("href", e);
                     }
                 }),
-                b(document).on("nm_ajax_shop_update_content", c),
+                b(document).on("ps_ajax_shop_update_content", c),
                 c());
-    var g = b("#nm-preview-cart-notice");
+    var g = b("#ps-preview-cart-notice");
     if ((c = g.length))
         try {
             c = window.self !== window.top;
@@ -8670,7 +8670,7 @@ jQuery(function (b) {
     };
 })(jQuery);
 (function (c) {
-    c.extend(c.nmTheme, {
+    c.extend(c.psTheme, {
         atc_init: function () {
             this.atcBind();
         },
@@ -8678,11 +8678,11 @@ jQuery(function (b) {
             var d = this;
             d.$body.on("click", ".single_add_to_cart_button", function (a) {
                 var b = c(this);
-                if (b.is(".disabled")) console.log("NM: Add-to-cart button disabled");
-                else if (b.hasClass("nm-simple-add-to-cart-button") || b.hasClass("nm-variable-add-to-cart-button"))
+                if (b.is(".disabled")) console.log("ps: Add-to-cart button disabled");
+                else if (b.hasClass("ps-simple-add-to-cart-button") || b.hasClass("ps-variable-add-to-cart-button"))
                     a.preventDefault(),
                         (d.quickviewOpen = d.quickviewIsOpen()),
-                        d.quickviewOpen && b.addClass("nm-loader nm-loader-light"),
+                        d.quickviewOpen && b.addClass("ps-loader ps-loader-light"),
                         b.attr("disabled", "disabled"),
                         (a = b.closest("form")),
                         a.length && ((a = { product_id: a.find("[name*='add-to-cart']").val(), product_variation_data: a.serialize() }), d.$body.trigger("adding_to_cart", [b, a]), d.atcAjaxSubmitForm(b, a));
@@ -8692,8 +8692,8 @@ jQuery(function (b) {
             var b = this;
             if (a.product_id) {
                 if ("undefined" !== typeof wc_add_to_cart_params) var e = wc_add_to_cart_params.wc_ajax_url;
-                else console.log('NM: "wc_add_to_cart_params" undefined - WooCommerce AJAX atc disabled'), (e = nm_wp_vars.woocommerceAjaxUrl);
-                e = e.toString().replace("wc-ajax=%%endpoint%%", "add-to-cart=" + a.product_id + "&nm-ajax-add-to-cart=1");
+                else console.log('ps: "wc_add_to_cart_params" undefined - WooCommerce AJAX atc disabled'), (e = ps_wp_vars.woocommerceAjaxUrl);
+                e = e.toString().replace("wc-ajax=%%endpoint%%", "add-to-cart=" + a.product_id + "&ps-ajax-add-to-cart=1");
                 c.ajax({
                     type: "POST",
                     url: e,
@@ -8702,13 +8702,13 @@ jQuery(function (b) {
                     cache: !1,
                     headers: { "cache-control": "no-cache" },
                     error: function (b, a, c) {
-                        console.log("NM: AJAX error - atcAjaxSubmitForm() - " + c);
+                        console.log("ps: AJAX error - atcAjaxSubmitForm() - " + c);
                     },
                     success: function (a) {
                         a = c("<div>" + a + "</div>");
-                        var f = a.find("#nm-shop-notices-wrap"),
+                        var f = a.find("#ps-shop-notices-wrap"),
                             e = f.find(".woocommerce-error").length ? !0 : !1;
-                        f = { ".nm-menu-cart-count": a.find(".nm-menu-cart-count").prop("outerHTML"), "#nm-shop-notices-wrap": f.prop("outerHTML"), "#nm-cart-panel": a.find("#nm-cart-panel").prop("outerHTML") };
+                        f = { ".ps-menu-cart-count": a.find(".ps-menu-cart-count").prop("outerHTML"), "#ps-shop-notices-wrap": f.prop("outerHTML"), "#ps-cart-panel": a.find("#ps-cart-panel").prop("outerHTML") };
                         b.shopReplaceFragments(f);
                         b.$body.trigger("added_to_cart", [f, ""]);
                         b.quickviewOpen
@@ -8722,16 +8722,16 @@ jQuery(function (b) {
                             : (d.removeAttr("disabled"),
                               e &&
                                   setTimeout(function () {
-                                      c("#nm-widget-panel-overlay").trigger("click");
+                                      c("#ps-widget-panel-overlay").trigger("click");
                                       b.isShop && b.shopScrollToTop();
                                   }, 500));
                         a.empty();
                     },
                 });
-            } else console.log("NM (Error): No product id found");
+            } else console.log("ps (Error): No product id found");
         },
     });
-    c.nmThemeExtensions.add_to_cart = c.nmTheme.atc_init;
+    c.psThemeExtensions.add_to_cart = c.psTheme.atc_init;
 })(jQuery);
 !(function ($, c, i, n) {
     var t = function (t) {
@@ -9100,38 +9100,38 @@ jQuery(function (b) {
         };
 })(jQuery, window, document);
 (function (b) {
-    b.extend(b.nmTheme, {
+    b.extend(b.psTheme, {
         quickview_init: function () {
             var a = this,
-                h = b("#nm-quickview"),
-                d = b('<div id="nm-quickview-overlay" class="mfp-bg nm-mfp-fade-in"></div>'),
+                h = b("#ps-quickview"),
+                d = b('<div id="ps-quickview-overlay" class="mfp-bg ps-mfp-fade-in"></div>'),
                 e;
-            if ("1" == nm_wp_vars.quickviewLinks.link)
-                a.$body.on("click", ".nm-quickview-btn", function (c) {
+            if ("1" == ps_wp_vars.quickviewLinks.link)
+                a.$body.on("click", ".ps-quickview-btn", function (c) {
                     c.preventDefault();
                     k(this);
                 });
-            if ("1" == nm_wp_vars.quickviewLinks.thumb)
-                a.$body.on("click", ".nm-shop-loop-thumbnail-link", function (c) {
+            if ("1" == ps_wp_vars.quickviewLinks.thumb)
+                a.$body.on("click", ".ps-shop-loop-thumbnail-link", function (c) {
                     c.preventDefault();
                     k(this);
                 });
-            if ("1" == nm_wp_vars.quickviewLinks.title)
-                a.$body.on("click", ".nm-shop-loop-title-link", function (c) {
+            if ("1" == ps_wp_vars.quickviewLinks.title)
+                a.$body.on("click", ".ps-shop-loop-title-link", function (c) {
                     c.preventDefault();
                     k(this);
                 });
             var k = function (c) {
                     c = b(c);
                     (e = (e = c.data("product-id")) ? e : c.closest(".product").data("product-id"))
-                        ? (a.$html.css("width", "auto"), d.appendTo(a.$body), d.addClass("show mfp-ready nm-loader"), n())
-                        : console.log("NM: Error - _qvClick() - No product ID found");
+                        ? (a.$html.css("width", "auto"), d.appendTo(a.$body), d.addClass("show mfp-ready ps-loader"), n())
+                        : console.log("ps: Error - _qvClick() - No product ID found");
                 },
                 n = function () {
                     var c = { product_id: e };
-                    if ("undefined" !== typeof wc_add_to_cart_params) var m = wc_add_to_cart_params.wc_ajax_url.toString().replace("%%endpoint%%", "nm_ajax_load_product");
-                    else (m = nm_wp_vars.ajaxUrl), (c.action = "nm_ajax_load_product");
-                    window.nm_quickview_get_product = b.ajax({
+                    if ("undefined" !== typeof wc_add_to_cart_params) var m = wc_add_to_cart_params.wc_ajax_url.toString().replace("%%endpoint%%", "ps_ajax_load_product");
+                    else (m = ps_wp_vars.ajaxUrl), (c.action = "ps_ajax_load_product");
+                    window.ps_quickview_get_product = b.ajax({
                         type: "POST",
                         url: m,
                         data: c,
@@ -9139,10 +9139,10 @@ jQuery(function (b) {
                         cache: !1,
                         headers: { "cache-control": "no-cache" },
                         beforeSend: function () {
-                            "object" === typeof window.nm_quickview_get_product && window.nm_quickview_get_product.abort();
+                            "object" === typeof window.ps_quickview_get_product && window.ps_quickview_get_product.abort();
                         },
                         error: function (f, l, g) {
-                            console.log("NM: AJAX error - _qvLoadProduct() - " + g);
+                            console.log("ps: AJAX error - _qvLoadProduct() - " + g);
                             a.$html.css("width", "");
                             d.removeClass("mfp-ready mfp-removing").remove();
                         },
@@ -9150,7 +9150,7 @@ jQuery(function (b) {
                             h.html(f);
                             var l = h.children("#product-" + e),
                                 g = l.find("form.cart");
-                            f = b("#nm-quickview-slider").find("img");
+                            f = b("#ps-quickview-slider").find("img");
                             var p = f.last();
                             f.removeAttr("loading");
                             p.one("load", function () {
@@ -9160,7 +9160,7 @@ jQuery(function (b) {
                                     g.on("woocommerce_variation_select_change", function () {
                                         a.qvHasSlider && a.$qvSlider.slick("slickGoTo", 0, !1);
                                     }));
-                                a.quantityInputsBindButtons(b("#nm-qv-product-summary"));
+                                a.quantityInputsBindButtons(b("#ps-qv-product-summary"));
                                 q();
                             });
                         },
@@ -9168,20 +9168,20 @@ jQuery(function (b) {
                 },
                 q = function () {
                     b.magnificPopup.open({
-                        mainClass: "nm-mfp-quickview nm-mfp-fade-in",
-                        closeMarkup: '<a class="mfp-close nm-font nm-font-close2"></a>',
+                        mainClass: "ps-mfp-quickview ps-mfp-fade-in",
+                        closeMarkup: '<a class="mfp-close ps-font ps-font-close2"></a>',
                         removalDelay: 180,
                         items: { src: h, type: "inline" },
                         callbacks: {
                             open: function () {
-                                d.removeClass("nm-loader");
+                                d.removeClass("ps-loader");
                                 a.qvHasSlider = !1;
-                                a.$qvSlider = b("#nm-quickview-slider");
+                                a.$qvSlider = b("#ps-quickview-slider");
                                 1 < a.$qvSlider.children().length &&
                                     ((a.qvHasSlider = !0),
                                     a.$qvSlider.slick({
-                                        prevArrow: '<a class="slick-prev"><i class="nm-font nm-font-angle-left"></i></a>',
-                                        nextArrow: '<a class="slick-next"><i class="nm-font nm-font-angle-right"></i></a>',
+                                        prevArrow: '<a class="slick-prev"><i class="ps-font ps-font-angle-left"></i></a>',
+                                        nextArrow: '<a class="slick-next"><i class="ps-font ps-font-angle-right"></i></a>',
                                         dots: !1,
                                         infinite: !1,
                                         speed: 350,
@@ -9189,7 +9189,7 @@ jQuery(function (b) {
                                 d.one("touchstart.qv", function () {
                                     b.magnificPopup.close();
                                 });
-                                a.$document.trigger("nm_ajax_quickview_open", e);
+                                a.$document.trigger("ps_ajax_quickview_open", e);
                             },
                             beforeClose: function () {
                                 d.addClass("mfp-removing");
@@ -9203,9 +9203,9 @@ jQuery(function (b) {
                 };
         },
     });
-    b.nmThemeExtensions.quickview = b.nmTheme.quickview_init;
+    b.psThemeExtensions.quickview = b.psTheme.quickview_init;
 })(jQuery);
-var nm_wishlist_vars = {
+var ps_wishlist_vars = {
     wlLoginRequire: "0",
     wlLoginRedirectUrl: "https://savoy.nordicmade.com/my-account/",
     wlNonce: "604ab552f7",
@@ -9218,23 +9218,23 @@ var nm_wishlist_vars = {
     var g = {
         init: function () {
             var a = this;
-            if ("undefined" != typeof nm_wp_vars) {
+            if ("undefined" != typeof ps_wp_vars) {
                 a.$body = c("body");
                 a.isLoggedIn = a.$body.hasClass("logged-in") ? !0 : !1;
                 a.wishlistIds = [];
-                a.cookieExpires = parseInt(nm_wishlist_vars.wlCookieExpires);
+                a.cookieExpires = parseInt(ps_wishlist_vars.wlCookieExpires);
                 a.IDsUpdateAjax = !1;
-                "0" != nm_wishlist_vars.wlMenuCount ? ((a.headerLinkCount = !0), (a.$headerLinkLi = c(".nm-menu-wishlist")), (a.$headerLinkCount = a.$headerLinkLi.find(".nm-menu-wishlist-count"))) : (a.headerLinkCount = !1);
+                "0" != ps_wishlist_vars.wlMenuCount ? ((a.headerLinkCount = !0), (a.$headerLinkLi = c(".ps-menu-wishlist")), (a.$headerLinkCount = a.$headerLinkLi.find(".ps-menu-wishlist-count"))) : (a.headerLinkCount = !1);
                 a.setUp();
-                c(document).on("click", ".nm-wishlist-button", function (b) {
+                c(document).on("click", ".ps-wishlist-button", function (b) {
                     b.preventDefault();
-                    "0" == nm_wishlist_vars.wlLoginRequire || a.$body.hasClass("logged-in")
+                    "0" == ps_wishlist_vars.wlLoginRequire || a.$body.hasClass("logged-in")
                         ? (a.IDsUpdateAjax && (a.IDsUpdateAjax.abort(), (a.IDsUpdateAjax = !1)), a.buttonToggle(this))
-                        : ((b = c("#nm-menu-account-btn")), b.length && c("#nm-login-popup-wrap").length ? b.trigger("click") : window.location.replace(nm_wishlist_vars.wlLoginRedirectUrl));
+                        : ((b = c("#ps-menu-account-btn")), b.length && c("#ps-login-popup-wrap").length ? b.trigger("click") : window.location.replace(ps_wishlist_vars.wlLoginRedirectUrl));
                 });
-                var d = c("#nm-wishlist-table");
+                var d = c("#ps-wishlist-table");
                 if (d.length)
-                    d.find(".nm-wishlist-remove").on("click", function (b) {
+                    d.find(".ps-wishlist-remove").on("click", function (b) {
                         b.preventDefault();
                         b = c(this);
                         b.hasClass("clicked") || (b.addClass("clicked"), a.wishlistItemRemove(b, d));
@@ -9246,18 +9246,18 @@ var nm_wishlist_vars = {
             if (a.isLoggedIn)
                 c.ajax({
                     type: "POST",
-                    url: nm_wp_vars.ajaxUrl,
-                    data: { action: "nm_wishlist_get_ids" },
+                    url: ps_wp_vars.ajaxUrl,
+                    data: { action: "ps_wishlist_get_ids" },
                     dataType: "json",
                     cache: !1,
                     headers: { "cache-control": "no-cache" },
                     success: function (b) {
-                        b.ids && ((b = b.ids), (a.wishlistIds = b), Cookies.set("nm-wishlist-ids", b, { expires: a.cookieExpires }), a.headerLinkUpdate(), a.buttonsSetState());
+                        b.ids && ((b = b.ids), (a.wishlistIds = b), Cookies.set("ps-wishlist-ids", b, { expires: a.cookieExpires }), a.headerLinkUpdate(), a.buttonsSetState());
                     },
                 });
             else {
-                var d = Cookies.getJSON("nm-wishlist-ids");
-                d ? ((a.wishlistIds = d), a.headerLinkUpdate(), a.buttonsSetState()) : Cookies.set("nm-wishlist-ids", [], { expires: a.cookieExpires });
+                var d = Cookies.getJSON("ps-wishlist-ids");
+                d ? ((a.wishlistIds = d), a.headerLinkUpdate(), a.buttonsSetState()) : Cookies.set("ps-wishlist-ids", [], { expires: a.cookieExpires });
             }
         },
         IDsUpdate: function () {
@@ -9266,8 +9266,8 @@ var nm_wishlist_vars = {
                 var d = JSON.stringify(a.wishlistIds);
                 a.IDsUpdateAjax = c.ajax({
                     type: "POST",
-                    url: nm_wp_vars.ajaxUrl,
-                    data: { action: "nm_wishlist_update_ids", nonce: nm_wishlist_vars.wlNonce, ids: d },
+                    url: ps_wp_vars.ajaxUrl,
+                    data: { action: "ps_wishlist_update_ids", nonce: ps_wishlist_vars.wlNonce, ids: d },
                     dataType: "json",
                     cache: !1,
                     headers: { "cache-control": "no-cache" },
@@ -9276,17 +9276,17 @@ var nm_wishlist_vars = {
                     },
                 });
             }
-            Cookies.set("nm-wishlist-ids", a.wishlistIds, { expires: a.cookieExpires });
+            Cookies.set("ps-wishlist-ids", a.wishlistIds, { expires: a.cookieExpires });
         },
         buttonsSetState: function () {
-            for (var a = 0; a < this.wishlistIds.length; a++) c("#nm-wishlist-item-" + this.wishlistIds[a] + "-button").addClass("added");
+            for (var a = 0; a < this.wishlistIds.length; a++) c("#ps-wishlist-item-" + this.wishlistIds[a] + "-button").addClass("added");
             this.$body.addClass("wishlist-show-buttons");
         },
         buttonSetState: function (a, d) {
-            var b = c(".nm-wishlist-item-" + a + "-button");
+            var b = c(".ps-wishlist-item-" + a + "-button");
             d
-                ? (b.addClass("added"), b.attr("title", nm_wishlist_vars.wlButtonTitleRemove), this.$body.trigger("wishlist_added_item"))
-                : (b.removeClass("added"), b.attr("title", nm_wishlist_vars.wlButtonTitleAdd), this.$body.trigger("wishlist_removed_item"));
+                ? (b.addClass("added"), b.attr("title", ps_wishlist_vars.wlButtonTitleRemove), this.$body.trigger("wishlist_added_item"))
+                : (b.removeClass("added"), b.attr("title", ps_wishlist_vars.wlButtonTitleAdd), this.$body.trigger("wishlist_removed_item"));
         },
         buttonToggle: function (a) {
             a = c(a).data("product-id");
@@ -9298,7 +9298,7 @@ var nm_wishlist_vars = {
             this.buttonSetState(a, d);
         },
         wishlistItemRemove: function (a, d) {
-            c("#nm-wishlist-overlay").addClass("show");
+            c("#ps-wishlist-overlay").addClass("show");
             var b = this,
                 f = a.closest("ul"),
                 e = f.data("product-id");
@@ -9310,8 +9310,8 @@ var nm_wishlist_vars = {
             setTimeout(function () {
                 f.remove();
                 b.$body.trigger("wishlist_removed_item");
-                0 == d.children("ul").length && (c("#nm-wishlist").css("display", "none"), c("#nm-wishlist-empty").addClass("show"));
-                c("#nm-wishlist-overlay").removeClass("show");
+                0 == d.children("ul").length && (c("#ps-wishlist").css("display", "none"), c("#ps-wishlist-empty").addClass("show"));
+                c("#ps-wishlist-overlay").removeClass("show");
             }, 500);
         },
         headerLinkUpdate: function () {

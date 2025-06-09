@@ -2,23 +2,23 @@
 {% load static wagtailimages_tags %}
 {% load static wagtailcore_tags %}
 
-<div id="nm-header-placeholder" class="nm-header-placeholder" >
+<div id="ps-header-placeholder" class="ps-header-placeholder" >
 </div>
-    <header id="nm-header" class="nm-header centered resize-on-scroll clear">
-        <div class="nm-header-inner">
-            <div class="nm-row">
-                <div class="nm-header-logo">
+    <header id="ps-header" class="ps-header centered resize-on-scroll clear">
+        <div class="ps-header-inner">
+            <div class="ps-row">
+                <div class="ps-header-logo">
                     <a href="/">
-                        <img src="{% static 'img/logo.png' %}" class="nm-logo" alt="Pottery Shop">
+                        <img src="{% static 'img/logo.png' %}" class="ps-logo" alt="Pottery Shop">
                     </a>
                 </div>
-                <div class="nm-main-menu-wrap col-xs-6">
-                    <nav class="nm-main-menu">
-                        <ul id="nm-main-menu-ul" class="nm-menu">
-<!--                            <li class="nm-menu-offscreen menu-item-default">-->
-<!--                                <span class="nm-menu-cart-count count nm-count-zero">0</span>-->
-<!--                                <a href="#" id="nm-mobile-menu-button" class="clicked" onclick="toggleMobileMenu(document.body)">-->
-<!--                                    <div class="nm-menu-icon">-->
+                <div class="ps-main-menu-wrap col-xs-6">
+                    <nav class="ps-main-menu">
+                        <ul id="ps-main-menu-ul" class="ps-menu">
+<!--                            <li class="ps-menu-offscreen menu-item-default">-->
+<!--                                <span class="ps-menu-cart-count count ps-count-zero">0</span>-->
+<!--                                <a href="#" id="ps-mobile-menu-button" class="clicked" onclick="toggleMobileMenu(document.body)">-->
+<!--                                    <div class="ps-menu-icon">-->
 <!--                                        <span class="line-1"></span>-->
 <!--                                        <span class="line-2"></span>-->
 <!--                                        <span class="line-3"></span>-->
@@ -29,12 +29,12 @@
                             <li id="menu-item-20" class="megamenu col-2 shop-link menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-has-children current-menu-item current_page_item menu-item-20">
                                 <a href="/" aria-current="page">Shop</a>
                                 <div class='sub-menu'>
-                                    <div class='nm-sub-menu-bridge'></div>
-                                    <ul class='nm-sub-menu-ul'>
+                                    <div class='ps-sub-menu-bridge'></div>
+                                    <ul class='ps-sub-menu-ul'>
                                         <li id="menu-item-3140" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-has-children menu-item-3140">
                                             <a href="">Firing Types</a>
                                             <div class='sub-menu'>
-                                                <ul class='nm-sub-menu-ul'>
+                                                <ul class='ps-sub-menu-ul'>
                                                     <li id="menu-item-346" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-346">
                                                         <a href="">Stoneware</a>
                                                     </li>
@@ -56,7 +56,7 @@
                                         <li id="menu-item-2201" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-has-children menu-item-2201">
                                             <a href="">Vessel Types</a>
                                             <div class='sub-menu'>
-                                                <ul class='nm-sub-menu-ul'>
+                                                <ul class='ps-sub-menu-ul'>
                                                     <li id="menu-item-2200" class="menu-item menu-item-type-post_type menu-item-object-product menu-item-2200">
                                                         <a href="">Vases</a>
                                                     </li>
@@ -83,40 +83,40 @@
                                     Categories <span class="label"></span>
                                 </a>
                                 <div class='sub-menu'>
-                                    <div class='nm-sub-menu-bridge'></div>
-                                    <ul class='nm-sub-menu-ul'>
-                                        <li id="menu-item-3170" class="shop-ajax-link shop-redirect-link menu-item menu-item-type-taxonomy menu-item-object-product_cat nm-menu-item-has-image menu-item-3170">
+                                    <div class='ps-sub-menu-bridge'></div>
+                                    <ul class='ps-sub-menu-ul'>
+                                        <li id="menu-item-3170" class="shop-ajax-link shop-redirect-link menu-item menu-item-type-taxonomy menu-item-object-product_cat ps-menu-item-has-image menu-item-3170">
                                             <a href="">
                                                 {% image products.0.image fill-200x300 as tmp_image %}
-                                                <img src="{{ tmp_image.url }}" loading="eager" alt="" width="160" height="160" class="nm-menu-item-image"/>
-                                                <span class="nm-menu-item-image-title">Stoneware</span>
+                                                <img src="{{ tmp_image.url }}" loading="eager" alt="" width="160" height="160" class="ps-menu-item-image"/>
+                                                <span class="ps-menu-item-image-title">Stoneware</span>
                                             </a>
                                         </li>
-                                        <li id="menu-item-3171" class="shop-ajax-link shop-redirect-link menu-item menu-item-type-taxonomy menu-item-object-product_cat nm-menu-item-has-image menu-item-3171">
+                                        <li id="menu-item-3171" class="shop-ajax-link shop-redirect-link menu-item menu-item-type-taxonomy menu-item-object-product_cat ps-menu-item-has-image menu-item-3171">
                                             <a href="">
                                                 {% image products.1.image fill-200x300 as tmp_image %}
-                                                <img src="{{ tmp_image.url }}" loading="eager" alt="" width="160" height="160" class="nm-menu-item-image"/>
-                                                <span class="nm-menu-item-image-title">Cups</span>
+                                                <img src="{{ tmp_image.url }}" loading="eager" alt="" width="160" height="160" class="ps-menu-item-image"/>
+                                                <span class="ps-menu-item-image-title">Cups</span>
                                             </a>
                                         </li>
-                                        <li id="menu-item-3172" class="shop-ajax-link shop-redirect-link menu-item menu-item-type-taxonomy menu-item-object-product_cat nm-menu-item-has-image menu-item-3172">
+                                        <li id="menu-item-3172" class="shop-ajax-link shop-redirect-link menu-item menu-item-type-taxonomy menu-item-object-product_cat ps-menu-item-has-image menu-item-3172">
                                                 <a href="">
                                                 {% image products.2.image fill-200x300 as tmp_image %}
-                                                <img src="{{ tmp_image.url }}" loading="eager" alt="" width="160" height="160" class="nm-menu-item-image"/>
-                                                <span class="nm-menu-item-image-title">Lidded Jars</span>
+                                                <img src="{{ tmp_image.url }}" loading="eager" alt="" width="160" height="160" class="ps-menu-item-image"/>
+                                                <span class="ps-menu-item-image-title">Lidded Jars</span>
                                             </a>
                                         </li>
-                                        <li id="menu-item-3173" class="shop-ajax-link shop-redirect-link menu-item menu-item-type-taxonomy menu-item-object-product_cat nm-menu-item-has-image menu-item-3173">
+                                        <li id="menu-item-3173" class="shop-ajax-link shop-redirect-link menu-item menu-item-type-taxonomy menu-item-object-product_cat ps-menu-item-has-image menu-item-3173">
                                             <a href="">
                                                 {% image products.4.image fill-200x300 as tmp_image %}
-                                                <img src="{{ tmp_image.url }}" loading="eager" alt="" width="160" height="160" class="nm-menu-item-image"/>
-                                                <span class="nm-menu-item-image-title">Bottle Forms</span>
+                                                <img src="{{ tmp_image.url }}" loading="eager" alt="" width="160" height="160" class="ps-menu-item-image"/>
+                                                <span class="ps-menu-item-image-title">Bottle Forms</span>
                                             </a>
                                         </li>
-                                        <li id="menu-item-3174" class="shop-ajax-link menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item current_page_item nm-menu-item-has-image menu-item-3174">
+                                        <li id="menu-item-3174" class="shop-ajax-link menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item current_page_item ps-menu-item-has-image menu-item-3174">
                                             <a href="" aria-current="page">
-                                                <img src="" loading="eager" alt="" width="160" height="160" class="nm-menu-item-image"/>
-                                                <span class="nm-menu-item-image-title">Shop All</span>
+                                                <img src="" loading="eager" alt="" width="160" height="160" class="ps-menu-item-image"/>
+                                                <span class="ps-menu-item-image-title">Shop All</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -125,8 +125,8 @@
                             <li id="menu-item-2202" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2202">
                                 <a href="/gallery/">Gallery</a>
                                 <div class='sub-menu'>
-                                    <div class='nm-sub-menu-bridge'></div>
-                                    <ul class='nm-sub-menu-ul'>
+                                    <div class='ps-sub-menu-bridge'></div>
+                                    <ul class='ps-sub-menu-ul'>
                                         <li id="menu-item-361" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-361">
                                             <a href="">About Us</a>
                                         </li>
@@ -141,40 +141,40 @@
                     </nav>
                 </div>
 
-                <div class="nm-right-menu-wrap col-xs-6">
-                    <nav class="nm-right-menu">
-                        <ul id="nm-right-menu-ul" class="nm-menu">
-                            <li class="nm-menu-wishlist menu-item-default has-icon" aria-label="Wishlist">
+                <div class="ps-right-menu-wrap col-xs-6">
+                    <nav class="ps-right-menu">
+                        <ul id="ps-right-menu-ul" class="ps-menu">
+                            <li class="ps-menu-wishlist menu-item-default has-icon" aria-label="Wishlist">
                                 <a href="">
-                                    <i class="nm-font nm-font-heart-outline"></i>
+                                    <i class="ps-font ps-font-heart-outline"></i>
                                 </a>
                             </li>
 <!--            Login Desktop-->
-                            <li class="nm-menu-account menu-item-default no-icon" aria-label="My account">
+                            <li class="ps-menu-account menu-item-default no-icon" aria-label="My account">
                                 {% if request.user.is_authenticated %}
-                                <a href="{% url 'account_logout' %}" id="nm-menu-account-btn">
-                                    <i class="nm-myaccount-icon nm-font nm-font-head"></i>
+                                <a href="{% url 'account_logout' %}" id="ps-menu-account-btn">
+                                    <i class="ps-myaccount-icon ps-font ps-font-head"></i>
                                 </a>
                                 {% else %}
-                                <a href="{% url 'account_login' %}" id="nm-menu-account-btn">
-                                    <i class="nm-myaccount-icon nm-font nm-font-head"></i>
+                                <a href="{% url 'account_login' %}" id="ps-menu-account-btn">
+                                    <i class="ps-myaccount-icon ps-font ps-font-head"></i>
                                 </a>
                                 {% endif %}
                             </li>
 
-                            <li class="nm-menu-cart menu-item-default no-icon">
+                            <li class="ps-menu-cart menu-item-default no-icon">
 <!--                                <a href="" class="snipcart-checkout">-->
-<!--                                    <span class="nm-menu-cart-title">-->
-<!--                                        <i class="nm-menu-cart-icon nm-font nm-font-cart"></i>-->
+<!--                                    <span class="ps-menu-cart-title">-->
+<!--                                        <i class="ps-menu-cart-icon ps-font ps-font-cart"></i>-->
 <!--                                    </span>-->
-<!--                                    <span class="snipcart-items-count nm-menu-cart-count count nm-count-zero">0</span>-->
+<!--                                    <span class="snipcart-items-count ps-menu-cart-count count ps-count-zero">0</span>-->
 <!--                                </a>-->
 
                                 <a href="/cart/">
-                                    <span class="nm-menu-cart-title" id="cart-icon">
-<!--                                        <i class="nm-menu-cart-icon nm-font nm-font-cart"></i>-->
+                                    <span class="ps-menu-cart-title" id="cart-icon">
+<!--                                        <i class="ps-menu-cart-icon ps-font ps-font-cart"></i>-->
                                     </span>
-                                    <span class="cart-count nm-menu-cart-count count nm-count-zero" id="cart-count">0</span>
+                                    <span class="cart-count ps-menu-cart-count count ps-count-zero" id="cart-count">0</span>
                                 </a>
                             </li>
                         </ul>

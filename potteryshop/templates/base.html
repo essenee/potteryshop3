@@ -113,9 +113,9 @@
 <body class="{% block body_class %}{% endblock %}" >
     {% wagtailuserbar %}
 
-<div class="nm-page-overflow">
-    <div class="nm-page-wrap">
-        <div class="nm-page-wrap-inner">
+<div class="ps-page-overflow">
+    <div class="ps-page-wrap">
+        <div class="ps-page-wrap-inner">
             {% block header %}
                 {% include "header.html" %}
             {% endblock header %}
@@ -135,7 +135,7 @@
 </div>
 
 <!--    Add js to add class "show" on hamburger click-->
-<div id="nm-page-overlay" class="nm-mobile-menu-overlay"></div>
+<div id="ps-page-overlay" class="ps-mobile-menu-overlay"></div>
 
 <script>
         // Initialize cart icon on page load
@@ -153,12 +153,12 @@
                 const count = data.cart_count || 0;
                 cartCount.textContent = count;
                 if (count > 0) {
-                    cartIcon.classList.remove('nm-font-cart');
-                    cartIcon.classList.add('nm-font-cart-filled');
+                    cartIcon.classList.remove('ps-font-cart');
+                    cartIcon.classList.add('ps-font-cart-filled');
                     cartCount.classList.add('visible');
                 } else {
-                    cartIcon.classList.remove('nm-font-cart-filled');
-                    cartIcon.classList.add('nm-font-cart');
+                    cartIcon.classList.remove('ps-font-cart-filled');
+                    cartIcon.classList.add('ps-font-cart');
                     cartCount.classList.remove('visible');
                 }
             })
