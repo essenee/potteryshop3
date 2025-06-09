@@ -232,3 +232,27 @@ CSRF_TRUSTED_ORIGINS = [
     'https://*.ngrok-free.app',  # Wildcard for ngrok subdomains
     # 'https://e9e9-93-190-138-188.ngrok-free.app',  # Specific ngrok URL
 ]
+
+#
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'console': {
+#             'class': 'logging.StreamHandler',
+#         },
+#     },
+#     'loggers': {
+#         'django.db.backends': {
+#             'level': 'DEBUG',
+#             'handlers': ['console'],
+#         },
+#     },
+# }
+
+WAGTAILSEARCH_BACKENDS = {
+    'default': {
+        'BACKEND': 'wagtail.search.backends.database',
+        'AUTO_UPDATE': False,
+    }
+}

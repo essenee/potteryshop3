@@ -12,6 +12,12 @@ from wagtail.fields import StreamField
 from wagtail.fields import RichTextField
 from wagtail.admin.panels import FieldPanel
 
+from wagtail.admin.panels import FieldPanel
+from wagtail.images.widgets import AdminImageChooser
+from wagtail.models import Orderable
+from modelcluster.fields import ParentalKey
+from django.db import models
+
 class PaymentPage(Page):
     intro = RichTextField(blank=True)
 
@@ -109,7 +115,7 @@ class ProductCustomField(Orderable):
     ]
 
 class ProductCarousel(Orderable):
-    product = ParentalKey(Product, on_delete=models.CASCADE, related_name='carousel_images')
+    product = ParentalKey('Product', on_delete=models.CASCADE, related_name='carousel_images')
     carousel_image = models.ForeignKey(
         "wagtailimages.Image",
         null=True,
@@ -119,7 +125,7 @@ class ProductCarousel(Orderable):
     )
 
     panels = [
-        FieldPanel("carousel_image")
+        FieldPanel("carousel_image", widget=AdminImageChooser),
     ]
 
 class HomeCarousel(Orderable):
