@@ -94,7 +94,7 @@ package-lock.json
 #Images
 **/*.jpg
 !/home/static/img/*.jpg
-!/media/original_images/*.jpg
+!/media/images/*.jpg
 
 
 #wsgi (to be different on prod)
