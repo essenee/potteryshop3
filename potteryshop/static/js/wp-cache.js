@@ -7661,6 +7661,7 @@ try {
     f.psThemeExtensions.infload = f.psTheme.infload_init;
 })(jQuery);
 
+//shop-filters
 (function (jQuery) {
     jQuery.extend(jQuery.psTheme, {
         /**
@@ -7684,7 +7685,7 @@ try {
                 cat: "shopFiltersCategoriesToggle",
                 filter: "shopFiltersSidebarToggle",
                 sidebar: "shopDefaultSidebarToggle",
-                search: "shopFiltersSearchToggle"
+                forms: "shopFiltersFormsToggle"
             };
             this.shopFiltersBind();
         },
@@ -7700,7 +7701,7 @@ try {
                     var $link = jQuery(this),
                         $parentItem = $link.parents(".menu-item").last();
                     $parentItem.addClass("no-hover");
-                    self.shopFiltersSearchClose();
+                    self.shopFiltersFormsClose();
                     jQuery("#ps-shop-categories-wrap").find(".current-cat").removeClass("current-cat");
                     var scrollDelay = self.shopScrollToTop();
                     setTimeout(function () {
@@ -7733,7 +7734,7 @@ try {
                     e.preventDefault();
                     var $link = jQuery(this);
                     var $parent = $link.parent("li");
-                    self.shopFiltersSearchClose();
+                    self.shopFiltersFormsClose();
                     jQuery("#ps-shop-categories-wrap").find(".current-cat").removeClass("current-cat");
                     $parent.addClass("current-cat");
                     self.shopGetPage($link.attr("href"));
@@ -7834,6 +7835,11 @@ try {
                     }
                 });
             }
+            // New binding for Forms filter
+            self.$shopFilterMenu.find('[data-panel="forms"]').on("change", "select", function () {
+                var selectedCategoryId = jQuery(this).val();
+                self.filterByPotteryCategory(selectedCategoryId);
+            });
         },
 
         /**
@@ -7895,20 +7901,31 @@ try {
         },
 
         /**
-         * Toggles the search filter panel visibility.
+         * Toggles the Forms filter panel visibility and populates with PotteryCategory options.
          */
-        shopFiltersSearchToggle: function () {
-            this.shopSearchTogglePanel();
-            this.currentSearch = "";
+        shopFiltersFormsToggle: function () {
+            var self = this,
+                $formsPanel = jQuery("#ps-shop-forms-wrap");
+            if (!$formsPanel.length) {
+                $formsPanel = jQuery('<div id="ps-shop-forms-wrap" class="filter-panel"></div>').appendTo(self.$shopFilterMenu);
+                self.loadPotteryCategories();
+            }
+            var isVisible = $formsPanel.is(":visible");
+            if (isVisible) $formsPanel.removeClass("fade-in");
+            $formsPanel.slideToggle(self.filterPanelSlideSpeed, function () {
+                if (isVisible) $formsPanel.removeClass("force-show").css("display", "");
+                else $formsPanel.addClass("fade-in");
+                self.filterPanelSliding = false;
+            });
         },
 
         /**
-         * Closes the search filter panel.
+         * Closes the Forms filter panel.
          */
-        shopFiltersSearchClose: function () {
-            if (this.searchEnabled && this.$searchBtn.parent("li").hasClass("active")) {
+        shopFiltersFormsClose: function () {
+            if (this.$shopFilterMenu.find('[data-panel="forms"]').parent("li").hasClass("active")) {
                 this.categoryClicked = true;
-                this.$searchBtn.trigger("click");
+                this.$shopFilterMenu.find('[data-panel="forms"]').trigger("click");
             }
         },
 
@@ -7924,12 +7941,68 @@ try {
                 var panelType = $activePanel.data("panel");
                 if ($activePanel.is(":hidden") && "cat" == panelType) {
                     this.shopFiltersCategoriesReset();
+                } else if ($activePanel.is(":hidden") && "forms" == panelType) {
+                    jQuery("#ps-shop-forms-wrap").removeClass("fade-in force-show").css("display", "");
                 } else {
                     delay = 300;
                     this[this.shopFilterMenuFnNames[panelType]]();
                 }
             }
             return delay;
+        },
+
+        /**
+         * Loads PotteryCategory options into the Forms filter panel.
+         */
+        loadPotteryCategories: function () {
+            var self = this;
+            jQuery.ajax({
+                url: '/api/v2/pottery-categories/',
+                method: 'GET',
+                success: function (data) {
+                    var $select = jQuery('<select><option value="">Select a Form</option></select>');
+                    jQuery.each(data.results || data, function (index, category) {
+                        $select.append(jQuery('<option>', {
+                            value: category.id,
+                            text: category.name  // Updated from category.title to category.name
+                        }));
+                    });
+                    jQuery("#ps-shop-forms-wrap").html($select);
+                },
+                error: function () {
+                    jQuery("#ps-shop-forms-wrap").html('<p>Failed to load Forms.</p>');
+                }
+            });
+        },
+
+        /**
+         * Filters and orders results by the selected pottery category.
+         * @param {string} categoryId - The ID of the selected PotteryCategory.
+         */
+        filterByPotteryCategory: function (categoryId) {
+            var self = this;
+            self.shopShowLoader();
+            jQuery.ajax({
+                url: '/api/v2/pottery-items/',
+                data: categoryId ? { category: categoryId } : {},
+                method: 'GET',
+                success: function (data) {
+                    var $browseWrap = jQuery("#ps-shop-browse-wrap");
+                    $browseWrap.empty();
+                    data.results = data.results || data;
+                    data.results.sort(function (a, b) {
+                        return a.category.name.localeCompare(b.category.name);  // Updated from title to name
+                    });
+                    jQuery.each(data.results, function (index, item) {
+                        $browseWrap.append(jQuery('<div class="product-item">').html(item.title + ' (Form: ' + item.category.name + ')'));
+                    });
+                    self.shopHideLoader();
+                },
+                error: function () {
+                    jQuery("#ps-shop-browse-wrap").html('<p>Failed to load items.</p>');
+                    self.shopHideLoader();
+                }
+            });
         },
 
         /**
@@ -8176,7 +8249,6 @@ try {
     });
     jQuery.psThemeExtensions.filters = jQuery.psTheme.initializeShopFilters;
 })(jQuery);
-
 
 jQuery(function (b) {
     var c = b("#ps-shop");

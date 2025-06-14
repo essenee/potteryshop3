@@ -22,6 +22,7 @@ urlpatterns = [
     path('payments/', include('payments.urls')),  # Add payments app URLs
     path('', include('payments.urls')),     # Add this to handle /cart/ and /cart/add/
     path('', include('allauth.urls')),
+    path('', include('home.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

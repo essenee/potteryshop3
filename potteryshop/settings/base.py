@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'home',
     'payments',
     'search',
+    'rest_framework',
     'wagtail.contrib.search_promotions',
 
     'wagtail.contrib.forms',
