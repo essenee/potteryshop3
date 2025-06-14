@@ -7660,361 +7660,524 @@ try {
     });
     f.psThemeExtensions.infload = f.psTheme.infload_init;
 })(jQuery);
-(function (c) {
-    c.extend(c.psTheme, {
-        filters_init: function () {
-            this.$shopFilterMenu = c("#ps-shop-filter-menu");
-            this.$shopSidebarPopupBtn = c("#ps-shop-sidebar-popup-button");
-            this.shopSidebarLayout = c("#ps-shop-sidebar").data("sidebar-layout");
-            this.filterPanelSliding = !1;
+
+(function (jQuery) {
+    jQuery.extend(jQuery.psTheme, {
+        /**
+         * Initializes the shop filter system, setting up DOM references and bindings.
+         */
+        initializeShopFilters: function () {
+            /** @type {jQuery} The shop filter menu element */
+            this.$shopFilterMenu = jQuery("#ps-shop-filter-menu");
+            /** @type {jQuery} The sidebar popup button element */
+            this.$shopSidebarPopupBtn = jQuery("#ps-shop-sidebar-popup-button");
+            /** @type {string} The sidebar layout configuration */
+            this.shopSidebarLayout = jQuery("#ps-shop-sidebar").data("sidebar-layout");
+            /** @type {boolean} Flag to prevent multiple simultaneous panel slides */
+            this.filterPanelSliding = false;
+            /** @type {number} Speed of filter panel animations in milliseconds */
             this.filterPanelSlideSpeed = 200;
+            /** @type {number} Width below which filter panel is hidden */
             this.filterPanelHideWidth = 551;
-            this.shopFilterMenuFnNames = { cat: "shopFiltersCategoriesToggle", filter: "shopFiltersSidebarToggle", sidebar: "shopDefaultSidebarToggle", search: "shopFiltersSearchToggle" };
+            /** @type {Object} Mapping of panel types to toggle functions */
+            this.shopFilterMenuFnNames = {
+                cat: "shopFiltersCategoriesToggle",
+                filter: "shopFiltersSidebarToggle",
+                sidebar: "shopDefaultSidebarToggle",
+                search: "shopFiltersSearchToggle"
+            };
             this.shopFiltersBind();
         },
+
+        /**
+         * Binds event handlers for shop filter interactions.
+         */
         shopFiltersBind: function () {
-            var a = this;
-            if (a.filtersEnableAjax)
-                a.$header.on("click.psHeaderShopAjax", ".shop-ajax-link > a", function (b) {
-                    b.preventDefault();
-                    var h = c(this),
-                        g = h.parents(".menu-item").last();
-                    g.addClass("no-hover");
-                    a.shopFiltersSearchClose();
-                    c("#ps-shop-categories-wrap").find(".current-cat").removeClass("current-cat");
-                    b = a.shopScrollToTop();
+            var self = this;
+            if (self.filtersEnableAjax) {
+                self.$header.on("click.psHeaderShopAjax", ".shop-ajax-link > a", function (e) {
+                    e.preventDefault();
+                    var $link = jQuery(this),
+                        $parentItem = $link.parents(".menu-item").last();
+                    $parentItem.addClass("no-hover");
+                    self.shopFiltersSearchClose();
+                    jQuery("#ps-shop-categories-wrap").find(".current-cat").removeClass("current-cat");
+                    var scrollDelay = self.shopScrollToTop();
                     setTimeout(function () {
-                        a.shopGetPage(h.attr("href"));
+                        self.shopGetPage($link.attr("href"));
                         setTimeout(function () {
-                            g.removeClass("no-hover");
+                            $parentItem.removeClass("no-hover");
                         }, 100);
-                    }, b);
-                });
-            a.$shopFilterMenu.find("a").on("click", function (b) {
-                b.preventDefault();
-                if (!a.filterPanelSliding) {
-                    a.shopRemoveNotices();
-                    a.filterPanelSliding = !0;
-                    b = 0;
-                    var h = c(this).parent("li"),
-                        g = h.data("panel");
-                    h.hasClass("active") || (b = a.shopFiltersHideActivePanel());
-                    h.toggleClass("active");
-                    setTimeout(function () {
-                        a[a.shopFilterMenuFnNames[g]]();
-                    }, b);
-                }
-            });
-            if (a.filtersEnableAjax && a.$pageIncludes.hasClass("shop_categories"))
-                a.$shopWrap.on("click", "#ps-shop-categories-wrap a", function (b) {
-                    b.preventDefault();
-                    b = c(this);
-                    var h = b.parent("li");
-                    a.shopFiltersSearchClose();
-                    c("#ps-shop-categories-wrap").find(".current-cat").removeClass("current-cat");
-                    h.addClass("current-cat");
-                    a.shopGetPage(b.attr("href"));
-                });
-            if (a.$shopSidebarPopupBtn.length) {
-                a.$shopSidebarPopup = c("#ps-shop-sidebar-popup");
-                var d = null;
-                a.$window.on("scroll.psShopPopupBtn resize.psShopPopupBtn", function () {
-                    d && clearTimeout(d);
-                    d = setTimeout(function () {
-                        a.$body.hasClass("shop-filters-popup-open") || a.shopFiltersPopupButtonToggle();
-                    }, 500);
-                });
-                a.$shopSidebarPopupBtn.on("click", function () {
-                    a.shopFiltersPopupShow();
-                });
-                c("#ps-shop-sidebar-popup-reset-button").on("click", function (b) {
-                    b.preventDefault();
-                    a.shopFiltersPopupReset();
+                    }, scrollDelay);
                 });
             }
-            var f = a.isTouch ? !1 : !0,
-                e = !1;
-            a.$shopWrap.on("click", "#ps-shop-sidebar .ps-widget-title", function (b) {
-                b = c(this).closest("li");
-                if (b.hasClass("show")) f && b.children(".ps-shop-widget-col").last().css("height", ""), b.removeClass("show");
-                else {
-                    var h = b.parent("#ps-shop-widgets-ul").children(".show");
-                    if (f) {
-                        var g = b.children(".ps-shop-widget-col").last(),
-                            k = g.children().first().outerHeight(!0) + "px",
-                            l = h.children(".ps-shop-widget-col").last();
-                        g.css("height", k);
-                        l.css("height", "");
-                        e ||
-                            ((e = !0),
-                            a.$window.one("resize.psShopWidget", function () {
-                                a.shopFiltersWidgetHideOpen();
-                                e = !1;
-                            }));
+            self.$shopFilterMenu.find("a").on("click", function (e) {
+                e.preventDefault();
+                if (!self.filterPanelSliding) {
+                    self.shopRemoveNotices();
+                    self.filterPanelSliding = true;
+                    var delay = 0;
+                    var $item = jQuery(this).parent("li");
+                    var panelType = $item.data("panel");
+                    if (!$item.hasClass("active")) {
+                        delay = self.shopFiltersHideActivePanel();
                     }
-                    h.removeClass("show");
-                    b.addClass("show");
+                    $item.toggleClass("active");
+                    setTimeout(function () {
+                        self[self.shopFilterMenuFnNames[panelType]]();
+                    }, delay);
                 }
             });
-            a.filtersEnableAjax &&
-                a.$pageIncludes.hasClass("shop_filters") &&
-                (a.$shopWrap.on("click", "#ps-shop-sidebar .ps_widget a", function (b) {
-                    b.preventDefault();
-                    a.shopGetPage(c(this).attr("href"));
-                }),
-                a.$shopWrap.on("click", "#ps-shop-sidebar .widget_product_categories a", function (b) {
-                    b.preventDefault();
-                    a.shopGetPage(c(this).attr("href"));
-                }),
-                a.$shopWrap.on("click", "#ps-shop-sidebar .widget_layered_nav a", function (b) {
-                    b.preventDefault();
-                    a.shopGetPage(c(this).attr("href"));
-                }),
-                a.$document.on("ps_ajax_shop_update_content", function () {
-                    a.$shopWrap.on("change", "#ps-shop-sidebar select.woocommerce-widget-layered-nav-dropdown", function () {
-                        var b = c(this),
-                            h = b.closest("form"),
-                            g = b.val(),
-                            k = b.attr("class");
-                        k = k.substr(k.lastIndexOf("_") + 1);
-                        k = h.find('input[name="filter_' + k + '"]');
-                        k.length && (k.val(g), b.attr("multiple") || h.submit());
+            if (self.filtersEnableAjax && self.$pageIncludes.hasClass("shop_categories")) {
+                self.$shopWrap.on("click", "#ps-shop-categories-wrap a", function (e) {
+                    e.preventDefault();
+                    var $link = jQuery(this);
+                    var $parent = $link.parent("li");
+                    self.shopFiltersSearchClose();
+                    jQuery("#ps-shop-categories-wrap").find(".current-cat").removeClass("current-cat");
+                    $parent.addClass("current-cat");
+                    self.shopGetPage($link.attr("href"));
+                });
+            }
+            if (self.$shopSidebarPopupBtn.length) {
+                self.$shopSidebarPopup = jQuery("#ps-shop-sidebar-popup");
+                var timeoutId = null;
+                self.$window.on("scroll.psShopPopupBtn resize.psShopPopupBtn", function () {
+                    timeoutId && clearTimeout(timeoutId);
+                    timeoutId = setTimeout(function () {
+                        if (!self.$body.hasClass("shop-filters-popup-open")) {
+                            self.shopFiltersPopupButtonToggle();
+                        }
+                    }, 500);
+                });
+                self.$shopSidebarPopupBtn.on("click", function () {
+                    self.shopFiltersPopupShow();
+                });
+                jQuery("#ps-shop-sidebar-popup-reset-button").on("click", function (e) {
+                    e.preventDefault();
+                    self.shopFiltersPopupReset();
+                });
+            }
+            var isDesktop = !self.isTouch ? true : false,
+                isResizing = false;
+            self.$shopWrap.on("click", "#ps-shop-sidebar .ps-widget-title", function (e) {
+                var $widget = jQuery(this).closest("li");
+                if ($widget.hasClass("show")) {
+                    if (isDesktop) $widget.children(".ps-shop-widget-col").last().css("height", "");
+                    $widget.removeClass("show");
+                } else {
+                    var $openWidgets = $widget.parent("#ps-shop-widgets-ul").children(".show");
+                    if (isDesktop) {
+                        var $content = $widget.children(".ps-shop-widget-col").last(),
+                            height = $content.children().first().outerHeight(true) + "px",
+                            $openContent = $openWidgets.children(".ps-shop-widget-col").last();
+                        $content.css("height", height);
+                        $openContent.css("height", "");
+                        if (!isResizing) {
+                            isResizing = true;
+                            self.$window.one("resize.psShopWidget", function () {
+                                self.shopFiltersWidgetHideOpen();
+                                isResizing = false;
+                            });
+                        }
+                    }
+                    $openWidgets.removeClass("show");
+                    $widget.addClass("show");
+                }
+            });
+            if (self.filtersEnableAjax && self.$pageIncludes.hasClass("shop_filters")) {
+                self.$shopWrap.on("click", "#ps-shop-sidebar .ps_widget a", function (e) {
+                    e.preventDefault();
+                    self.shopGetPage(jQuery(this).attr("href"));
+                });
+                self.$shopWrap.on("click", "#ps-shop-sidebar .widget_product_categories a", function (e) {
+                    e.preventDefault();
+                    self.shopGetPage(jQuery(this).attr("href"));
+                });
+                self.$shopWrap.on("click", "#ps-shop-sidebar .widget_layered_nav a", function (e) {
+                    e.preventDefault();
+                    self.shopGetPage(jQuery(this).attr("href"));
+                });
+                self.$document.on("ps_ajax_shop_update_content", function () {
+                    self.$shopWrap.on("change", "#ps-shop-sidebar select.woocommerce-widget-layered-nav-dropdown", function () {
+                        var $select = jQuery(this),
+                            $form = $select.closest("form"),
+                            value = $select.val(),
+                            className = $select.attr("class").substr($select.attr("class").lastIndexOf("_") + 1),
+                            $input = $form.find('input[name="filter_' + className + '"]');
+                        if ($input.length) {
+                            $input.val(value);
+                            if (!$select.attr("multiple")) $form.submit();
+                        }
                     });
-                }),
-                a.$shopWrap.on("click", "#ps-shop-sidebar .widget_layered_nav_filters a", function (b) {
-                    b.preventDefault();
-                    a.shopGetPage(c(this).attr("href"));
-                }),
-                a.$shopWrap.on("click", "#ps-shop-sidebar .widget_product_tag_cloud a", function (b) {
-                    b.preventDefault();
-                    a.shopGetPage(c(this).attr("href"), !1, !0);
-                }),
-                a.$shopWrap.on("click", "#ps-shop-sidebar .widget_rating_filter a", function (b) {
-                    b.preventDefault();
-                    a.shopGetPage(c(this).attr("href"));
-                }),
-                a.$body.on("price_slider_change", function (b, h, g) {
-                    b = c("#ps-shop-sidebar").find(".widget_price_filter").first().find("form");
-                    var k = parseInt(b.find("#min_price").attr("value")),
-                        l = parseInt(b.find("#max_price").attr("value"));
-                    if (k != h || l != g) (h = b.attr("action")), (g = b.serialize()), a.shopGetPage(h + "?" + g);
-                }));
+                });
+                self.$shopWrap.on("click", "#ps-shop-sidebar .widget_layered_nav_filters a", function (e) {
+                    e.preventDefault();
+                    self.shopGetPage(jQuery(this).attr("href"));
+                });
+                self.$shopWrap.on("click", "#ps-shop-sidebar .widget_product_tag_cloud a", function (e) {
+                    e.preventDefault();
+                    self.shopGetPage(jQuery(this).attr("href"), false, true);
+                });
+                self.$shopWrap.on("click", "#ps-shop-sidebar .widget_rating_filter a", function (e) {
+                    e.preventDefault();
+                    self.shopGetPage(jQuery(this).attr("href"));
+                });
+                self.$body.on("price_slider_change", function (e, min, max) {
+                    var $form = jQuery("#ps-shop-sidebar").find(".widget_price_filter").first().find("form"),
+                        currentMin = parseInt($form.find("#min_price").attr("value")),
+                        currentMax = parseInt($form.find("#max_price").attr("value"));
+                    if (currentMin != min || currentMax != max) {
+                        var url = $form.attr("action"),
+                            data = $form.serialize();
+                        self.shopGetPage(url + "?" + data);
+                    }
+                });
+            }
         },
+
+        /**
+         * Toggles the visibility of the categories filter panel.
+         */
         shopFiltersCategoriesToggle: function () {
-            var a = this,
-                d = c("#ps-shop-categories-wrap"),
-                f = d.is(":visible");
-            f && d.removeClass("fade-in");
-            d.slideToggle(a.filterPanelSlideSpeed, function () {
-                f ? d.removeClass("force-show").css("display", "") : d.addClass("fade-in");
-                a.filterPanelSliding = !1;
+            var self = this,
+                $categories = jQuery("#ps-shop-categories-wrap"),
+                isVisible = $categories.is(":visible");
+            if (isVisible) $categories.removeClass("fade-in");
+            $categories.slideToggle(self.filterPanelSlideSpeed, function () {
+                if (isVisible) $categories.removeClass("force-show").css("display", "");
+                else $categories.addClass("fade-in");
+                self.filterPanelSliding = false;
             });
         },
+
+        /**
+         * Resets the categories filter panel to its initial state.
+         */
         shopFiltersCategoriesReset: function () {
-            c("#ps-shop-categories-wrap").removeClass("fade-in force-show").css("display", "");
+            jQuery("#ps-shop-categories-wrap").removeClass("fade-in force-show").css("display", "");
         },
+
+        /**
+         * Toggles the visibility of the sidebar filter panel.
+         */
         shopFiltersSidebarToggle: function () {
-            var a = this,
-                d = c("#ps-shop-sidebar"),
-                f = d.is(":visible");
-            f && d.removeClass("fade-in");
-            d.slideToggle(a.filterPanelSlideSpeed, function () {
-                f || d.addClass("fade-in");
-                a.filterPanelSliding = !1;
+            var self = this,
+                $sidebar = jQuery("#ps-shop-sidebar"),
+                isVisible = $sidebar.is(":visible");
+            if (isVisible) $sidebar.removeClass("fade-in");
+            $sidebar.slideToggle(self.filterPanelSlideSpeed, function () {
+                if (!isVisible) $sidebar.addClass("fade-in");
+                self.filterPanelSliding = false;
             });
         },
+
+        /**
+         * Hides any open filter widgets.
+         */
         shopFiltersWidgetHideOpen: function () {
-            var a = c("#ps-shop-widgets-ul").children(".show");
-            a.length && a.find(".ps-widget-title").trigger("click");
+            var $openWidgets = jQuery("#ps-shop-widgets-ul").children(".show");
+            if ($openWidgets.length) $openWidgets.find(".ps-widget-title").trigger("click");
         },
+
+        /**
+         * Toggles the visibility of the default sidebar filter panel.
+         */
         shopDefaultSidebarToggle: function () {
-            var a = this,
-                d = c("#ps-shop-sidebar"),
-                f = d.is(":visible");
-            f && d.removeClass("fade-in");
-            d.slideToggle(a.filterPanelSlideSpeed, function () {
-                f || d.addClass("fade-in");
-                a.filterPanelSliding = !1;
+            var self = this,
+                $sidebar = jQuery("#ps-shop-sidebar"),
+                isVisible = $sidebar.is(":visible");
+            if (isVisible) $sidebar.removeClass("fade-in");
+            $sidebar.slideToggle(self.filterPanelSlideSpeed, function () {
+                if (!isVisible) $sidebar.addClass("fade-in");
+                self.filterPanelSliding = false;
             });
         },
+
+        /**
+         * Toggles the search filter panel visibility.
+         */
         shopFiltersSearchToggle: function () {
             this.shopSearchTogglePanel();
             this.currentSearch = "";
         },
+
+        /**
+         * Closes the search filter panel.
+         */
         shopFiltersSearchClose: function () {
-            this.searchEnabled && this.$searchBtn.parent("li").hasClass("active") && ((this.categoryClicked = !0), this.$searchBtn.trigger("click"));
-        },
-        shopFiltersHideActivePanel: function () {
-            var a = 0,
-                d = this.$shopFilterMenu.children(".active");
-            if (d.length) {
-                d.removeClass("active");
-                var f = d.data("panel");
-                d.is(":hidden") && "cat" == f ? this.shopFiltersCategoriesReset() : ((a = 300), this[this.shopFilterMenuFnNames[f]]());
+            if (this.searchEnabled && this.$searchBtn.parent("li").hasClass("active")) {
+                this.categoryClicked = true;
+                this.$searchBtn.trigger("click");
             }
-            return a;
         },
+
+        /**
+         * Hides the currently active filter panel with a delay if needed.
+         * @returns {number} The delay duration in milliseconds.
+         */
+        shopFiltersHideActivePanel: function () {
+            var delay = 0,
+                $activePanel = this.$shopFilterMenu.children(".active");
+            if ($activePanel.length) {
+                $activePanel.removeClass("active");
+                var panelType = $activePanel.data("panel");
+                if ($activePanel.is(":hidden") && "cat" == panelType) {
+                    this.shopFiltersCategoriesReset();
+                } else {
+                    delay = 300;
+                    this[this.shopFilterMenuFnNames[panelType]]();
+                }
+            }
+            return delay;
+        },
+
+        /**
+         * Toggles the visibility of the sidebar popup button based on scroll position.
+         */
         shopFiltersPopupButtonToggle: function () {
-            var a = this.$shopSidebarPopupBtn.hasClass("visible") ? this.$shopSidebarPopupBtn.offset().top + this.$shopSidebarPopupBtn.outerHeight(!0) : this.$shopSidebarPopupBtn.offset().top,
-                d = this.$shopBrowseWrap.offset().top;
-            a > d + 190 ? this.shopFiltersPopupButtonShow() : this.shopFiltersPopupButtonHide();
+            var buttonTop = this.$shopSidebarPopupBtn.hasClass("visible")
+                ? this.$shopSidebarPopupBtn.offset().top + this.$shopSidebarPopupBtn.outerHeight(true)
+                : this.$shopSidebarPopupBtn.offset().top,
+                browseTop = this.$shopBrowseWrap.offset().top;
+            if (buttonTop > browseTop + 190) {
+                this.shopFiltersPopupButtonShow();
+            } else {
+                this.shopFiltersPopupButtonHide();
+            }
         },
+
+        /**
+         * Shows the sidebar popup button.
+         */
         shopFiltersPopupButtonShow: function () {
             this.$shopSidebarPopupBtn.addClass("visible");
         },
+
+        /**
+         * Hides the sidebar popup button.
+         */
         shopFiltersPopupButtonHide: function () {
             this.$shopSidebarPopupBtn.removeClass("visible");
         },
+
+        /**
+         * Displays the shop sidebar popup.
+         */
         shopFiltersPopupShow: function () {
-            var a = this;
-            a.shopFiltersPopupButtonHide();
-            a.$shopSidebarPopup.addClass("visible");
-            a.$body.addClass("shop-filters-popup-open");
-            a.$document.on("mouseup.filtersPopup", function (d) {
-                a.$shopSidebarPopup.is(d.target) || 0 !== a.$shopSidebarPopup.has(d.target).length || a.shopFiltersPopupHide();
+            var self = this;
+            self.shopFiltersPopupButtonHide();
+            self.$shopSidebarPopup.addClass("visible");
+            self.$body.addClass("shop-filters-popup-open");
+            self.$document.on("mouseup.filtersPopup", function (e) {
+                if (!self.$shopSidebarPopup.is(e.target) && 0 === self.$shopSidebarPopup.has(e.target).length) {
+                    self.shopFiltersPopupHide();
+                }
             });
         },
+
+        /**
+         * Hides the shop sidebar popup.
+         */
         shopFiltersPopupHide: function () {
-            var a = this;
-            a.$shopSidebarPopup.removeClass("visible");
-            a.shopFiltersPopupButtonToggle();
-            a.$body.removeClass("shop-filters-popup-open");
-            a.$document.off("mouseup.filtersPopup");
+            var self = this;
+            self.$shopSidebarPopup.removeClass("visible");
+            self.shopFiltersPopupButtonToggle();
+            self.$body.removeClass("shop-filters-popup-open");
+            self.$document.off("mouseup.filtersPopup");
             setTimeout(function () {
-                a.searchHideNotice();
-            }, a.panelsAnimSpeed);
+                self.searchHideNotice();
+            }, self.panelsAnimSpeed);
         },
+
+        /**
+         * Resets the shop sidebar popup to its initial state and reloads the page.
+         */
         shopFiltersPopupReset: function () {
-            var a = location.href.replace(location.search, "");
-            this.shopGetPage(a);
-            "0" !== ps_wp_vars.shopFiltersPopupAutoClose && this.shopFiltersPopupHide();
+            var baseUrl = location.href.replace(location.search, "");
+            this.shopGetPage(baseUrl);
+            if ("0" !== ps_wp_vars.shopFiltersPopupAutoClose) this.shopFiltersPopupHide();
         },
-        shopExternalGetPage: function (a) {
-            var d = this;
-            if (a == window.location.href) d.shopScrollToTop();
-            else {
-                c("#ps-shop-categories-wrap").find(".current-cat").removeClass("current-cat");
-                var f = d.shopScrollToTop();
+
+        /**
+         * Handles navigation to an external shop page, with optional scrolling.
+         * @param {string} url - The URL to navigate to.
+         */
+        shopExternalGetPage: function (url) {
+            var self = this;
+            if (url == window.location.href) {
+                self.shopScrollToTop();
+            } else {
+                jQuery("#ps-shop-categories-wrap").find(".current-cat").removeClass("current-cat");
+                var scrollDelay = self.shopScrollToTop();
                 setTimeout(function () {
-                    d.shopGetPage(a);
-                }, f);
+                    self.shopGetPage(url);
+                }, scrollDelay);
             }
         },
-        shopGetPage: function (a, d, f) {
-            var e = this;
-            if (e.shopAjax) return !1;
-            a &&
-                (e.shopRemoveNotices(),
-                "popup" == e.shopSidebarLayout && "0" !== ps_wp_vars.shopFiltersPopupAutoClose && e.shopFiltersPopupHide(),
-                e.$body.width() < e.filterPanelHideWidth ? (e.shopShowLoader(!0), (f = e.filterPanelSlideSpeed), (e.filterPanelSlideSpeed = 0), e.shopFiltersHideActivePanel(), (e.filterPanelSlideSpeed = f)) : e.shopShowLoader(),
-                (a = a.replace(/\/?(\?|#|$)/, "/$1")),
-                d || e.setPushState(a),
-                (e.shopAjax = c.ajax({
-                    url: a,
-                    data: { shop_load: "full", shop_filters_layout: e.shopSidebarLayout },
+
+        /**
+         * Fetches a new shop page via AJAX.
+         * @param {string} url - The URL to fetch.
+         * @param {boolean} [preserveState] - Whether to preserve the current state.
+         * @param {boolean} [scroll] - Whether to scroll after loading.
+         */
+        shopGetPage: function (url, preserveState, scroll) {
+            var self = this;
+            if (self.shopAjax) return false;
+            if (url) {
+                self.shopRemoveNotices();
+                if ("popup" == self.shopSidebarLayout && "0" !== ps_wp_vars.shopFiltersPopupAutoClose) {
+                    self.shopFiltersPopupHide();
+                }
+                if (self.$body.width() < self.filterPanelHideWidth) {
+                    self.shopShowLoader(true);
+                    var tempSpeed = self.filterPanelSlideSpeed;
+                    self.filterPanelSlideSpeed = 0;
+                    self.shopFiltersHideActivePanel();
+                    self.filterPanelSlideSpeed = tempSpeed;
+                } else {
+                    self.shopShowLoader();
+                }
+                url = url.replace(/\/?(\?|#|$)/, "/$1");
+                if (!preserveState) self.setPushState(url);
+                self.shopAjax = jQuery.ajax({
+                    url: url,
+                    data: { shop_load: "full", shop_filters_layout: self.shopSidebarLayout },
                     dataType: "html",
-                    cache: !1,
+                    cache: false,
                     headers: { "cache-control": "no-cache" },
                     method: "POST",
-                    error: function (b, h, g) {
-                        console.log("ps: AJAX error - shopGetPage() - " + g);
-                        e.shopHideLoader();
-                        e.shopAjax = !1;
+                    error: function (xhr, status, error) {
+                        console.log("ps: AJAX error - shopGetPage() - " + error);
+                        self.shopHideLoader();
+                        self.shopAjax = false;
                     },
-                    success: function (b) {
-                        e.shopUpdateContent(b);
-                        e.shopAjax = !1;
-                    },
-                })));
-        },
-        shopUpdateContent: function (a) {
-            var d = this;
-            a = c("<div>" + a + "</div>");
-            if (ps_wp_vars.shopAjaxUpdateTitle) {
-                var f = a.find("#ps-wp-title").text();
-                f.length && (document.title = f);
+                    success: function (data) {
+                        self.shopUpdateContent(data);
+                        self.shopAjax = false;
+                    }
+                });
             }
-            var e = a.find("#ps-body-class"),
-                b = a.find("#ps-shop-taxonomy-header"),
-                h = a.find(".ps-shop-taxonomy-heading");
-            f = a.find("#ps-shop-categories-wrap");
-            var g = a.find("#ps-shop-widgets-ul"),
-                k = a.find("#ps-shop-browse-wrap");
-            e.hasClass("post-type-archive")
-                ? d.$body.removeClass("tax-product_cat tax-product_tag").addClass("post-type-archive post-type-archive-product")
-                : e.hasClass("tax-product_cat")
-                ? d.$body.removeClass("post-type-archive post-type-archive-product tax-product_tag").addClass("tax-product_cat")
-                : e.hasClass("tax-product_tag") && d.$body.removeClass("post-type-archive post-type-archive-product tax-product_cat").addClass("tax-product_tag");
-            b.length ? ((e = c("#ps-shop-taxonomy-header")), e.replaceWith(b), e.removeClass("hidden")) : c("#ps-shop-taxonomy-header").addClass("hidden");
-            h.length ? c(".ps-shop-taxonomy-heading").replaceWith(h) : c(".ps-shop-taxonomy-heading").addClass("hidden");
-            f.length && ((b = c("#ps-shop-categories-wrap")), b.hasClass("fade-in") && f.addClass("fade-in force-show"), b.replaceWith(f));
-            g.length && (c("#ps-shop-widgets-ul").replaceWith(g), d.shopFiltersInitPriceSlider());
-            k.length && d.$shopBrowseWrap.replaceWith(k);
-            d.$document.trigger("ps_ajax_shop_update_content", a);
-            d.$shopBrowseWrap = c("#ps-shop-browse-wrap");
-            "undefined" === typeof d.shopInfLoadBound || d.shopInfLoadBound || d.infload_init();
-            a = d.shopScrollToTop();
-            setTimeout(function () {
-                d.shopHideLoader();
-            }, a);
         },
+
+        /**
+         * Updates the shop content with new AJAX data.
+         * @param {string} html - The HTML content to update with.
+         */
+        shopUpdateContent: function (html) {
+            var self = this;
+            var $content = jQuery("<div>" + html + "</div>");
+            if (ps_wp_vars.shopAjaxUpdateTitle) {
+                var title = $content.find("#ps-wp-title").text();
+                if (title.length) document.title = title;
+            }
+            var $bodyClass = $content.find("#ps-body-class"),
+                $header = $content.find("#ps-shop-taxonomy-header"),
+                $heading = $content.find(".ps-shop-taxonomy-heading"),
+                $categories = $content.find("#ps-shop-categories-wrap"),
+                $widgets = $content.find("#ps-shop-widgets-ul"),
+                $browse = $content.find("#ps-shop-browse-wrap");
+            if ($bodyClass.hasClass("post-type-archive")) {
+                self.$body.removeClass("tax-product_cat tax-product_tag").addClass("post-type-archive post-type-archive-product");
+            } else if ($bodyClass.hasClass("tax-product_cat")) {
+                self.$body.removeClass("post-type-archive post-type-archive-product tax-product_tag").addClass("tax-product_cat");
+            } else if ($bodyClass.hasClass("tax-product_tag")) {
+                self.$body.removeClass("post-type-archive post-type-archive-product tax-product_cat").addClass("tax-product_tag");
+            }
+            if ($header.length) {
+                var $existingHeader = jQuery("#ps-shop-taxonomy-header");
+                $existingHeader.replaceWith($header);
+                $existingHeader.removeClass("hidden");
+            } else {
+                jQuery("#ps-shop-taxonomy-header").addClass("hidden");
+            }
+            if ($heading.length) {
+                jQuery(".ps-shop-taxonomy-heading").replaceWith($heading);
+            } else {
+                jQuery(".ps-shop-taxonomy-heading").addClass("hidden");
+            }
+            if ($categories.length) {
+                var $existingCategories = jQuery("#ps-shop-categories-wrap");
+                if ($existingCategories.hasClass("fade-in")) $categories.addClass("fade-in force-show");
+                $existingCategories.replaceWith($categories);
+            }
+            if ($widgets.length) {
+                jQuery("#ps-shop-widgets-ul").replaceWith($widgets);
+                self.shopFiltersInitPriceSlider();
+            }
+            if ($browse.length) self.$shopBrowseWrap.replaceWith($browse);
+            self.$document.trigger("ps_ajax_shop_update_content", $content);
+            self.$shopBrowseWrap = jQuery("#ps-shop-browse-wrap");
+            if (typeof self.shopInfLoadBound === "undefined" || !self.shopInfLoadBound) self.infload_init();
+            var scrollDelay = self.shopScrollToTop();
+            setTimeout(function () {
+                self.shopHideLoader();
+            }, scrollDelay);
+        },
+
+        /**
+         * Initializes the price slider widget for filtering.
+         */
         shopFiltersInitPriceSlider: function () {
-            if ("undefined" === typeof woocommerce_price_slider_params) return !1;
-            c(document.body).on("price_slider_create price_slider_slide", function (a, d, f) {
-                c(".price_slider_amount span.from").html(
-                    accounting.formatMoney(d, {
+            if (typeof woocommerce_price_slider_params === "undefined") return false;
+            jQuery(document.body).on("price_slider_create price_slider_slide", function (e, min, max) {
+                jQuery(".price_slider_amount span.from").html(
+                    accounting.formatMoney(min, {
                         symbol: woocommerce_price_slider_params.currency_format_symbol,
                         decimal: woocommerce_price_slider_params.currency_format_decimal_sep,
                         thousand: woocommerce_price_slider_params.currency_format_thousand_sep,
                         precision: woocommerce_price_slider_params.currency_format_num_decimals,
-                        format: woocommerce_price_slider_params.currency_format,
+                        format: woocommerce_price_slider_params.currency_format
                     })
                 );
-                c(".price_slider_amount span.to").html(
-                    accounting.formatMoney(f, {
+                jQuery(".price_slider_amount span.to").html(
+                    accounting.formatMoney(max, {
                         symbol: woocommerce_price_slider_params.currency_format_symbol,
                         decimal: woocommerce_price_slider_params.currency_format_decimal_sep,
                         thousand: woocommerce_price_slider_params.currency_format_thousand_sep,
                         precision: woocommerce_price_slider_params.currency_format_num_decimals,
-                        format: woocommerce_price_slider_params.currency_format,
+                        format: woocommerce_price_slider_params.currency_format
                     })
                 );
-                c(document.body).trigger("price_slider_updated", [d, f]);
+                jQuery(document.body).trigger("price_slider_updated", [min, max]);
             });
             (function () {
-                c("input#min_price, input#max_price").hide();
-                c(".price_slider, .price_label").show();
-                var a = c(".price_slider_amount #min_price").data("min"),
-                    d = c(".price_slider_amount #max_price").data("max"),
-                    f = c(".price_slider_amount").data("step") || 1,
-                    e = c(".price_slider_amount #min_price").val(),
-                    b = c(".price_slider_amount #max_price").val();
-                c(".price_slider:not(.ui-slider)").slider({
-                    range: !0,
-                    animate: !0,
-                    min: a,
-                    max: d,
-                    step: f,
-                    values: [e, b],
+                jQuery("input#min_price, input#max_price").hide();
+                jQuery(".price_slider, .price_label").show();
+                var minPrice = jQuery(".price_slider_amount #min_price").data("min"),
+                    maxPrice = jQuery(".price_slider_amount #max_price").data("max"),
+                    step = jQuery(".price_slider_amount").data("step") || 1,
+                    initialMin = jQuery(".price_slider_amount #min_price").val(),
+                    initialMax = jQuery(".price_slider_amount #max_price").val();
+                jQuery(".price_slider:not(.ui-slider)").slider({
+                    range: true,
+                    animate: true,
+                    min: minPrice,
+                    max: maxPrice,
+                    step: step,
+                    values: [initialMin, initialMax],
                     create: function () {
-                        c(".price_slider_amount #min_price").val(e);
-                        c(".price_slider_amount #max_price").val(b);
-                        c(document.body).trigger("price_slider_create", [e, b]);
+                        jQuery(".price_slider_amount #min_price").val(initialMin);
+                        jQuery(".price_slider_amount #max_price").val(initialMax);
+                        jQuery(document.body).trigger("price_slider_create", [initialMin, initialMax]);
                     },
-                    slide: function (h, g) {
-                        c("input#min_price").val(g.values[0]);
-                        c("input#max_price").val(g.values[1]);
-                        c(document.body).trigger("price_slider_slide", [g.values[0], g.values[1]]);
+                    slide: function (e, ui) {
+                        jQuery("input#min_price").val(ui.values[0]);
+                        jQuery("input#max_price").val(ui.values[1]);
+                        jQuery(document.body).trigger("price_slider_slide", [ui.values[0], ui.values[1]]);
                     },
-                    change: function (h, g) {
-                        c(document.body).trigger("price_slider_change", [g.values[0], g.values[1]]);
-                    },
+                    change: function (e, ui) {
+                        jQuery(document.body).trigger("price_slider_change", [ui.values[0], ui.values[1]]);
+                    }
                 });
             })();
-        },
+        }
     });
-    c.psThemeExtensions.filters = c.psTheme.filters_init;
+    jQuery.psThemeExtensions.filters = jQuery.psTheme.initializeShopFilters;
 })(jQuery);
+
+
 jQuery(function (b) {
     var c = b("#ps-shop");
     if (c.length)
@@ -8668,70 +8831,73 @@ jQuery(function (b) {
         else return f.initSoD.apply(this, arguments);
     };
 })(jQuery);
-(function (c) {
-    c.extend(c.psTheme, {
-        atc_init: function () {
-            this.atcBind();
-        },
-        atcBind: function () {
-            var d = this;
-            d.$body.on("click", ".single_add_to_cart_button", function (a) {
-                var b = c(this);
-                if (b.is(".disabled")) console.log("ps: Add-to-cart button disabled");
-                else if (b.hasClass("ps-simple-add-to-cart-button") || b.hasClass("ps-variable-add-to-cart-button"))
-                    a.preventDefault(),
-                        (d.quickviewOpen = d.quickviewIsOpen()),
-                        d.quickviewOpen && b.addClass("ps-loader ps-loader-light"),
-                        b.attr("disabled", "disabled"),
-                        (a = b.closest("form")),
-                        a.length && ((a = { product_id: a.find("[name*='add-to-cart']").val(), product_variation_data: a.serialize() }), d.$body.trigger("adding_to_cart", [b, a]), d.atcAjaxSubmitForm(b, a));
-            });
-        },
-        atcAjaxSubmitForm: function (d, a) {
-            var b = this;
-            if (a.product_id) {
-                if ("undefined" !== typeof wc_add_to_cart_params) var e = wc_add_to_cart_params.wc_ajax_url;
-                else console.log('ps: "wc_add_to_cart_params" undefined - WooCommerce AJAX atc disabled'), (e = ps_wp_vars.woocommerceAjaxUrl);
-                e = e.toString().replace("wc-ajax=%%endpoint%%", "add-to-cart=" + a.product_id + "&ps-ajax-add-to-cart=1");
-                c.ajax({
-                    type: "POST",
-                    url: e,
-                    data: a.product_variation_data,
-                    dataType: "html",
-                    cache: !1,
-                    headers: { "cache-control": "no-cache" },
-                    error: function (b, a, c) {
-                        console.log("ps: AJAX error - atcAjaxSubmitForm() - " + c);
-                    },
-                    success: function (a) {
-                        a = c("<div>" + a + "</div>");
-                        var f = a.find("#ps-shop-notices-wrap"),
-                            e = f.find(".woocommerce-error").length ? !0 : !1;
-                        f = { ".ps-menu-cart-count": a.find(".ps-menu-cart-count").prop("outerHTML"), "#ps-shop-notices-wrap": f.prop("outerHTML"), "#ps-cart-panel": a.find("#ps-cart-panel").prop("outerHTML") };
-                        b.shopReplaceFragments(f);
-                        b.$body.trigger("added_to_cart", [f, ""]);
-                        b.quickviewOpen
-                            ? (c.magnificPopup.close(),
-                              e
-                                  ? b.isShop && b.shopScrollToTop()
-                                  : b.$widgetPanel.length &&
-                                    setTimeout(function () {
-                                        b.widgetPanelShow(!1, !0);
-                                    }, 350))
-                            : (d.removeAttr("disabled"),
-                              e &&
-                                  setTimeout(function () {
-                                      c("#ps-widget-panel-overlay").trigger("click");
-                                      b.isShop && b.shopScrollToTop();
-                                  }, 500));
-                        a.empty();
-                    },
-                });
-            } else console.log("ps (Error): No product id found");
-        },
-    });
-    c.psThemeExtensions.add_to_cart = c.psTheme.atc_init;
-})(jQuery);
+
+
+//(function (c) {
+//    c.extend(c.psTheme, {
+//        atc_init: function () {
+//            this.atcBind();
+//        },
+//        atcBind: function () {
+//            var d = this;
+//            d.$body.on("click", ".single_add_to_cart_button", function (a) {
+//                var b = c(this);
+//                if (b.is(".disabled")) console.log("ps: Add-to-cart button disabled");
+//                else if (b.hasClass("ps-simple-add-to-cart-button") || b.hasClass("ps-variable-add-to-cart-button"))
+//                    a.preventDefault(),
+//                        (d.quickviewOpen = d.quickviewIsOpen()),
+//                        d.quickviewOpen && b.addClass("ps-loader ps-loader-light"),
+//                        b.attr("disabled", "disabled"),
+//                        (a = b.closest("form")),
+//                        a.length && ((a = { product_id: a.find("[name*='add-to-cart']").val(), product_variation_data: a.serialize() }), d.$body.trigger("adding_to_cart", [b, a]), d.atcAjaxSubmitForm(b, a));
+//            });
+//        },
+//        atcAjaxSubmitForm: function (d, a) {
+//            var b = this;
+//            if (a.product_id) {
+//                if ("undefined" !== typeof wc_add_to_cart_params) var e = wc_add_to_cart_params.wc_ajax_url;
+//                else console.log('ps: "wc_add_to_cart_params" undefined - WooCommerce AJAX atc disabled'), (e = ps_wp_vars.woocommerceAjaxUrl);
+//                e = e.toString().replace("wc-ajax=%%endpoint%%", "add-to-cart=" + a.product_id + "&ps-ajax-add-to-cart=1");
+//                c.ajax({
+//                    type: "POST",
+//                    url: e,
+//                    data: a.product_variation_data,
+//                    dataType: "html",
+//                    cache: !1,
+//                    headers: { "cache-control": "no-cache" },
+//                    error: function (b, a, c) {
+//                        console.log("ps: AJAX error - atcAjaxSubmitForm() - " + c);
+//                    },
+//                    success: function (a) {
+//                        a = c("<div>" + a + "</div>");
+//                        var f = a.find("#ps-shop-notices-wrap"),
+//                            e = f.find(".woocommerce-error").length ? !0 : !1;
+//                        f = { ".ps-menu-cart-count": a.find(".ps-menu-cart-count").prop("outerHTML"), "#ps-shop-notices-wrap": f.prop("outerHTML"), "#ps-cart-panel": a.find("#ps-cart-panel").prop("outerHTML") };
+//                        b.shopReplaceFragments(f);
+//                        b.$body.trigger("added_to_cart", [f, ""]);
+//                        b.quickviewOpen
+//                            ? (c.magnificPopup.close(),
+//                              e
+//                                  ? b.isShop && b.shopScrollToTop()
+//                                  : b.$widgetPanel.length &&
+//                                    setTimeout(function () {
+//                                        b.widgetPanelShow(!1, !0);
+//                                    }, 350))
+//                            : (d.removeAttr("disabled"),
+//                              e &&
+//                                  setTimeout(function () {
+//                                      c("#ps-widget-panel-overlay").trigger("click");
+//                                      b.isShop && b.shopScrollToTop();
+//                                  }, 500));
+//                        a.empty();
+//                    },
+//                });
+//            } else console.log("ps (Error): No product id found");
+//        },
+//    });
+//    c.psThemeExtensions.add_to_cart = c.psTheme.atc_init;
+//})(jQuery);
+
 !(function ($, c, i, n) {
     var t = function (t) {
             var a = this;
