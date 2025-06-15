@@ -407,6 +407,7 @@
                                             {% with cats=product.categories.all %}
                                                 {% for cat in cats %}
                                                 {% if category.name == cat.name and product.title != page.title %}
+                                                {% if category.name != "Stoneware" %}
                                                 {% image product.image fill-400x500 as temp_image %}
                                                     <li class="product type-product status-publish first instock product_cat-essentials product_tag-contemporary product_tag-essentials has-post-thumbnail shipping-taxable purchasable product-type-simple" data-product-id="227">
                                                         <div class="ps-shop-loop-product-wrap">
@@ -427,6 +428,8 @@
                                                         </div>
                                                     </li>
                                                 {% endif %}
+                                                {% endif %}
+
                                                 {% endfor %}
                                             {% endwith %}
                                         {% endfor %}
