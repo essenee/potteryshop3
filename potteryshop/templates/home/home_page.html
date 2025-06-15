@@ -2,34 +2,11 @@
 {% load static wagtailcore_tags wagtailimages_tags %}
 {% block content %}
 
-    <style type="text/css">
-        .recentcomments a {
-            display: inline !important;
-            padding: 0 !important;
-            margin: 0 !important;
-        }
-        .tag-cloud-link {
-            display: inline-block;
-            background: #333;
-            color: #fff;
-            padding: 5px 10px;
-            margin: 5px;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-        .tag-cloud-link.active {
-            background: #666; /* Highlight active button */
-        }
-        .product {
-            text-align: center;
-            padding: 10px;
-        }
-        .category {
-            display: block;
-            font-size: 0.9em;
-            color: #666;
-        }
-    </style>
+<style type="text/css">
+
+
+
+</style>
 
             <!-- Carousel -->
             <div class="ps-page-full">
@@ -65,7 +42,6 @@
                     </div>
                 </div>
             </div>
-
 
             <!-- Shop - Categories - Search -->
             <div id="ps-shop" class="ps-shop header-enabled ajax-enabled ps-shop-sidebar-header images-lazyload">
@@ -227,37 +203,24 @@
                                             </div>
                                         </li>
 
-                                        <!-- Sidebar with updated Forms widget -->
-                                            <aside id="secondary" class="widget-area ps-col-12 ps-col-md-3" role="complementary">
-                                                <div class="ps-shop-sidebar">
-                                                    <!-- Updated Forms widget with dynamic categories -->
-                                                    <li id="woocommerce_product_tag_cloud-2" class="widget woocommerce widget_product_tag_cloud">
-                                                        <div class="ps-shop-widget-col" data-panel="forms">
-                                                            <h3 class="ps-widget-title">Forms</h3>
-                                                        </div>
-                                                        <div class="ps-shop-widget-col">
-                                                            <div class="tagcloud">
-                                                                <!-- Dynamic buttons with Django URLs -->
-                                                                <a href="{% url 'category_filter' 'all' %}" class="custom-category-link">All</a>
-                                                                {% for category in categories %}
-                                                                    <a href="{% url 'category_filter' category.id %}" class="custom-category-link">{{ category.name }}</a>
-                                                                {% endfor %}
-                                                            </div>
-                                                        </div>
-                                                    </li>
-
-                                                    <!-- Keep other widgets if needed -->
-                                                    {% for widget in sidebar_widgets %}
-                                                        {% include_block widget %}
+                                        <li id="product_tag_cloud-2" class="widget widget_product_tag_cloud">
+                                            <div class="ps-shop-widget-col">
+                                                <h3 class="ps-widget-title">Tags</h3>
+                                            </div>
+                                            <div class="ps-shop-widget-col">
+                                                <div class="tagcloud">
+                                                             <a href="{% url 'category_filter' 'all' %}" class="custom-category-link">All</a>
+                                                    {% for category in categories %}
+                                                        <a href="{% url 'category_filter' category.id %}" class="custom-category-link">{{ category.name }}</a>
                                                     {% endfor %}
                                                 </div>
-                                            </aside>
-
+                                            </div>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div id="ps-shop-sidebar-layout-indicator"></div>
+<!--                        <div id="ps-shop-sidebar-layout-indicator"></div>-->
                         <!-- Don't remove (used for testing sidebar/filters layout in JavaScript) -->
                     </div>
                     <div id="ps-shop-search">
@@ -295,7 +258,11 @@
                                 <div class="woocommerce-notices-wrapper"></div>
                                 <ul class="ps-products products xsmall-block-grid-2 small-block-grid-2 medium-block-grid-3 large-block-grid-4 grid-default layout-default attributes-position-thumbnail has-action-links">
                                     {% for product in products %}
-                                    <li class="ps-has-attributes product type-product post-253 status-publish first instock product_cat-interior product_tag-classic product_tag-interior product_tag-leather has-post-thumbnail sale featured shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="253">
+<!--                                    <li class="product ps-has-attributes product type-product post-253 status-publish first instock product_cat-interior product_tag-classic product_tag-interior product_tag-leather has-post-thumbnail sale featured shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="253">-->
+<!--                                        <a href="#">{{ product.title }}</a>-->
+<!--                                        <span class="category">{{ product.category.name }}</span>-->
+<!--                                    </li>-->
+                                    <li class="product ps-has-attributes product type-product post-253 status-publish first instock product_cat-interior product_tag-classic product_tag-interior product_tag-leather has-post-thumbnail sale featured shipping-taxable purchasable product-type-variable has-default-attributes" data-product-id="253">
                                         <div class="ps-shop-loop-product-wrap">
                                             <div class="ps-shop-loop-thumbnail">
                                                 <a href="{{ product.get_url }}" class="ps-shop-loop-thumbnail-link woocommerce-LoopProduct-link">
@@ -465,12 +432,7 @@
 
 
 <!-- .ps-page-overflow -->
-<!--<script>-->
-<!--    jQuery(document).ready(function($) {-->
-<!--        // Optional: Enhance with AJAX for smoother transitions (if desired)-->
-<!--        // For now, the server-side rendering handles the filtering-->
-<!--    });-->
-<!--</script>-->
+
 
 
 {% endblock %}

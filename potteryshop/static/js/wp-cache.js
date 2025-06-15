@@ -1,11 +1,12 @@
-//!function () {
-//    function t() {
-//        var t,
-//            e = document.createElement("script");
-//        return (e.src = _zxcvbnSettings.src), (e.type = "text/javascript"), (e.async = !0), (t = document.getElementsByTagName("script")[0]).parentNode.insertBefore(e, t);
-//    }
-//    null != window.attachEvent ? window.attachEvent("onload", t) : window.addEventListener("load", t, !1);
-//}.call(this);
+var _zxcvbnSettings = { src: "https://savoy.nordicmade.com/wp-includes/js/zxcvbn.min.js" }; /*! This file is auto-generated */
+!function () {
+    function t() {
+        var t,
+            e = document.createElement("script");
+        return (e.src = _zxcvbnSettings.src), (e.type = "text/javascript"), (e.async = !0), (t = document.getElementsByTagName("script")[0]).parentNode.insertBefore(e, t);
+    }
+    null != window.attachEvent ? window.attachEvent("onload", t) : window.addEventListener("load", t, !1);
+}.call(this);
 (function () {
     var c = document.body.className;
     c = c.replace(/woocommerce-no-js/, "woocommerce-js");
@@ -4115,10 +4116,10 @@ var SnapbackCache = function (c) {
 });
 
 var ps_wp_vars = {
-    themeUri: "https://savoy.nordicmade.com/wp-content/themes/savoy",
+    themeUri: "",
     ajaxUrl: "/wp-admin/admin-ajax.php",
     woocommerceAjaxUrl: "/?wc-ajax=%%endpoint%%",
-    searchUrl: "https://savoy.nordicmade.com/?s=%%pssearchkey%%",
+    searchUrl: "",
     pageLoadTransition: "0",
     headerPlaceholderSetHeight: "1",
     cartPanelQtyArrows: "1",
@@ -4137,7 +4138,7 @@ var ps_wp_vars = {
     shopScrollOffsetMobile: "70",
     shopSearch: "1",
     shopSearchHeader: "0",
-    shopSearchUrl: "https://savoy.nordicmade.com/?post_type=product&s=%%pssearchkey%%",
+    shopSearchUrl: "",
     shopSearchMinChar: "2",
     shopSearchAutoClose: "1",
     searchSuggestions: "0",
@@ -7660,7 +7661,6 @@ try {
     });
     f.psThemeExtensions.infload = f.psTheme.infload_init;
 })(jQuery);
-
 (function (c) {
     c.extend(c.psTheme, {
         filters_init: function () {
@@ -7676,7 +7676,7 @@ try {
         shopFiltersBind: function () {
             var a = this;
             if (a.filtersEnableAjax)
-                a.$header.on("click.nmHeaderShopAjax", ".shop-ajax-link > a", function (b) {
+                a.$header.on("click.psHeaderShopAjax", ".shop-ajax-link > a", function (b) {
                     b.preventDefault();
                     var h = c(this),
                         g = h.parents(".menu-item").last();
@@ -7714,54 +7714,54 @@ try {
                     a.shopFiltersSearchClose();
                     c("#ps-shop-categories-wrap").find(".current-cat").removeClass("current-cat");
                     h.addClass("current-cat");
-                    a.shopGetPage(b.attr("href"));
+//                    a.shopGetPage(b.attr("href"));
                 });
-            if (a.$shopSidebarPopupBtn.length) {
-                a.$shopSidebarPopup = c("#ps-shop-sidebar-popup");
-                var d = null;
-                a.$window.on("scroll.nmShopPopupBtn resize.nmShopPopupBtn", function () {
-                    d && clearTimeout(d);
-                    d = setTimeout(function () {
-                        a.$body.hasClass("shop-filters-popup-open") || a.shopFiltersPopupButtonToggle();
-                    }, 500);
-                });
-                a.$shopSidebarPopupBtn.on("click", function () {
-                    a.shopFiltersPopupShow();
-                });
-                c("#ps-shop-sidebar-popup-reset-button").on("click", function (b) {
-                    b.preventDefault();
-                    a.shopFiltersPopupReset();
-                });
-            }
-            var f = a.isTouch ? !1 : !0,
-                e = !1;
-            a.$shopWrap.on("click", "#ps-shop-sidebar .ps-widget-title", function (b) {
-                b = c(this).closest("li");
-                if (b.hasClass("show")) f && b.children(".ps-shop-widget-col").last().css("height", ""), b.removeClass("show");
-                else {
-                    var h = b.parent("#ps-shop-widgets-ul").children(".show");
-                    if (f) {
-                        var g = b.children(".ps-shop-widget-col").last(),
-                            k = g.children().first().outerHeight(!0) + "px",
-                            l = h.children(".ps-shop-widget-col").last();
-                        g.css("height", k);
-                        l.css("height", "");
-                        e ||
-                            ((e = !0),
-                            a.$window.one("resize.nmShopWidget", function () {
-                                a.shopFiltersWidgetHideOpen();
-                                e = !1;
-                            }));
-                    }
-                    h.removeClass("show");
-                    b.addClass("show");
-                }
-            });
+//            if (a.$shopSidebarPopupBtn.length) {
+//                a.$shopSidebarPopup = c("#ps-shop-sidebar-popup");
+//                var d = null;
+//                a.$window.on("scroll.psShopPopupBtn resize.psShopPopupBtn", function () {
+//                    d && clearTimeout(d);
+//                    d = setTimeout(function () {
+//                        a.$body.hasClass("shop-filters-popup-open") || a.shopFiltersPopupButtonToggle();
+//                    }, 500);
+//                });
+//                a.$shopSidebarPopupBtn.on("click", function () {
+//                    a.shopFiltersPopupShow();
+//                });
+//                c("#ps-shop-sidebar-popup-reset-button").on("click", function (b) {
+//                    b.preventDefault();
+//                    a.shopFiltersPopupReset();
+//                });
+//            }
+//            var f = a.isTouch ? !1 : !0,
+//                e = !1;
+//            a.$shopWrap.on("click", "#ps-shop-sidebar .ps-widget-title", function (b) {
+//                b = c(this).closest("li");
+//                if (b.hasClass("show")) f && b.children(".ps-shop-widget-col").last().css("height", ""), b.removeClass("show");
+//                else {
+//                    var h = b.parent("#ps-shop-widgets-ul").children(".show");
+//                    if (f) {
+//                        var g = b.children(".ps-shop-widget-col").last(),
+//                            k = g.children().first().outerHeight(!0) + "px",
+//                            l = h.children(".ps-shop-widget-col").last();
+//                        g.css("height", k);
+//                        l.css("height", "");
+//                        e ||
+//                            ((e = !0),
+//                            a.$window.one("resize.psShopWidget", function () {
+//                                a.shopFiltersWidgetHideOpen();
+//                                e = !1;
+//                            }));
+//                    }
+//                    h.removeClass("show");
+//                    b.addClass("show");
+//                }
+//            });
             a.filtersEnableAjax &&
                 a.$pageIncludes.hasClass("shop_filters") &&
-                (a.$shopWrap.on("click", "#ps-shop-sidebar .nm_widget a", function (b) {
+                (a.$shopWrap.on("click", "#ps-shop-sidebar .ps_widget a", function (b) {
                     b.preventDefault();
-                    a.shopGetPage(c(this).attr("href"));
+//                    a.shopGetPage(c(this).attr("href"));
                 }),
                 a.$shopWrap.on("click", "#ps-shop-sidebar .widget_product_categories a", function (b) {
                     b.preventDefault();
@@ -7769,7 +7769,7 @@ try {
                 }),
                 a.$shopWrap.on("click", "#ps-shop-sidebar .widget_layered_nav a", function (b) {
                     b.preventDefault();
-                    a.shopGetPage(c(this).attr("href"));
+//                    a.shopGetPage(c(this).attr("href"));
                 }),
                 a.$document.on("ps_ajax_shop_update_content", function () {
                     a.$shopWrap.on("change", "#ps-shop-sidebar select.woocommerce-widget-layered-nav-dropdown", function () {
@@ -7788,12 +7788,9 @@ try {
                 }),
                 a.$shopWrap.on("click", "#ps-shop-sidebar .widget_product_tag_cloud a", function (b) {
                     b.preventDefault();
-                    a.shopGetPage(c(this).attr("href"), !1, !0);
+//                    a.shopGetPage(c(this).attr("href"), !1, !0);
                 }),
-                a.$shopWrap.on("click", "#ps-shop-sidebar .widget_rating_filter a", function (b) {
-                    b.preventDefault();
-                    a.shopGetPage(c(this).attr("href"));
-                }),
+
                 a.$body.on("price_slider_change", function (b, h, g) {
                     b = c("#ps-shop-sidebar").find(".widget_price_filter").first().find("form");
                     var k = parseInt(b.find("#min_price").attr("value")),
@@ -7888,7 +7885,7 @@ try {
         shopFiltersPopupReset: function () {
             var a = location.href.replace(location.search, "");
             this.shopGetPage(a);
-            "0" !== nm_wp_vars.shopFiltersPopupAutoClose && this.shopFiltersPopupHide();
+            "0" !== ps_wp_vars.shopFiltersPopupAutoClose && this.shopFiltersPopupHide();
         },
         shopExternalGetPage: function (a) {
             var d = this;
@@ -7901,37 +7898,38 @@ try {
                 }, f);
             }
         },
-        shopGetPage: function (a, d, f) {
-            var e = this;
-            if (e.shopAjax) return !1;
-            a &&
-                (e.shopRemoveNotices(),
-                "popup" == e.shopSidebarLayout && "0" !== nm_wp_vars.shopFiltersPopupAutoClose && e.shopFiltersPopupHide(),
-                e.$body.width() < e.filterPanelHideWidth ? (e.shopShowLoader(!0), (f = e.filterPanelSlideSpeed), (e.filterPanelSlideSpeed = 0), e.shopFiltersHideActivePanel(), (e.filterPanelSlideSpeed = f)) : e.shopShowLoader(),
-                (a = a.replace(/\/?(\?|#|$)/, "/$1")),
-                d || e.setPushState(a),
-                (e.shopAjax = c.ajax({
-                    url: a,
-                    data: { shop_load: "full", shop_filters_layout: e.shopSidebarLayout },
-                    dataType: "html",
-                    cache: !1,
-                    headers: { "cache-control": "no-cache" },
-                    method: "POST",
-                    error: function (b, h, g) {
-                        console.log("ps: AJAX error - shopGetPage() - " + g);
-                        e.shopHideLoader();
-                        e.shopAjax = !1;
-                    },
-                    success: function (b) {
-                        e.shopUpdateContent(b);
-                        e.shopAjax = !1;
-                    },
-                })));
-        },
+
+//        shopGetPage: function (a, d, f) {
+//            var e = this;
+//            if (e.shopAjax) return !1;
+//            a &&
+//                (e.shopRemoveNotices(),
+//                "popup" == e.shopSidebarLayout && "0" !== ps_wp_vars.shopFiltersPopupAutoClose && e.shopFiltersPopupHide(),
+//                e.$body.width() < e.filterPanelHideWidth ? (e.shopShowLoader(!0), (f = e.filterPanelSlideSpeed), (e.filterPanelSlideSpeed = 0), e.shopFiltersHideActivePanel(), (e.filterPanelSlideSpeed = f)) : e.shopShowLoader(),
+//                (a = a.replace(/\/?(\?|#|$)/, "/$1")),
+//                d || e.setPushState(a),
+//                (e.shopAjax = c.ajax({
+//                    url: a,
+//                    data: { shop_load: "full", shop_filters_layout: e.shopSidebarLayout },
+//                    dataType: "html",
+//                    cache: !1,
+//                    headers: { "cache-control": "no-cache" },
+//                    method: "POST",
+//                    error: function (b, h, g) {
+//                        console.log("ps: AJAX error - shopGetPage() - " + g);
+//                        e.shopHideLoader();
+//                        e.shopAjax = !1;
+//                    },
+//                    success: function (b) {
+//                        e.shopUpdateContent(b);
+//                        e.shopAjax = !1;
+//                    },
+//                })));
+//        },
         shopUpdateContent: function (a) {
             var d = this;
             a = c("<div>" + a + "</div>");
-            if (nm_wp_vars.shopAjaxUpdateTitle) {
+            if (ps_wp_vars.shopAjaxUpdateTitle) {
                 var f = a.find("#ps-wp-title").text();
                 f.length && (document.title = f);
             }
@@ -8670,73 +8668,70 @@ jQuery(function (b) {
         else return f.initSoD.apply(this, arguments);
     };
 })(jQuery);
-
-
-//(function (c) {
-//    c.extend(c.psTheme, {
-//        atc_init: function () {
-//            this.atcBind();
-//        },
-//        atcBind: function () {
-//            var d = this;
-//            d.$body.on("click", ".single_add_to_cart_button", function (a) {
-//                var b = c(this);
-//                if (b.is(".disabled")) console.log("ps: Add-to-cart button disabled");
-//                else if (b.hasClass("ps-simple-add-to-cart-button") || b.hasClass("ps-variable-add-to-cart-button"))
-//                    a.preventDefault(),
-//                        (d.quickviewOpen = d.quickviewIsOpen()),
-//                        d.quickviewOpen && b.addClass("ps-loader ps-loader-light"),
-//                        b.attr("disabled", "disabled"),
-//                        (a = b.closest("form")),
-//                        a.length && ((a = { product_id: a.find("[name*='add-to-cart']").val(), product_variation_data: a.serialize() }), d.$body.trigger("adding_to_cart", [b, a]), d.atcAjaxSubmitForm(b, a));
-//            });
-//        },
-//        atcAjaxSubmitForm: function (d, a) {
-//            var b = this;
-//            if (a.product_id) {
-//                if ("undefined" !== typeof wc_add_to_cart_params) var e = wc_add_to_cart_params.wc_ajax_url;
-//                else console.log('ps: "wc_add_to_cart_params" undefined - WooCommerce AJAX atc disabled'), (e = ps_wp_vars.woocommerceAjaxUrl);
-//                e = e.toString().replace("wc-ajax=%%endpoint%%", "add-to-cart=" + a.product_id + "&ps-ajax-add-to-cart=1");
-//                c.ajax({
-//                    type: "POST",
-//                    url: e,
-//                    data: a.product_variation_data,
-//                    dataType: "html",
-//                    cache: !1,
-//                    headers: { "cache-control": "no-cache" },
-//                    error: function (b, a, c) {
-//                        console.log("ps: AJAX error - atcAjaxSubmitForm() - " + c);
-//                    },
-//                    success: function (a) {
-//                        a = c("<div>" + a + "</div>");
-//                        var f = a.find("#ps-shop-notices-wrap"),
-//                            e = f.find(".woocommerce-error").length ? !0 : !1;
-//                        f = { ".ps-menu-cart-count": a.find(".ps-menu-cart-count").prop("outerHTML"), "#ps-shop-notices-wrap": f.prop("outerHTML"), "#ps-cart-panel": a.find("#ps-cart-panel").prop("outerHTML") };
-//                        b.shopReplaceFragments(f);
-//                        b.$body.trigger("added_to_cart", [f, ""]);
-//                        b.quickviewOpen
-//                            ? (c.magnificPopup.close(),
-//                              e
-//                                  ? b.isShop && b.shopScrollToTop()
-//                                  : b.$widgetPanel.length &&
-//                                    setTimeout(function () {
-//                                        b.widgetPanelShow(!1, !0);
-//                                    }, 350))
-//                            : (d.removeAttr("disabled"),
-//                              e &&
-//                                  setTimeout(function () {
-//                                      c("#ps-widget-panel-overlay").trigger("click");
-//                                      b.isShop && b.shopScrollToTop();
-//                                  }, 500));
-//                        a.empty();
-//                    },
-//                });
-//            } else console.log("ps (Error): No product id found");
-//        },
-//    });
-//    c.psThemeExtensions.add_to_cart = c.psTheme.atc_init;
-//})(jQuery);
-
+(function (c) {
+    c.extend(c.psTheme, {
+        atc_init: function () {
+            this.atcBind();
+        },
+        atcBind: function () {
+            var d = this;
+            d.$body.on("click", ".single_add_to_cart_button", function (a) {
+                var b = c(this);
+                if (b.is(".disabled")) console.log("ps: Add-to-cart button disabled");
+                else if (b.hasClass("ps-simple-add-to-cart-button") || b.hasClass("ps-variable-add-to-cart-button"))
+                    a.preventDefault(),
+                        (d.quickviewOpen = d.quickviewIsOpen()),
+                        d.quickviewOpen && b.addClass("ps-loader ps-loader-light"),
+                        b.attr("disabled", "disabled"),
+                        (a = b.closest("form")),
+                        a.length && ((a = { product_id: a.find("[name*='add-to-cart']").val(), product_variation_data: a.serialize() }), d.$body.trigger("adding_to_cart", [b, a]), d.atcAjaxSubmitForm(b, a));
+            });
+        },
+        atcAjaxSubmitForm: function (d, a) {
+            var b = this;
+            if (a.product_id) {
+                if ("undefined" !== typeof wc_add_to_cart_params) var e = wc_add_to_cart_params.wc_ajax_url;
+                else console.log('ps: "wc_add_to_cart_params" undefined - WooCommerce AJAX atc disabled'), (e = ps_wp_vars.woocommerceAjaxUrl);
+                e = e.toString().replace("wc-ajax=%%endpoint%%", "add-to-cart=" + a.product_id + "&ps-ajax-add-to-cart=1");
+                c.ajax({
+                    type: "POST",
+                    url: e,
+                    data: a.product_variation_data,
+                    dataType: "html",
+                    cache: !1,
+                    headers: { "cache-control": "no-cache" },
+                    error: function (b, a, c) {
+                        console.log("ps: AJAX error - atcAjaxSubmitForm() - " + c);
+                    },
+                    success: function (a) {
+                        a = c("<div>" + a + "</div>");
+                        var f = a.find("#ps-shop-notices-wrap"),
+                            e = f.find(".woocommerce-error").length ? !0 : !1;
+                        f = { ".ps-menu-cart-count": a.find(".ps-menu-cart-count").prop("outerHTML"), "#ps-shop-notices-wrap": f.prop("outerHTML"), "#ps-cart-panel": a.find("#ps-cart-panel").prop("outerHTML") };
+                        b.shopReplaceFragments(f);
+                        b.$body.trigger("added_to_cart", [f, ""]);
+                        b.quickviewOpen
+                            ? (c.magnificPopup.close(),
+                              e
+                                  ? b.isShop && b.shopScrollToTop()
+                                  : b.$widgetPanel.length &&
+                                    setTimeout(function () {
+                                        b.widgetPanelShow(!1, !0);
+                                    }, 350))
+                            : (d.removeAttr("disabled"),
+                              e &&
+                                  setTimeout(function () {
+                                      c("#ps-widget-panel-overlay").trigger("click");
+                                      b.isShop && b.shopScrollToTop();
+                                  }, 500));
+                        a.empty();
+                    },
+                });
+            } else console.log("ps (Error): No product id found");
+        },
+    });
+    c.psThemeExtensions.add_to_cart = c.psTheme.atc_init;
+})(jQuery);
 !(function ($, c, i, n) {
     var t = function (t) {
             var a = this;
