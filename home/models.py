@@ -43,10 +43,17 @@ class HomePage(Page):
     def get_context(self, request):
         context = super().get_context(request)
 
-        context['products'] = Product.objects.child_of(self).live()
-        context['categories'] = PotteryCategory.objects.all()
-        images_list = []
+        # Get category_id from query parameters
+        category_id = request.GET.get('category_id')
 
+        # Get products using the get_products_by_category method
+        context['products'] = self.get_products_by_category(request, category_id)
+
+        # Get all categories for the tag cloud
+        context['categories'] = PotteryCategory.objects.all()
+
+        # Carousel images
+        images_list = []
         for i in self.carousel_images.get_object_list():
             images_list.append(i)
         context['carousel_images'] = images_list
@@ -55,14 +62,19 @@ class HomePage(Page):
 
     def get_products_by_category(self, request, category_id=None):
         if category_id and category_id != 'all':
-            products = Product.objects.filter(categories__id=category_id).select_related('category')
-        else:
-            products = Product.objects.all().select_related('category')
+            return Product.objects.child_of(self).live().filter(categories__id=category_id).prefetch_related(
+                'categories')
+        return Product.objects.child_of(self).live().prefetch_related('categories')
+
+    def serve(self, request, *args, **kwargs):
+        # Handle AJAX requests
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            context = self.get_context(request)
+            return render(request, 'home/product_list.html', context)
+        return super().serve(request, *args, **kwargs)
 
     content_panels = Page.content_panels + [
-
         InlinePanel('carousel_images', label='Carousel images'),
-
     ]
 
 class Product(Page):

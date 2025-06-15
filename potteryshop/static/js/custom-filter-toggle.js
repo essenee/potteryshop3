@@ -1,6 +1,5 @@
 (function($) {
     if (typeof $ === 'undefined') {
-        console.error('ShopFilterToggle: jQuery is not loaded');
         return;
     }
 
@@ -15,7 +14,6 @@
                 this.isSliding = false;
                 this.slideSpeed = 200;
                 this.$widgetList.find('li').each(function() {
-                    console.log('ShopFilterToggle: Initial widget item display:', $(this).attr('id') || 'no-id', $(this).css('display'));
                 });
 
                 this.bindEvents();
@@ -35,15 +33,15 @@
                         self.isSliding = false;
                         self.$filterLink.parent().toggleClass('active');
                         self.ensureContentVisibility(self.$sidebar.is(':visible'));
-                        console.log('ShopFilterToggle: Sidebar display after toggle:', self.$sidebar.css('display'));
-                        console.log('ShopFilterToggle: Widget list display after toggle:', self.$widgetList.css('display'));
+//                        console.log('ShopFilterToggle: Sidebar display after toggle:', self.$sidebar.css('display'));
+//                        console.log('ShopFilterToggle: Widget list display after toggle:', self.$widgetList.css('display'));
                     });
                     }
                 });
             },
 
             ensureContentVisibility: function(isVisible) {
-                console.log('ShopFilterToggle: Ensuring content visibility, isVisible:', isVisible);
+//                console.log('ShopFilterToggle: Ensuring content visibility, isVisible:', isVisible);
                 if (isVisible) {
                     this.$sidebar.css({
                         'display': 'block',
@@ -91,7 +89,6 @@
     });
 
     $(document).ready(function() {
-        console.log('ShopFilterToggle: Document ready');
         $.shopFilterToggle.init();
     });
 })(typeof jQuery !== 'undefined' ? jQuery : null);
