@@ -17,6 +17,7 @@ from wagtail.images.widgets import AdminImageChooser
 from wagtail.models import Orderable
 from modelcluster.fields import ParentalKey
 from django.db import models
+from django.shortcuts import render
 
 class PaymentPage(Page):
     intro = RichTextField(blank=True)
@@ -43,6 +44,7 @@ class HomePage(Page):
         context = super().get_context(request)
 
         context['products'] = Product.objects.child_of(self).live()
+        context['categories'] = PotteryCategory.objects.all()
         images_list = []
 
         for i in self.carousel_images.get_object_list():
@@ -50,6 +52,12 @@ class HomePage(Page):
         context['carousel_images'] = images_list
 
         return context
+
+    def get_products_by_category(self, request, category_id=None):
+        if category_id and category_id != 'all':
+            products = Product.objects.filter(categories__id=category_id).select_related('category')
+        else:
+            products = Product.objects.all().select_related('category')
 
     content_panels = Page.content_panels + [
 

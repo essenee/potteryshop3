@@ -7,6 +7,7 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 from django.views.generic.base import TemplateView
+from home.models import HomePage
 
 
 from search import views as search_views
@@ -20,6 +21,7 @@ urlpatterns = [
     # path('gallery/', TemplateView.as_view(template_name="gallery.html")),
     # Creates urls like yourwebsite.com/login/
     path('payments/', include('payments.urls')),  # Add payments app URLs
+    path('category/<str:category_id>/', HomePage().get_products_by_category, name='category_filter'),
     path('', include('payments.urls')),     # Add this to handle /cart/ and /cart/add/
     path('', include('allauth.urls')),
     path('', include('home.urls')),
