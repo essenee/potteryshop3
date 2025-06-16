@@ -1,4 +1,46 @@
 
+
+@media (max-width: 767px) {
+    #ps-shop-sidebar .widget_product_tag_cloud .ps-shop-widget-col:nth-child(2),
+    #ps-shop-sidebar .widget_product_tag_cloud .tagcloud {
+        display: none !important; /* Hidden by default */
+    }
+    #ps-shop-sidebar .widget_product_tag_cloud.active .ps-shop-widget-col:nth-child(2),
+    #ps-shop-sidebar .widget_product_tag_cloud .tagcloud.active {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+    #ps-shop-sidebar .widget_product_tag_cloud .ps-widget-title {
+        position: relative;
+        cursor: pointer;
+        pointer-events: auto !important;
+    }
+    #ps-shop-sidebar .widget_product_tag_cloud .ps-widget-title::after {
+        position: absolute;
+        top: 15px;
+        right: 0px;
+        z-index: 100;
+        display: block;
+        font-family: 'ps-font';
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 14px;
+        content: "\e114";
+        pointer-events: none !important;
+    }
+    #ps-shop-sidebar .widget_product_tag_cloud .ps-widget-title[data-expanded="true"]::after {
+        content: "\e115";
+    }
+
+}
+
+
+
+
+
 /*        <style type="text/css" class="ps-custom-styles"> */
             @font-face {
                 font-family: 'MaisonNeue';

@@ -46,3 +46,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+//Mobile Nav
+//document.addEventListener('DOMContentLoaded', function() {
+//    const widgetTitles = document.querySelectorAll('.ps-shop-sidebar .widget .ps-widget-title');
+//
+//    widgetTitles.forEach(title => {
+//        title.addEventListener('click', function(e) {
+//            e.preventDefault();
+//            // Find the parent widget
+//            const widget = title.closest('.widget');
+//
+//            if (widget) {
+//                // Toggle active class
+//                widget.classList.toggle('active');
+//            }
+//        });
+//    });
+//});
