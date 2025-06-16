@@ -1,6 +1,6 @@
 
-
-@media (max-width: 767px) {
+/* @media (max-width: 767px) */
+@media (max-width: 991px) {
     #ps-shop-sidebar .widget_product_tag_cloud .ps-shop-widget-col:nth-child(2),
     #ps-shop-sidebar .widget_product_tag_cloud .tagcloud {
         display: none !important; /* Hidden by default */
